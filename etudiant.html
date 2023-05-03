@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>OMNES Skills: Page etudiante</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="accueil.css">
+
+	<title>Omnes MySkills</title>
+</head>
+    <title>Omnes MySkills</title>
     <meta charset="utf-8" />
-    <link href="etudiant.css" rel="stylesheet" type="text/css" />
+    <link href="caroussel.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var $carrousel = $('#carousel-container'); // on cible le bloc du carrousel
-            $img = $('#carousel-container img'); // on cible les images contenues dans le carrousel
+            var $carrousel = $('#carrousel'); // on cible le bloc du carrousel
+            $img = $('#carrousel img'); // on cible les images contenues dans le carrousel
             indexImg = $img.length - 1; // on définit l'index du dernier élément
             i = 0; // on initialise un compteur
             $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
@@ -52,32 +59,21 @@
             }
             slideImg(); // enfin, on lance la fonction une première fois
         });
-
     </script>
 </head>
 
 <body>
-    <h1>Accueil Page etudiant</h1>
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="Matiere_Math.jpg">
-                </div>
-                <div class="carousel-item">
-                    <img src="Matiere_Physique.jpg">
-                </div>
-                <div class="carousel-item">
-                    <img src="Matiere_Info.jpg">
-                </div>
-                <div class="carousel-item">
-                    <img src="Matiere_Electronique.jpg">
-                </div>
-            </div>
-            <button class="carousel-control prev">Matière Précédente</button>
-            <button class="carousel-control next">&#Matière Suivante;</button>
-        </div>
+    <h1>Accueil Etudiant</h1>
+    <div id="carrousel">
+        <ul>
+            <li><img src="Matiere_Math.jpg"/></li>
+            <li><img src="Matiere_Physique.jpg"/></li>
+            <li><img src="Matiere_Info.jpg"/></li>
+            <li><img src="Matiere_Electronique.jpg"/></li>
+        </ul>
     </div>
+    <input type="button" value="Précédent" class="prev">
+    <input type="button" value="Suivant" class="next">
 </body>
 
 </html>
