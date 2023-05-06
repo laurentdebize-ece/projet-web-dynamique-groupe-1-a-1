@@ -12,8 +12,7 @@ form {
 	background-color: white;
 	width: 400px;
 	margin: auto;
-	border-radius: 5px;
-	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 	}
 h1 {
 	font-size: 56px;
@@ -21,7 +20,7 @@ h1 {
 	color: #0d01ba;
 	text-align: center;
 	margin-top: 100px;
-	text-shadow: 2px 2px 2px #999;
+	text-shadow: 2px 2px 2px #999; 
 	}
 label {
 	display: block;
@@ -55,9 +54,8 @@ select {
 	margin-top: 10px;
 	}
 #footer{
-    background-color: blue;
+    background-color: rgb(57, 57, 120);
     color: white;
-    padding: 10px;
     position: fixed;
     bottom: 0;
     left: 0;

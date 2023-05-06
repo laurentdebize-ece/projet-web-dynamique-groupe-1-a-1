@@ -4,76 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="accueil.css">
-
-	<title>Omnes MySkills</title>
+    <link rel="stylesheet" type="text/css" href="etudiant.css">
+	<title>Accueil étudiant</title>
 </head>
-    <title>Omnes MySkills</title>
-    <meta charset="utf-8" />
-    <link href="caroussel.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var $carrousel = $('#carrousel'); // on cible le bloc du carrousel
-            $img = $('#carrousel img'); // on cible les images contenues dans le carrousel
-            indexImg = $img.length - 1; // on définit l'index du dernier élément
-            i = 0; // on initialise un compteur
-            $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
-            $img.css('display', 'none'); // on cache les images
-            $currentImg.css('display', 'block'); // on affiche seulement l'image courante
-            //si on clique sur le bouton "Suivant"
-            $('.next').click(function () { // image suivante
-                i++; // on incrémente le compteur
-                if (i <= indexImg) {
-                    $img.css('display', 'none'); // on cache les images
-                    $currentImg = $img.eq(i); // on définit la nouvelle image
-                    $currentImg.css('display', 'block'); // puis on l'affiche
-                } else {
-                    i = indexImg;
-                }
-            });
-            //si on clique sur le bouton "Précédent"
-            $('.prev').click(function () { // image précédente
-                i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
-                if (i >= 0) {
-                    $img.css('display', 'none');
-                    $currentImg = $img.eq(i);
-                    $currentImg.css('display', 'block');
-                } else {
-                    i = 0;
-                }
-            });
-            function slideImg() {
-                setTimeout(function () { // on utilise une fonction anonyme
-                    if (i < indexImg) { // si le compteur est inférieur au dernier index
-                        i++; // on l'incrémente
-                    } else { // sinon, on le remet à 0 (première image)
-                        i = 0;
-                    }
-                    $img.css('display', 'none');
-                    $currentImg = $img.eq(i);
-                    $currentImg.css('display', 'block');
-                    slideImg(); // on oublie pas de relancer la fonction à la fin
-                }, 4000); // on définit l'intervalle à 4000 millisecondes (4s)
-            }
-            slideImg(); // enfin, on lance la fonction une première fois
-        });
-    </script>
-</head>
-
 <body>
-    <h1>Accueil Etudiant</h1>
-    <div id="carrousel">
-        <ul>
-            <li><img src="Matiere_Math.jpg"/></li>
-            <li><img src="Matiere_Physique.jpg"/></li>
-            <li><img src="Matiere_Info.jpg"/></li>
-            <li><img src="Matiere_Electronique.jpg"/></li>
-        </ul>
-    </div>
-    <input type="button" value="Précédent" class="prev">
-    <input type="button" value="Suivant" class="next">
-</body>
+	<header>
+		<h1>Accueil étudiant</h1>
+		<nav>
+			<button>Mes compétences</button>
+			<button>Mes matières</button>
+			<button onclick="window.location.href='compte.html'">Compte</button>
 
+			<button>Déconnexion</button>
+		</nav>
+	</header>
+</body>
 </html>
