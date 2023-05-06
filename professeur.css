@@ -2,7 +2,7 @@ table {
     border-collapse: collapse;
     width: 100%;
   }
-  
+
   th, td {
     padding: 8px;
     text-align: left;
@@ -50,5 +50,31 @@ table {
   }
   
   #ajout:hover {
+    background-color: #0069d9;
+  }
+
+  .validation {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .validation:hover {
+    background-color: #0069d9;
+  }
+
+  .demander {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .demander:hover {
     background-color: #0069d9;
   }
