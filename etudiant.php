@@ -8,13 +8,13 @@
 	<title>Accueil étudiant</title>
 </head>
 <body>
-	<img src="logoSite.png" alt="imageLogo">
 	<header>
+		<img src="logoSite.png" alt="imageLogo">
 		<h1>Accueil étudiant</h1>
 		<nav>
-			<button>Mes compétences</button>
+			<button onclick="window.location.href='mesCompetence.php'">Mes compétences</button>
 			<button>Mes matières</button>
-			<button onclick="window.location.href='compte.html'">Compte</button>
+			<button onclick="window.location.href='compte.php'">Compte</button>
 			<button id="deco">Déconnexion</button>
 		</nav>
 	</header>

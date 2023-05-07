@@ -17,6 +17,6 @@
         <img src="ProfilD.jpg" alt="Photo de profil">
       </div>
     </div>
-    <button onclick="window.location.href='etudiant.html'">Retour</button>
+    <button onclick="window.location.href='etudiant.php'">Retour</button>
   </body>
 </html>
