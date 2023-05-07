@@ -1,10 +1,11 @@
 body {
 	background-image: url("ECE_Campus.jpg");
+	animation: animationFond 5s linear infinite; 
+	background-repeat: repeat-x;
 	background-size: cover;
 	background-position: center center;
-	background-repeat: no-repeat;
 	background-attachment: fixed;
-	opacity: 0.8;
+	opacity: 1.5;
 	}
 form {
 	margin-top: 100px;
@@ -15,13 +16,20 @@ form {
 	border-radius: 10px;
 	}
 h1 {
-	font-size: 56px;
+	font-size: 40px;
 	font-family: "Arial Black", sans-serif;
 	color: #0d01ba;
 	text-align: center;
-	margin-top: 100px;
 	text-shadow: 2px 2px 2px #999; 
 	}
+/*Bandeau haut page*/
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.913);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
 label {
 	display: block;
 	margin-top: 10px;
@@ -62,5 +70,13 @@ select {
     width: 100%;
     z-index: 999;
     }
+img{
+	max-width: 150px;
+	max-height: 150px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}	
+
       
 	

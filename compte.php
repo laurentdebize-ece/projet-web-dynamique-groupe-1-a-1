@@ -6,7 +6,6 @@
   </head>
   <body>
     <h1>Mon compte</h1>
-    
     <div class="page"> <!--contenant toute la page-->
       <div class="pageGauche"><!--gauche page-->
         <!--A remplir en PHP-->
