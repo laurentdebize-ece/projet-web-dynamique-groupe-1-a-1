@@ -105,7 +105,13 @@
 			<option value="informatique">Informatique</option>
             <option value="electronique">Electronique</option>
 		</select>
+        <br>
 
+        <label for="start">Date limite :</label>
+
+        <input type="date" id="start" name="trip-start"
+       value="2023-05-24"
+       min="2021-01-01" max="2026-12-31">
 
         <br>
         <br>
@@ -113,6 +119,13 @@
 		<input type="submit" value="Envoyer la demande">
 	</form>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="footer"> 
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
 
 </body>
 	
