@@ -13,7 +13,7 @@
 		<h1>Accueil étudiant</h1>
 		<nav>
 			<button onclick="window.location.href='mesCompetence.php'">Mes compétences</button>
-			<button>Mes matières</button>
+			<button onclick="window.location.href='matiere.php'">Mes matières</button>
 			<button onclick="window.location.href='compte.php'">Compte</button>
 			<button id="deco">Déconnexion</button>
 		</nav>
