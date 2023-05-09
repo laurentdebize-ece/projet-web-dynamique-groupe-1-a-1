@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="scolarite.css">
-    <title>Document</title>
+    <title>Accueil Administrateur</title>
 </head>
 <?php try {
 
@@ -32,11 +32,11 @@ die('Erreur : ' . $e->getMessage());
     <br>
     <br>
 
-    <form>
+    <form method="get" action="scolarite2.php">
         Ici vous pouvez ajouter/créer un compte :
         <br>
         <br>
-
+    
 		<label for="nom">Nom :</label>
 		<input type="nom" id="nom" name="nom">
         <br>
@@ -48,21 +48,19 @@ die('Erreur : ' . $e->getMessage());
 		<input type="password" id="password" name="password">
 		<br>
 		<br>
-
-		<d>Statut :</d>
-		<select>
+        <d>Statut :</d>
+        <select name="creercomptes">
 			<option value="professeur">Professeur</option>
 			<option value="scolarite">Administrateur</option>
 			<option value="etudiant">Étudiant</option>
 		</select>
         <br>
         <br>
-
-		<input type="submit" value="Créer le compte">
+		<input type="submit" id="submit" value="Créer le compte">
 	</form>
 <br>
 <br>
-    <form>
+    <form method="get" action="scolarite2.php">
         Ici vous pouvez supprimer un compte :
         <br>
         <br>
@@ -76,7 +74,7 @@ die('Erreur : ' . $e->getMessage());
         <br>
 
 		<d>Statut :</d>
-		<select>
+		<select name="supprimercompte">
 			<option value="professeur">Professeur</option>
 			<option value="scolarite">Administrateur</option>
 			<option value="etudiant">Étudiant</option>
@@ -89,7 +87,7 @@ die('Erreur : ' . $e->getMessage());
     <br>
     <br>
 
-    <form>
+    <form method="get" action="scolarite2.php">
         Demander à un étudiant de s'auto-évaluer :
         <br>
         <br>
@@ -103,7 +101,7 @@ die('Erreur : ' . $e->getMessage());
         <br>
 
 		<d>Matière :</d>
-		<select>
+		<select name="choixmatiere">
 			<option value="maths">Maths</option>
 			<option value="physique">Physique</option>
 			<option value="informatique">Informatique</option>
@@ -112,7 +110,7 @@ die('Erreur : ' . $e->getMessage());
         <br>
 
         <d>Compétence :</d>
-		<select>
+		<select name="choixcompetences">
 			<option value="calcul">Calcul</option>
 			<option value="physique">Physique</option>
 			<option value="informatique">Informatique</option>
