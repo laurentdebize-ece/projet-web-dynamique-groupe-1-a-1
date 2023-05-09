@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,25 +7,32 @@
 
     <link rel="stylesheet" type="text/css" href="accueil.css">
 
-	<title>Omnes Skills</title>
+	<title>Omnes MySkills</title>
 </head>
 <body>
-	<h1>Omnes Skills</h1>
+	<header>
+		<img src="logoSite.png" alt="imageLogo">
+		<h1>Connexion</h1>
+	</header>
 	<form>
-		<label for="identifiant">Identifiant:</label>
+		<label for="identifiant">Identifiant :</label>
 		<input type="email" id="identifiant" name="identifiant">
 
-		<label for="password">Mot de passe:</label>
+		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password">
-
+		<br>
+		<br>
+		<d>Statut :</d>
 		<select>
 			<option value="professeur">Professeur</option>
-			<option value="scolarite">Scolarité</option>
+			<option value="scolarite">Administrateur</option>
 			<option value="etudiant">Étudiant</option>
 		</select>
 
 		<input type="submit" value="Connexion">
-		<input type="submit" value="Créer son compte">
 	</form>
+    <div id="footer"> 
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
 </body>
 </html>
