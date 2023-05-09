@@ -18,11 +18,10 @@
         <p>Adresse mail : ---@---</p>
         <p>Mot de passe : °°°</p>
         <br>
-        <button onclick="window.location.href='scolarite.php'">Retour</button>
-
-
     </form>
 
+    <button onclick="window.location.href='scolarite.php'">Retour</button>
+    
     <div id="footer"> 
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>
