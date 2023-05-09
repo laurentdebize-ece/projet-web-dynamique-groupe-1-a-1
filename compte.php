@@ -1,11 +1,23 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>OMNES MySkills</title>
     <link rel="stylesheet" type="text/css" href="compte.css">
   </head>
+  <?php 
+  $_SESSION['login'] = $login;
+  $_SESSION['password'] = $password;
+  ?>
   <body>
-    <h1>Mon compte</h1>
+  <header>
+		<img src="logoSite.png" alt="imageLogo"  style="width:100px">
+		<h1>Mon Compte</h1>
+    <button onclick="window.location.href='etudiant.php'">Retour</button>
+	</header>
     <div class="page"> <!--contenant toute la page-->
       <div class="pageGauche"><!--gauche page-->
         <!--A remplir en PHP-->
@@ -17,6 +29,8 @@
         <img src="ProfilD.jpg" alt="Photo de profil">
       </div>
     </div>
-    <button onclick="window.location.href='etudiant.php'">Retour</button>
+    <div id="footer"> 
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
   </body>
 </html>

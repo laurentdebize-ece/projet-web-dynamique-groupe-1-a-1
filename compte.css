@@ -7,13 +7,20 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     opacity: 0.9;/*transparence*/
   }
+  /*Bandeau haut page*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
   h1 {
     font-size: 50px;
     font-weight: normal;
     margin: 0;
     text-align: center;
-    color: white;
-    background-color: #256d9e;
+    color:  rgb(34, 16, 126);
     font-size: 50px;
     border-radius: 10px;
   }
@@ -53,4 +60,14 @@ body {
   button:hover {
     background-color: #2957b9;
   }
+  #footer{
+    background-color: rgb(57, 57, 120);
+    color: white;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    }
   
