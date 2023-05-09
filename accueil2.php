@@ -28,22 +28,22 @@ $login = $_POST['login'];
 $password = $_POST['password'];
 $_SESSION['login'] = $login;
 $_SESSION['password'] = $password;
-echo $login;
-echo $password;
 
 switch ($_POST['statut']) {
     case 'prof':
-        $requete = $bdd->prepare('SELECT Prenom FROM Professeur WHERE Login =  ? AND Password = ? ');
+        $requete = $bdd->prepare('SELECT * FROM Professeur WHERE Login =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
         ?>
             <p>
                 Prenom : <?php echo $donnees['Prenom']; ?>
+                Nom : <?php echo $donnees['Nom']; ?>
 
             </p>
 
         <?php
         $_SESSION['Prenom'] = $donnees['Prenom'];
+        $_SESSION['Nom'] = $donnees['Nom'];
 
         $requete->closeCursor();
         } 
@@ -54,17 +54,19 @@ switch ($_POST['statut']) {
         header("Location: professeur.php");
         break;
     case 'sco':
-        $requete = $bdd->prepare('SELECT Prenom FROM Scolarite WHERE Login =  ? AND Password = ? ');
+        $requete = $bdd->prepare('SELECT * FROM Scolarite WHERE Login =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
         ?>
             <p>
                 Prenom : <?php echo $donnees['Prenom']; ?>
+                Nom : <?php echo $donnees['Nom']; ?>
 
             </p>
 
         <?php
         $_SESSION['Prenom'] = $donnees['Prenom'];
+        $_SESSION['Nom'] = $donnees['Nom'];
 
         $requete->closeCursor();
         } 
@@ -75,17 +77,19 @@ switch ($_POST['statut']) {
         header("Location: scolarite.php");
         break;
     case 'etud':
-        $requete = $bdd->prepare('SELECT Prenom FROM Etudiant WHERE LoginEtu =  ? AND Password = ? ');
+        $requete = $bdd->prepare('SELECT * FROM Etudiant WHERE LoginEtu =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
         ?>
             <p>
                 Prenom : <?php echo $donnees['Prenom']; ?>
+                Nom : <?php echo $donnees['Nom']; ?>
 
             </p>
 
         <?php
         $_SESSION['Prenom'] = $donnees['Prenom'];
+        $_SESSION['Nom'] = $donnees['Nom'];
 
         $requete->closeCursor();
         } 

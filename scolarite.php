@@ -20,11 +20,6 @@ $bdd = new PDO(
 } catch (Exception $e) {
 die('Erreur : ' . $e->getMessage());
 }
-echo $_SESSION['login'];
-echo $_SESSION['Prenom'];
-
-
-
 ?>
 <body>
     <h1>Accueil administrateur</h1>

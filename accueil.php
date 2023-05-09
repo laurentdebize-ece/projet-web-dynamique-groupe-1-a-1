@@ -20,7 +20,7 @@
 
 		<select name="statut">
 			<option value="prof">Professeur</option>
-			<option value="sco">Scolarité</option>
+			<option value="sco">Administrateur</option>
 			<option value="etud">Étudiant</option>
 		</select>
 
