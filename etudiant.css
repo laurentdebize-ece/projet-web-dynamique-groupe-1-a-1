@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('ECE_Campus.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  opacity: 1;
+  /*transparence*/
+}
+
+/*Bandeau haut page*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+  color: rgb(34, 16, 126);
+  /*background-color: #256d9e;*/
+  font-size: 50px;
+  border-radius: 10px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  /*Distance entre boutons*/
+}
+
+button {
+  padding: 7px 17px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color:  rgb(34, 16, 126);
+  background-color: #3498db;
+  cursor: pointer;
+  /*doigt souris*/
+}
+
+/*surlignement bouton lors passage souris*/
+button:hover {
+  background-color: #2957b9;
+}
+img{
+	max-width: 100px;
+	max-height: 100px;
+	float: left;
+  margin-left: 20px;
+}	
