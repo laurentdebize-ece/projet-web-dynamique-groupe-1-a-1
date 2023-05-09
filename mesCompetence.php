@@ -37,5 +37,4 @@
         <button onclick="window.location.href='etudiant.php'">Retour</button>
     </header>
 </body>
-
 </html>
