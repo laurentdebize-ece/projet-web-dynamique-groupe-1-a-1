@@ -57,6 +57,19 @@ die('Erreur : ' . $e->getMessage());
         <br>
         <br>
 		<input type="submit" id="submit" value="Créer le compte">
+        <?php 
+            $choixcreacompte=isset($_GET["creercomptes"])?$_GET["creercomptes"]:"";
+            switch( $choixcreacompte ) {
+                case "professeur":
+                    header("location:creacompteprofesseur.php");
+                    break;
+                case "scolarite" :
+                     header("location:creacomptescolarite.php");
+                    break;
+                case "etudiant" :
+                    header("location:creacompteetudiant.php");
+                    break;
+            }?>
 	</form>
 <br>
 <br>
