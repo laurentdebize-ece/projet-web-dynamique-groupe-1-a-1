@@ -13,13 +13,13 @@
 	<h1>Création d'un nouveau compte administrateur</h1>
 	<form method="post" action="accueil2.php">
         <label for="nom">Nom :</label>
-		<input type="text" id="nom" name="nom">
+		<input type="text" id="nom" name="nom" required>
         <br>
         <label for="prenom">Prénom :</label>
-		<input type="text" id="prenom" name="prenom">
+		<input type="text" id="prenom" name="prenom" required>
         <br>
 		<label for="password">Mot de passe :</label>
-		<input type="password" id="password" name="password">
+		<input type="password" id="password" name="password" required>
 		<br>
 		<input type="submit" value="Creer le compte">
 		
