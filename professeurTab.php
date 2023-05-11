@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="professeur.css" rel="stylesheet" type="text/css" />
+    <link href="professeur.php" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Omnes MySkills</title>
 </head>
@@ -32,6 +32,6 @@
   </tbody>
 </table>
 <button id="ajout">Ajouter une compétence</button>
-<script src="professeur.js"></script>
+<script src="professeurAction.php"></script>
 </body>
 </html>
