@@ -8,15 +8,26 @@
 	<title>Accueil étudiant</title>
 </head>
 <body>
+	<img src="logoSite.png" alt="imageLogo">
 	<header>
 		<h1>Accueil étudiant</h1>
 		<nav>
 			<button>Mes compétences</button>
 			<button>Mes matières</button>
 			<button onclick="window.location.href='compte.html'">Compte</button>
-
-			<button>Déconnexion</button>
+			<button id="deco">Déconnexion</button>
 		</nav>
 	</header>
+	<!--pop-up déconnexion-->
+	<script>
+		document.getElementById("deco").addEventListener("click", decOut);
+		
+		function decOut() {
+			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+				window.location.href = "accueil.html";
+			}
+		}
+	</script>
+	
 </body>
 </html>
