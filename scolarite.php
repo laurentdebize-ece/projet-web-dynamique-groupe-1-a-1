@@ -6,21 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="scolarite.css">
+    <!--<script src="scolarite.js"></script>-->
     <title>Accueil Administrateur</title>
 </head>
-<?php try {
-
-$bdd = new PDO(
-    'mysql:host=localhost;dbname=famille;
-  charset=utf8',
-    'root',
-    'root',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-);
-} catch (Exception $e) {
-die('Erreur : ' . $e->getMessage());
-}
-?>
 <body>
     <h1>Accueil administrateur</h1>
 	<header>
@@ -32,23 +20,11 @@ die('Erreur : ' . $e->getMessage());
     <br>
     <br>
 
-    <form method="get" action="scolarite2.php">
-        Ici vous pouvez ajouter/créer un compte :
+    <form method="get" action="scolarite.php">
+        Vous pouvez ici créer un nouveau compte :
+        Quel statut voulez vous créer ?
         <br>
-        <br>
-    
-		<label for="nom">Nom :</label>
-		<input type="nom" id="nom" name="nom">
-        <br>
-
-        <label for="prenom">Prénom :</label>
-		<input type="prenom" id="prenom" name="prenom">
-        <br>
-		<label for="password">Mot de passe :</label>
-		<input type="password" id="password" name="password">
-		<br>
-		<br>
-        <d>Statut :</d>
+        <label>Statut :</label>
         <select name="creercomptes">
 			<option value="professeur">Professeur</option>
 			<option value="scolarite">Administrateur</option>
@@ -57,6 +33,41 @@ die('Erreur : ' . $e->getMessage());
         <br>
         <br>
 		<input type="submit" id="submit" value="Créer le compte">
+       <!-- <script>
+            document.querySelector(".professeur").addEventListener("click", creacompteprofesseur);
+            document.querySelector(".scolarite").addEventListener("click", creacomptescolarite);
+            document.querySelector(".etudiant").addEventListener("click", creacompteetudiant);
+
+            function creacompteprofesseur() {
+                if (confirm("Voulez-vous créer un nouveau compte professeur ?")) {
+                    window.location.href = "creacompteprofesseur.php";
+                }
+            }
+            function creacomptescolarite() {
+                if (confirm("Voulez-vous créer un nouveau compte administrateur?")) {
+                    window.location.href = "creacomptescolarite.php";
+                }
+            }
+            function creacompteetudiant() {
+                if (confirm("Voulez-vous créer un nouveau compte étudiant ?")) {
+                    window.location.href = "creacompteetudiant.php";
+                }
+            }
+        </script> -->
+        <?php
+             $choice = isset($_GET["creercomptes"]) ? $_GET["creercomptes"] : "";
+             switch ($choice) {
+                case "professeur" :
+                    header("Location:creacompteprofesseur.php");
+                    break;
+                case "scolarite" :
+                    header("Location:creacomptescolarite.php");
+                    break;
+                case "etudiant" :
+                    header("Location:creacompteetudiant.php");
+                    break;    
+             }
+        ?>
 	</form>
 <br>
 <br>
@@ -66,14 +77,14 @@ die('Erreur : ' . $e->getMessage());
         <br>
 
 		<label for="nom">Nom :</label>
-		<input type="nom" id="nom" name="nom">
+		<input type="text" id="nom" name="nom" >
         <br>
 
         <label for="prenom">Prénom :</label>
-		<input type="prenom" id="prenom" name="prenom">
+		<input type="text" id="prenom" name="prenom">
         <br>
 
-		<d>Statut :</d>
+		<label>Statut :</label>
 		<select name="supprimercompte">
 			<option value="professeur">Professeur</option>
 			<option value="scolarite">Administrateur</option>
@@ -97,10 +108,10 @@ die('Erreur : ' . $e->getMessage());
         <br>
 
         <label for="prenom">Prénom :</label>
-		<input type="prenom" id="prenom" name="prenom">
+		<input type="text" id="prenom" name="prenom">
         <br>
 
-		<d>Matière :</d>
+		<label>Matière :</label>
 		<select name="choixmatiere">
 			<option value="maths">Maths</option>
 			<option value="physique">Physique</option>
@@ -109,7 +120,7 @@ die('Erreur : ' . $e->getMessage());
 		</select>
         <br>
 
-        <d>Compétence :</d>
+        <label>Compétence :</label>
 		<select name="choixcompetences">
 			<option value="calcul">Calcul</option>
 			<option value="physique">Physique</option>
@@ -141,5 +152,4 @@ die('Erreur : ' . $e->getMessage());
 </body>
 	
 </html>
-
 
