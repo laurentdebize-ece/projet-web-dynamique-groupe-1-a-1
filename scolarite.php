@@ -145,7 +145,7 @@
     <br>
     <br>
 
-    <form method="get" action='modifcompteetudiant.php'>
+    <form method="get" action='modifcompteprof.php'>
         Les étudiants :
         <br>
         <table id="competences">
@@ -163,6 +163,32 @@
                 <td contenteditable="true">Prénom 1</td>
                 <td contenteditable="true">Classe 1</td>
                 <td><button onclick="window.location.href='modifcompteetudiant.php'", class="modifier">Modifier</button></td>
+                </tr>
+            </tbody>
+        </table>        
+	</form>
+    <br>
+    <br>
+    <form method="get" action='modifcompteprof.php'>
+        Les professeurs :
+        <br>
+        <table id="competences">
+            <thead>
+                <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Classe associée</th>
+                <th>Matière associée</th>
+                <th>Modifier le profil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td contenteditable="true">Nom 1</td> 
+                <td contenteditable="true">Prénom 1</td>
+                <td contenteditable="true">Classe 1</td>
+                <td contenteditable="true">Matière 1</td>
+                <td><button onclick="window.location.href='modifcompteprof.php'", class="modifier">Modifier</button></td>
                 </tr>
             </tbody>
         </table>        

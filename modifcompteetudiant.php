@@ -11,7 +11,7 @@
 
 <body>
 	<h1>Modification d'un compte étudiant</h1>
-	<form method="post" action="accueil2.php">
+	<form method="post" >
         <label for="nom">Nom :</label>
 		<input type="text" id="nom" name="nom" required>
         <br>

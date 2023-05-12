@@ -22,14 +22,10 @@
 		<input type="password" id="password" name="password"required>
 		<br>
 		<br>
-        <label for="matiere">Matière 1 :</label>
-		<input type="text" id="matiere" name="matiere" required>
-        <label for="matiere">Matière 2 :</label>
-		<input type="text" id="matiere" name="matiere" required>
-        <label for="matiere">Matière 3 :</label>
+        <label for="matiere">Matière :</label>
 		<input type="text" id="matiere" name="matiere" required>
         <br>
-        <label>Cet étudiant appartient à la classe :</label>
+        <label>Ce professeur est associé à la classe :</label>
         <select name="classes">
 			<option value="ing1">ING1</option>
 			<option value="ing2">ING2</option>
