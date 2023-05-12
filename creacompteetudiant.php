@@ -11,26 +11,29 @@
 
 <body>
 	<h1>Création d'un nouveau compte étudiant</h1>
-	<form method="post" action="accueil2.php">
+	<form method="post" action="etucreercompte.php">
         <label for="nom">Nom :</label>
 		<input type="text" id="nom" name="nom">
         <br>
         <label for="prenom">Prénom :</label>
 		<input type="text" id="prenom" name="prenom">
         <br>
+        <label for="login">Login :</label>
+		<input type="email" id="login" name="login">
+		<br>
 		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password">
 		<br>
 		<br>
-        <label for="matiere">Matière suivi :</label>
+        <!-- <label for="matiere">Matière suivi :</label>
 		<input type="text" id="matiere" name="matiere">
         <br>
         <label>Dans quelle classe l'ajouter ?</label>
-        <select name="classes">
+        <select name="classe">
 			<option value="ing1">ING1</option>
 			<option value="ing2">ING2</option>
 			<option value="ing3">ING3</option>
-		</select>
+		</select> -->
         <br>
 		<input type="submit" value="Creer le compte">
 		
@@ -40,9 +43,9 @@
 
 <?php 
 
-if(isset($_GET['error'])){
+if(isset($_POST['error'])){
 
-    if($_GET['error']==1){
+    if($_POST['error']==1){
         echo"login ou password ";
         
     }
