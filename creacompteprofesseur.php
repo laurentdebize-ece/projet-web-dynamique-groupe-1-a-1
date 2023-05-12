@@ -11,25 +11,39 @@
 
 <body>
 	<h1>Création d'un nouveau compte professeur</h1>
-	<form method="post" action="accueil2.php">
+	<form method="post" action="profcreercompte.php">
+
         <label for="nom">Nom :</label>
-		<input type="text" id="nom" name="nom">
+		<input type="text" id="nom" name="nom" required>
         <br>
         <label for="prenom">Prénom :</label>
-		<input type="text" id="prenom" name="prenom">
+		<input type="text" id="prenom" name="prenom" required>
         <br>
+
+        <label for="login">Login :</label>
+		<input type="email" id="login" name="login">
+        <br>
+
 		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password">
+
+        <label for="idprof">Id Professeur :</label>
+		<input type="number" id="idprof" name="idprof">
+        
+		<br>
+
 		<br>
 		<br>
-        <label for="matiere">Matière enseignée :</label>
+
+        <!-- <label for="matiere">Matière enseignée :</label>
 		<input type="text" id="matiere" name="matiere">
-        <br>
+        <br> -->
         <label>Quelle classe lui attribuer ?</label>
-        <select name="classes">
-			<option value="ing1">ING1</option>
-			<option value="ing2">ING2</option>
-			<option value="ing3">ING3</option>
+
+        <select name="classe">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
 		</select>
         <br>
 		<input type="submit" value="Creer le compte">
@@ -39,12 +53,10 @@
 </body>
 
 <?php 
+if(isset($_POST['error'])){
 
-if(isset($_GET['error'])){
-
-    if($_GET['error']==1){
-        echo"login ou password ";
-        
+    if($_POST['error']==1){
+        echo"login ou password ";   
     }
 }
 ?>

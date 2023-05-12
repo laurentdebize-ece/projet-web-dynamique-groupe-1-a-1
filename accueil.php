@@ -27,6 +27,9 @@
 		<input type="submit" value="Connexion">
 		
 	</form>
+	<div id="footer"> 
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
            
 </body>
 
@@ -40,6 +43,5 @@ if(isset($_GET['error'])){
     }
 }
 ?>
-
 
 </html>

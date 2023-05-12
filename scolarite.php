@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
     <br>
     <br>
 
-    <form method="get" action="scolarite.php">
+    <form method="post" action="creacomptescolarite.php">
         Vous pouvez ici créer un nouveau compte :
         Quel statut voulez vous créer ?
         <br>
@@ -55,7 +56,7 @@
             }
         </script> -->
         <?php
-             $choice = isset($_GET["creercomptes"]) ? $_GET["creercomptes"] : "";
+             $choice = isset($_POST["creercomptes"]) ? $_POST["creercomptes"] : "";
              switch ($choice) {
                 case "professeur" :
                     header("Location:creacompteprofesseur.php");
@@ -71,7 +72,7 @@
 	</form>
 <br>
 <br>
-    <form method="get" action="scolarite2.php">
+    <form method="post" action="scosupp.php">
         Ici vous pouvez supprimer un compte :
         <br>
         <br>
@@ -95,10 +96,11 @@
 
 		<input type="submit" value="Supprimer le compte">
 	</form>
+
     <br>
     <br>
 
-    <form method="get" action="scolarite2.php">
+    <form method="post" action="scolarite2.php">
         Demander à un étudiant de s'auto-évaluer :
         <br>
         <br>
@@ -120,7 +122,7 @@
 		</select>
         <br>
 
-        <label>Compétence :</label>
+        <label>Compétences :</label>
 		<select name="choixcompetences">
 			<option value="calcul">Calcul</option>
 			<option value="physique">Physique</option>
@@ -139,6 +141,31 @@
         <br>
 
 		<input type="submit" value="Envoyer la demande">
+	</form>
+    <br>
+    <br>
+
+    <form method="get" action='modifcompteetudiant.php'>
+        Les étudiants :
+        <br>
+        <table id="competences">
+            <thead>
+                <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Classe</th>
+                <th>Modifier le profil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td contenteditable="true">Nom 1</td> 
+                <td contenteditable="true">Prénom 1</td>
+                <td contenteditable="true">Classe 1</td>
+                <td><button onclick="window.location.href='modifcompteetudiant.php'", class="modifier">Modifier</button></td>
+                </tr>
+            </tbody>
+        </table>        
 	</form>
 
     <br>
