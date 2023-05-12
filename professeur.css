@@ -1,0 +1,111 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #dddddd88;
+  }
+  
+  th {
+    background-color: #fff;
+    font-weight: bold;
+  }
+  
+  td[contenteditable]:hover {
+    background-color: #fff;
+  }
+  
+  td[contenteditable]:focus {
+    background-color: #fff;
+    outline: none;
+  }
+  
+  .retirer {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .retirer:hover {
+    background-color: #c82333;
+  }
+  .demande {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .demande:hover {
+    background-color: #0069d9;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    /* background-image: url('ECE_Campus.jpg'); */
+    background-size: cover;
+    background-position: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    opacity: 1;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  h1 {
+    font-size: 50px;
+    font-weight: normal;
+    margin: 0;
+    text-align: center;
+    color: rgb(34, 16, 126);
+    font-size: 50px;
+    border-radius: 10px;
+  }
+  nav {
+    display: flex;
+    gap: 10px;
+  }
+  img{
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+    margin-left: 20px;
+  }
+  #footer{
+    background-color: rgb(57, 57, 120);
+    color: white;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    }
