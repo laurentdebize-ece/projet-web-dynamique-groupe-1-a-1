@@ -25,7 +25,7 @@
 		function decOut() {
 			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
 				/*retour page MDP*/
-				window.location.href = "accueil.html";
+				window.location.href = "accueil.php";
 			}
 		}
 	</script>
