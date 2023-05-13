@@ -11,21 +11,22 @@
     <header>
         <img src="logoSite.png" alt="imageLogo">
         <h1>Mes compétences</h1>
-        <div class="statut">
-            <label>Catégorie</label>
-            <select id="select">
-                <option value="matiere">Matière</option>
-                <option value="decroissant">Professeur</option>
-                <option value="croissant">Ordre Croissant Alphabétique</option>
-                <option value="decroissant">Ordre Decroissant Alphabétique</option>
-                <option value="Datecroissante">Date Croissante</option>
-                <option value="Datedecroissant">Date Decroissant</option>
-                <option value="acquis">Acquis</option>
-                <option value="enCours">En cours d'acquistion</option>
-                <option value="NonAcquis">Non Acquis</option>
-            </select>
-        </div>
-        <button onclick="window.location.href='etudiant.php'">Retour</button>
+        <form method="post" action="mesCompetence2.php">
+            <div class="statut">
+                <label>Catégorie</label>
+                <select name="select">
+                    <option value="matiere">Matière</option>
+                    <option value="decroissant">Professeur</option>
+                    <option value="croissant">Ordre Croissant Alphabétique</option>
+                    <option value="decroissant">Ordre Decroissant Alphabétique</option>
+                    <option value="Datecroissante">Date Croissante</option>
+                    <option value="Datedecroissant">Date Decroissant</option>
+                    <option value="acquis">Acquis</option>
+                    <option value="enCours">En cours d'acquistion</option>
+                    <option value="NonAcquis">Non Acquis</option>
+                </select>
+            </div>
+            <button onclick="window.location.href='etudiant.php'">Retour</button>
     </header>
     <table>
         <thead>
@@ -45,38 +46,9 @@
             $password = "root";
             $dbname = "projet";
             $conn = new mysqli($servername, $username, $password, $dbname);
-
-            $order = "";
-            $tri = "";
-
-            switch ($_POST["tri"]) {
-                case "croissant":
-                    $order = "NomCom ASC";
-                    $tri = "Ordre Croissant Alphabétique";
-                    break;
-                case "decroissant":
-                    $order = "NomCom DESC";
-                    $tri = "Ordre Decroissant Alphabétique";
-                    break;
-                case "Datecroissante":
-                    $order = "DateLimite ASC";
-                    $tri = "Date Croissante";
-                    break;
-                case "Datedecroissant":
-                    $order = "DateLimite DESC";
-                    $tri = "Date Decroissant";
-                    break;
-                default:
-                    $order = "NomCom ASC";
-                    $tri = "Ordre Croissant Alphabétique";
-                    break;
-            }
-
-            $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence ORDER BY $order";
+            $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";
             $result = $conn->query($sql);
-
             if ($result->num_rows > 0) {
-                echo "<tbody>";
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["NomCom"] . "</td>";
@@ -87,14 +59,9 @@
                     echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
                     echo "</tr>";
                 }
-                echo "</tbody>";
             } else {
                 echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
             }
-
-            $conn->close();
-            ?>
-
             ?>
         </tbody>
     </table>
