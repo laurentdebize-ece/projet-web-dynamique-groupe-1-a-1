@@ -1,12 +1,15 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="etudiant.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="etudiant.css">
 	<title>Accueil étudiant</title>
 </head>
+
 <body>
 	<header>
 		<img src="logoSite.png" alt="imageLogo">
@@ -21,16 +24,22 @@
 	<!--pop-up déconnexion-->
 	<script>
 		document.getElementById("deco").addEventListener("click", decOut);
-		
+
 		function decOut() {
 			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
 				/*retour page MDP*/
+				<?php
+				$_SESSION = array();
+				session_destroy();
+
+				?>
 				window.location.href = "accueil.html";
 			}
 		}
 	</script>
-	<div id="footer"> 
-        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
-    </div>
+	<div id="footer">
+		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+	</div>
 </body>
+
 </html>

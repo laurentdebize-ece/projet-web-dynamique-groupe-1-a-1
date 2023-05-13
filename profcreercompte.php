@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <?php try {
 
     $bdd = new PDO(
@@ -31,5 +22,3 @@ $requete = $bdd->prepare('INSERT INTO Professeur (IdProf,Login,Password,Nom,Pren
 $requete->execute(array($idprof,$login,$password,$nom,$prenom,$classe));
 
 ?>
-
-</html>

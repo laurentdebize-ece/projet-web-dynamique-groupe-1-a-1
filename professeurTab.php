@@ -34,6 +34,7 @@
   $password = "root";
   $dbname = "projet";
   $conn = new mysqli($servername, $username, $password, $dbname);
+
   $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";  
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
@@ -53,7 +54,7 @@
   ?>
 </tbody>
 </table>
-<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétences</button>
+<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
 <script>
 $(document).ready(function() {
     $(".retirer").click(function() {

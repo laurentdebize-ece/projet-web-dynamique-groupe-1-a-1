@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,15 @@
 		document.getElementById("deco").addEventListener("click", decOut);
 		function decOut() {
 			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+				<?php
+				$_SESSION = array();
+				session_destroy();
+
+				?>
 				/*retour page MDP*/
 				window.location.href = "accueil.html";
 			}
+
 		}
 	</script>
 	<div id="footer"> 
