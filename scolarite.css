@@ -1,130 +1,141 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url('ECE_Campus.jpg');
-    background-size: cover;
-    background-position: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    opacity: 0.9;
-    /*transparence*/
-  }
-  
-  /*Bandeau haut page*/
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  h1 {
-    font-size: 50px;
-    font-weight: normal;
-    margin: 0;
-    text-align: center;
-    color: white;
-    background-color: #256d9e;
-    font-size: 50px;
-    border-radius: 10px;
-  }
-  
-  nav {
-    display: flex;
-    gap: 10px;
-    /*Distance entre boutons*/
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #3498db;
-    cursor: pointer;
-    /*doigt souris*/
-  }
-  
-  /*surlignement bouton lors passage souris*/
-  button:hover {
-    background-color: #2957b9;
-  }
+  margin: 0;
+  padding: 0;
+  background-image: url('ECE_Campus.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  opacity: 0.9;
+  /*transparence*/
+}
 
-  form {
-	margin-top: 100px;
-	padding: 20px;
-	background-color: white;
-	width: 400px;
-	margin: auto;
-	border-radius: 10px;
-	}
+/*Bandeau haut page*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
+h1 {
+  font-size: 50px;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+  color: white;
+  background-color: #256d9e;
+  font-size: 50px;
+  border-radius: 10px;
+}
 
-  th, td {
-    padding: 8px;
-    text-align: left;
-    vertical-align: top;
-    border: 1px solid #dddddd88;
-  }
+nav {
+  display: flex;
+  gap: 10px;
+  /*Distance entre boutons*/
+}
 
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  td[contenteditable]:hover {
-    background-color: #f9f9f9;
-  }
-  
-  td[contenteditable]:focus {
-    background-color: #fff;
-    outline: none;
-    box-shadow: inset 0 0 0 2px #007bff;
-  }
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db;
+  cursor: pointer;
+  /*doigt souris*/
+}
 
-  #ajout {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+/*surlignement bouton lors passage souris*/
+button:hover {
+  background-color: #2957b9;
+}
 
-  #ajout:hover {
-    background-color: #0069d9;
-  }
+form {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: white;
+  width: 400px;
+  margin: auto;
+  border-radius: 10px;
+}
 
-  .modier {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .modifier:hover {
-    background-color: #0069d9;
-  }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-    #footer{
-        background-color: rgb(57, 57, 120);
-        color: white;
-        position: fixed;
-        text-align: center;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 999;
-        }
-          
-  
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #dddddd88;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+td[contenteditable]:hover {
+  background-color: #f9f9f9;
+}
+
+td[contenteditable]:focus {
+  background-color: #fff;
+  outline: none;
+  box-shadow: inset 0 0 0 2px #007bff;
+}
+
+#ajout {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#ajout:hover {
+  background-color: #0069d9;
+}
+
+.modier {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modifier:hover {
+  background-color: #0069d9;
+}
+
+#footer {
+  background-color: rgb(57, 57, 120);
+  color: white;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+table,
+td,
+th {
+  border: 1px solid black;
+}
+
+.tabetu{
+  border-collapse: collapse;
+  background-color: white;
+}
