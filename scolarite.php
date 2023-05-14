@@ -210,6 +210,184 @@ try {
 	</form>
 
     <br>
+
+    <p class="tabetu">
+    <table class="tabetu">
+        <caption> Etudiants </caption>
+        <thead>
+            <tr>
+                <th>Id Etudiant</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $requete = $bdd->query(' SELECT * FROM Etudiant ');
+
+
+            while ($donnees = $requete->fetch()) {
+                echo "<tr>";
+
+                echo "<td>" . $donnees['Prenom'] . "</td>";
+                echo "<td>" . $donnees['Nom'] . "</td>";
+                echo "<td>" . $donnees['IdEtu'] . "</td>";
+                echo "<td>" . $donnees['Login'] . "</td>";
+                echo "<td>" . $donnees['Password'] . "</td>";
+                echo "<td><button> Supprimer </button></td>";
+                echo "</tr>";
+            }
+            $requete->closeCursor();
+
+
+            ?>
+        </tbody>
+    </table>
+    </p>
+
+    <br>
+
+    <p class="tabprof">
+    <table class="tabetu">
+        <caption> Professeurs </caption>
+        <thead>
+            <tr>
+                <th>Id Professeur</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Classe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $requete = $bdd->query(' SELECT * FROM Professeur ');
+
+
+            while ($donnees = $requete->fetch()) {
+                echo "<tr>";
+
+                echo "<td>" . $donnees['IdProf'] . "</td>";
+                echo "<td>" . $donnees['Login'] . "</td>";
+                echo "<td>" . $donnees['Password'] . "</td>";
+                echo "<td>" . $donnees['Nom'] . "</td>";
+                echo "<td>" . $donnees['Prenom'] . "</td>";
+                echo "<td>" . $donnees['Classe'] . "</td>";
+                echo "<td><button> Supprimer </button></td>";
+
+                echo "</tr>";
+            }
+            $requete->closeCursor();
+
+
+            ?>
+        </tbody>
+    </table>
+    </p>
+
+    <br>
+
+    <p class="tabsco">
+    <table class="tabetu">
+        <caption> Scolarite </caption>
+        <thead>
+            <tr>
+                <th>Id Scolarite</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th></th>
+             
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $requete = $bdd->query(' SELECT * FROM Scolarite ');
+
+
+            while ($donnees = $requete->fetch()) {
+                echo "<tr>";
+
+                echo "<td>" . $donnees['IdSco'] . "</td>";
+                echo "<td>" . $donnees['Login'] . "</td>";
+                echo "<td>" . $donnees['Password'] . "</td>";
+                echo "<td>" . $donnees['Nom'] . "</td>";
+                echo "<td>" . $donnees['Prenom'] . "</td>";
+                echo "<td><button> Supprimer </button></td>";
+                echo "</tr>";
+            }
+            $requete->closeCursor();
+
+
+            ?>
+        </tbody>
+    </table>
+    </p>
+    <br>
+    <p class="tabmatiere">
+    <table class="tabetu">
+        <caption> Matiere </caption>
+        <thead>
+            <tr>
+                <th>Nom Matiere</th>
+                <th>Volume Horaire</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $requete = $bdd->query(' SELECT * FROM Matière ');
+
+            while ($donnees = $requete->fetch()) {
+                echo "<tr>";
+
+                echo "<td>" . $donnees['NomMatiere'] . "</td>";
+                echo "<td>" . $donnees['NbHeures'] . " Heures" . "</td>";
+                echo "<td><button class=\"retirermatiere\" data-id=\"" . $donnees["NomMatiere"] . "\">Supprimer</button></td>";
+                echo "</tr>";
+            }
+            $requete->closeCursor();
+
+
+            ?>
+        </tbody>
+    </table>
+    <button onclick="window.location.href='ajoutmatiere.php'">Ajouter une Matière</button>
+    <script>
+        $(document).ready(function() {
+            $(".retirermatiere").click(function() {
+                var competences = $(this).data("id");
+                $(this).closest("tr").remove();
+                $.ajax({
+                    url: "supprimermatiere.php",
+                    type: "POST",
+                    data: {
+                        supprimer: matiere
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    </p>
+
+    <br>
     <br>
     <br>
     <br>
