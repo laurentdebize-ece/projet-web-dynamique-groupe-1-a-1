@@ -4,7 +4,7 @@
 <head>
     <title>OMNES MySkills</title>
     <link rel="stylesheet" type="text/css" href="mesCompetence.css">
-    <script src="mesCompetence.js"></script>
+    
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <label>Catégorie</label>
                 <select name="select">
                     <option value="matiere">Matière</option>
-                    <option value="decroissant">Professeur</option>
+                    <option value="prof">Professeur</option>
                     <option value="croissant">Ordre Croissant Alphabétique</option>
                     <option value="decroissant">Ordre Decroissant Alphabétique</option>
                     <option value="Datecroissante">Date Croissante</option>

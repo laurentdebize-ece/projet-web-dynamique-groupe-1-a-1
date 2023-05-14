@@ -1,17 +1,8 @@
 <?php
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OMNES Mys skills</title>
-</head>
-<?php try {
+try {
 
     $bdd = new PDO(
         'mysql:host=localhost;dbname=projet;
@@ -23,26 +14,24 @@ session_start();
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "projet";
-$conn = new mysqli($servername, $username, $password, $dbname);
+
 
 $order = "";
 
 if (isset($_POST["select"])) {
     switch ($_POST["select"]) {
-        case "croissant":
+        /*case 'matiere':
+            $order = ""*/
+        case 'croissant':
             $order = "NomCom ASC";
             break;
-        case "decroissant":
+        case 'decroissant':
             $order = "NomCom DESC";
             break;
-        case "Datecroissante":
+        case 'Datecroissante':
             $order = "DateLimite ASC";
             break;
-        case "Datedecroissant":
+        case 'Datedecroissant':
             $order = "DateLimite DESC";
             break;
         default:
@@ -54,6 +43,6 @@ if (isset($_POST["select"])) {
 }
 
 $sql = "SELECT NomCom, DateLimite, ClasseConcerné FROM competence ORDER BY $order";
-$result = $conn->query($sql);
+echo $sql; // pour afficher la requête SQL
 
 ?>
