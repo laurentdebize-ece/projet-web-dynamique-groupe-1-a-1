@@ -17,6 +17,7 @@ try {
 
 
 $order = "";
+//echo $_POST["select"];
 
 if (isset($_POST["select"])) {
     switch ($_POST["select"]) {
@@ -41,8 +42,10 @@ if (isset($_POST["select"])) {
 } else {
     $order = "NomCom ASC";
 }
+echo $order;
+$sql = "SELECT * FROM Competence ORDER BY  '$order' " ;
+$result = $conn->query($sql);
 
-$sql = "SELECT NomCom, DateLimite, ClasseConcerné FROM competence ORDER BY $order";
-echo $sql; // pour afficher la requête SQL
+
 
 ?>
