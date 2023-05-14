@@ -1,6 +1,6 @@
+
 <?php
 session_start();
-
 
 try {
 
@@ -14,6 +14,7 @@ try {
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+
 
 
 $order = "";
@@ -30,10 +31,10 @@ if (isset($_POST["select"])) {
             $order = "NomCom DESC";
             break;
         case 'Datecroissante':
-            $order = "DateLimite ASC";
+            $order = "Datelimite ASC";
             break;
         case 'Datedecroissant':
-            $order = "DateLimite DESC";
+            $order = "Datelimite DESC";
             break;
         default:
             $order = "NomCom ASC";
@@ -43,9 +44,22 @@ if (isset($_POST["select"])) {
     $order = "NomCom ASC";
 }
 echo $order;
-$sql = "SELECT * FROM Competence ORDER BY  '$order' " ;
-$result = $conn->query($sql);
+$sql = "SELECT * FROM Competence ORDER BY $order"; ;
+$result = $bdd->query($sql);
 
 
-
+if ($result->rowCount() > 0) {
+    while ($row = $result->fetch()) {
+        echo "<tr>";
+        echo "<td>" . $row["NomCom"] . "</td>";
+        echo "<td>" . $row["Datemlimite"] . "</td>";
+        echo "<td>" . $row["ClasseConcerné"] . "</td>";
+        echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
+        echo "<td><button class=\"demande\">Valider la compétence</button></td>";
+        echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
+}
 ?>
