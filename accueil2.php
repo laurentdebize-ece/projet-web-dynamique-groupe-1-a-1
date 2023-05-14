@@ -41,7 +41,7 @@ switch ($_POST['statut']) {
             header("Location: accueil2.php?error=1");
             exit;
         }
-        header("Location: professeur.php");
+        header("Location: pageAccueilProf.php");
         break;
     case 'sco':
         $requete = $bdd->prepare('SELECT * FROM Scolarite WHERE Login =  ? AND Password = ? ');

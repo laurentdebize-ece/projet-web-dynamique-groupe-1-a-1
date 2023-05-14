@@ -53,7 +53,7 @@
   ?>
 </tbody>
 </table>
-<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétences</button>
+<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
 <script>
 $(document).ready(function() {
     $(".retirer").click(function() {
