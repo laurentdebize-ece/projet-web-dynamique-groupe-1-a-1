@@ -25,8 +25,12 @@
                     <option value="enCours">En cours d'acquistion</option>
                     <option value="NonAcquis">Non Acquis</option>
                 </select>
+                <input type="submit" value="Trier">
+
             </div>
-            <button onclick="window.location.href='etudiant.php'">Retour</button>
+        </form>
+
+        <button onclick="window.location.href='etudiant.php'">Retour</button>
     </header>
     <table>
         <thead>
@@ -65,7 +69,7 @@
             ?>
         </tbody>
     </table>
-    <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétences</button>
+    <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
     <script>
         $(document).ready(function() {
             $(".retirer").click(function() {

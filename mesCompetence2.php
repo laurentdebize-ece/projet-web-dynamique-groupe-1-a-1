@@ -30,6 +30,7 @@ $dbname = "projet";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 $order = "";
+//echo $_POST["select"];
 
 if (isset($_POST["select"])) {
     switch ($_POST["select"]) {
@@ -52,8 +53,10 @@ if (isset($_POST["select"])) {
 } else {
     $order = "NomCom ASC";
 }
-
-$sql = "SELECT NomCom, DateLimite, ClasseConcerné FROM competence ORDER BY $order";
+echo $order;
+$sql = "SELECT * FROM Competence ORDER BY  '$order' " ;
 $result = $conn->query($sql);
+
+
 
 ?>
