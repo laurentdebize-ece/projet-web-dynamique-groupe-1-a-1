@@ -52,7 +52,7 @@ if ($result->rowCount() > 0) {
     while ($row = $result->fetch()) {
         echo "<tr>";
         echo "<td>" . $row["NomCom"] . "</td>";
-        echo "<td>" . $row["Datemlimite"] . "</td>";
+        echo "<td>" . $row["Datelimite"] . "</td>";
         echo "<td>" . $row["ClasseConcerné"] . "</td>";
         echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
         echo "<td><button class=\"demande\">Valider la compétence</button></td>";
