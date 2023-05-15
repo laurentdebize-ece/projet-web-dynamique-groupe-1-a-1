@@ -38,7 +38,7 @@ try {
     <br>
     <br>
 
-    <form method="post" action="creacomptescolarite.php">
+    <form method="post">
         Vous pouvez ici créer un nouveau compte :
         Quel statut voulez vous créer ?
         <br>
