@@ -67,7 +67,7 @@ switch ($_POST['statut']) {
         header("Location: scolarite.php");
         break;
     case 'etud':
-        $requete = $bdd->prepare('SELECT * FROM Etudiant WHERE Login =  ? AND Password = ? ');
+        $requete = $bdd->prepare('SELECT * FROM Etudiant WHERE LoginEtu =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
         ?>

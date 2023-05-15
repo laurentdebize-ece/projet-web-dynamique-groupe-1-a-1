@@ -1,17 +1,8 @@
+
 <?php
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OMNES Mys skills</title>
-</head>
-<?php try {
+try {
 
     $bdd = new PDO(
         'mysql:host=localhost;dbname=projet;
@@ -23,28 +14,27 @@ session_start();
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "projet";
-$conn = new mysqli($servername, $username, $password, $dbname);
+
+
 
 $order = "";
 //echo $_POST["select"];
 
 if (isset($_POST["select"])) {
     switch ($_POST["select"]) {
-        case "croissant":
+        /*case 'matiere':
+            $order = ""*/
+        case 'croissant':
             $order = "NomCom ASC";
             break;
-        case "decroissant":
+        case 'decroissant':
             $order = "NomCom DESC";
             break;
-        case "Datecroissante":
-            $order = "DateLimite ASC";
+        case 'Datecroissante':
+            $order = "Datelimite ASC";
             break;
-        case "Datedecroissant":
-            $order = "DateLimite DESC";
+        case 'Datedecroissant':
+            $order = "Datelimite DESC";
             break;
         default:
             $order = "NomCom ASC";
@@ -54,9 +44,22 @@ if (isset($_POST["select"])) {
     $order = "NomCom ASC";
 }
 echo $order;
-$sql = "SELECT * FROM Competence ORDER BY  '$order' " ;
-$result = $conn->query($sql);
+$sql = "SELECT * FROM Competence ORDER BY $order"; ;
+$result = $bdd->query($sql);
 
 
-
+if ($result->rowCount() > 0) {
+    while ($row = $result->fetch()) {
+        echo "<tr>";
+        echo "<td>" . $row["NomCom"] . "</td>";
+        echo "<td>" . $row["Datelimite"] . "</td>";
+        echo "<td>" . $row["ClasseConcerné"] . "</td>";
+        echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
+        echo "<td><button class=\"demande\">Valider la compétence</button></td>";
+        echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
+}
 ?>
