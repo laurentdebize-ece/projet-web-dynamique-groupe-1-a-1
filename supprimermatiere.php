@@ -11,7 +11,7 @@ $bdd = new PDO(
 die('Erreur : ' . $e->getMessage());
 }
 
-$matiere = $_POST['supprimer'];
+$matiere = $_POST['Supprimer'];
 
 $requete = $bdd->query('DELETE FROM Matière WHERE NomMatiere = ? ');
 $requete->execute(array($matiere));

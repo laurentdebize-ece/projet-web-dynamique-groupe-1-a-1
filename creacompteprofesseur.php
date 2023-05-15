@@ -38,14 +38,7 @@
         <!-- <label for="matiere">Matière enseignée :</label>
 		<input type="text" id="matiere" name="matiere">
         <br> -->
-        <label>Quelle classe lui attribuer ?</label>
-
-        <select name="classe">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-		</select>
-        <br>
+        
 		<input type="submit" value="Creer le compte">
 		
 	</form>

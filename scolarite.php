@@ -261,7 +261,6 @@ try {
                 <th>Password</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Classe</th>
                 <th></th>
             </tr>
         </thead>
@@ -279,7 +278,6 @@ try {
                 echo "<td>" . $donnees['Password'] . "</td>";
                 echo "<td>" . $donnees['Nom'] . "</td>";
                 echo "<td>" . $donnees['Prenom'] . "</td>";
-                echo "<td>" . $donnees['Classe'] . "</td>";
                 echo "<td><button> Supprimer </button></td>";
 
                 echo "</tr>";
@@ -373,7 +371,7 @@ try {
                     url: "supprimermatiere.php",
                     type: "POST",
                     data: {
-                        supprimer: matiere
+                        Supprimer: Matière
                     },
                     success: function(response) {
                         console.log(response);
@@ -386,6 +384,43 @@ try {
         });
     </script>
     </p>
+    <br>
+
+    <p class="tabcours">
+    <table class="tabetu">
+        <caption> Cours </caption>
+        <thead>
+            <tr>
+                <th>Matiere</th>
+                <th>Nom Professeur</th>
+                <th>Prenom Professeur</th>
+                <th>Classe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+
+            $requete = $bdd->query(' SELECT * FROM Cours ');
+
+            while ($donnees = $requete->fetch()) {
+                echo "<tr>";
+
+                echo "<td>" . $donnees['Matiere'] . "</td>";
+                echo "<td>" . $donnees['NomProfesseur'] . "</td>";
+                echo "<td>" . $donnees['PrenomProf'] . "</td>";
+                echo "<td>" . $donnees['Classe'] . "</td>";
+                echo "</tr>";
+            }
+            $requete->closeCursor();
+
+
+            ?>
+        </tbody>
+    </table>
+    <button onclick="window.location.href='ajoutcours.php'">Affecter un Professeur à une Matiere</button>
+    
+    </p>
+
 
     <br>
     <br>
