@@ -42,7 +42,7 @@
           echo "<td>" . $row["NomCom"] . "</td>";
           echo "<td>" . $row["DateLimite"] . "</td>";
           echo "<td>" . $row["ClasseConcerné"] . "</td>";
-          echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
+          echo "<td><button class=\"demande\" data-id2=\"" . $row["NomCom"] . "\">Réaliser une auto-évaluation</button></td>";
           echo "<td><button class=\"demande\">Valider la compétence</button></td>";
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";
@@ -53,6 +53,7 @@
   ?>
 </tbody>
 </table>
+<div id="formulaireAutoEvaluation"></div>
 <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétences</button>
 <script>
 $(document).ready(function() {
@@ -68,6 +69,20 @@ $(document).ready(function() {
               },
             error: function(xhr, status, error) {
               console.error(xhr.responseText);
+                          }
+              });
+            });
+    $(".demande").click(function() {
+      var competences = $(this).data("id2");
+      $.ajax({
+          url: "TabComp.php",
+          type: "POST",
+          data: { autoeval: competences },
+          success: function(response) {
+            console.log(response);
+            },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
                           }
               });
             });
