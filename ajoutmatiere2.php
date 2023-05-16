@@ -12,12 +12,10 @@
 }
 
 $nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$login = $_POST['login'];
-$password = $_POST['password'];
-$idprof = $_POST['idprof'];
+$volume = $_POST['volume'];
 
-$requete = $bdd->prepare('INSERT INTO Professeur (IdProf,Login,Password,Nom,Prenom) VALUES (?,?,?,?,?)');
-$requete->execute(array($idprof,$login,$password,$nom,$prenom));
+
+$requete = $bdd->prepare('INSERT INTO Matière (NomMatiere,NbHeures) VALUES (?,?)');
+$requete->execute(array($nom,$volume));
 
 ?>
