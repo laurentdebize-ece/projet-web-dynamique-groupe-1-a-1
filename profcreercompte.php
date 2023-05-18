@@ -16,9 +16,8 @@ $prenom = $_POST['prenom'];
 $login = $_POST['login'];
 $password = $_POST['password'];
 $idprof = $_POST['idprof'];
-$classe=$_POST['classe'];
 
-$requete = $bdd->prepare('INSERT INTO Professeur (IdProf,Login,Password,Nom,Prenom,Classe) VALUES (?,?,?,?,?,?)');
-$requete->execute(array($idprof,$login,$password,$nom,$prenom,$classe));
+$requete = $bdd->prepare('INSERT INTO Professeur (IdProf,Login,Password,Nom,Prenom) VALUES (?,?,?,?,?)');
+$requete->execute(array($idprof,$login,$password,$nom,$prenom));
 
 ?>
