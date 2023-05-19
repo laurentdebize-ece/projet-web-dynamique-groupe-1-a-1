@@ -13,13 +13,16 @@ try {
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+$login = isset($_POST["login"])? $_POST["login"] : "";
+$password = isset($_POST["password"])? $_POST["password"] : "";
+$statut = isset($_POST["statut"])? $_POST["statut"] : "";
 
-$login = $_POST['login'];
-$password = $_POST['password'];
 $_SESSION['login'] = $login;
 $_SESSION['password'] = $password;
 
-switch ($_POST['statut']) {
+
+
+switch ($statut) {
     case 'prof':
         $requete = $bdd->prepare('SELECT * FROM Professeur WHERE Login =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
@@ -67,7 +70,7 @@ switch ($_POST['statut']) {
         header("Location: scolarite.php");
         break;
     case 'etud':
-        $requete = $bdd->prepare('SELECT * FROM Etudiant WHERE LoginEtu =  ? AND Password = ? ');
+        $requete = $bdd->prepare('SELECT * FROM Etudiant WHERE Login =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
         ?>

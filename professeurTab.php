@@ -34,14 +34,14 @@
   $password = "root";
   $dbname = "projet";
   $conn = new mysqli($servername, $username, $password, $dbname);
-  $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";  
+  $sql = "SELECT * FROM Competence";  
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
           echo "<td>" . $row["DateLimite"] . "</td>";
-          echo "<td>" . $row["ClasseConcerné"] . "</td>";
+          echo "<td>" . $row["IdClasse"] . "</td>";
           echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
           echo "<td><button class=\"demande\">Valider la compétence</button></td>";
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";

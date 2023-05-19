@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +11,8 @@
     <script src="matiere.js"></script>
     <title>OMNES MySkills</title>
 </head>
+
+
 
 <body>
     <header>
@@ -31,7 +34,16 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img id="Elec" src="Matiere_Electronique.jpg" alt="Elec" class="d-block">
+                <?php 
+                $requete = $bdd->query(' SELECT Image FROM Matière');
+                if($donnees = $requete->fetch()) {
+                    $image = $donnees['Image'] ;    
+                }
+                $requete->closeCursor();
+                echo $image;
+        
+                ?>
+                <img id="Elec" src="$image" alt="Elec" class="d-block">
             </div>
             <div class="carousel-item">
                 <img id="Info" src="Matiere_Info.jpg" alt="Info" class="d-block">
