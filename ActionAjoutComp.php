@@ -8,7 +8,7 @@ $sql = "INSERT INTO competence (NomCom, DateLimite, IdClasse) VALUES ('$competen
 if ($bdd->query($sql) === TRUE) {
     echo "Données insérées avec succès.";
 } else {
-    echo "Erreur lors de l'insertion des données : " . $bdd->error;
+    echo "Erreur lors de l'insertion des données  ";
 }
 header("Location: professeurTab.php");
 exit();

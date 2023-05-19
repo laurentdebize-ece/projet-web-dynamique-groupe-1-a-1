@@ -7,7 +7,7 @@ $sql = "UPDATE competence SET DateLimite = '$dateLimite' WHERE NomCom = '$compet
 if ($bdd->query($sql) === TRUE) {
     echo "Données insérées avec succès.";
 } else {
-    echo "Erreur lors de l'insertion des données : " . $bdd->error;
+    echo "Erreur lors de l'insertion des données  ";
 }
 header("Location: professeurTab.php");
 exit();

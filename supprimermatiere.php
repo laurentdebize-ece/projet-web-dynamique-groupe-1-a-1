@@ -10,7 +10,7 @@ $requete->execute(array($matiere));
 if ($requete === TRUE) {
     echo "Ligne supprimée avec succès.";
 } else {
-    echo "Erreur lors de la suppression de la ligne : " . $bdd->error;
+    echo "Erreur lors de la suppression de la ligne  " ;
 }
 $requete->closeCursor();
 
