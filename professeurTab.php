@@ -23,19 +23,16 @@
       <th>Date limite</th>
       <th>Classe concerné</th>
       <th>Auto-évaluations</th>
-      <th> Validation des résultats</th>
+      <th>Validation des résultats</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-  <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "root";
-  $dbname = "projet";
-  $conn = new mysqli($servername, $username, $password, $dbname);
+  <?php session_start();
+  include("ouverturebdd.php");
+
   $sql = "SELECT * FROM Competence";  
-  $result = $conn->query($sql);
+  $result = $bdd->query($sql);
   if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
           echo "<tr>";

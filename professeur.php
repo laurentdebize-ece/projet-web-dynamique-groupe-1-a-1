@@ -6,18 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<?php try {
+<?php session_start();
+include("ouverturebdd.php");
 
-    $bdd = new PDO(
-        'mysql:host=localhost;dbname=famille;
-      charset=utf8',
-        'root',
-        'root',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
 $requete = $bdd->prepare('SELECT Prenom FROM membre WHERE email =  ? AND password = ? ' );
 while($donnees = $requete->fetch()) { 
    ?>

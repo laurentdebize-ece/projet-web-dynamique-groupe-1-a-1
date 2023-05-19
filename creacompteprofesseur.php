@@ -45,14 +45,4 @@
            
 </body>
 
-<?php 
-if(isset($_POST['error'])){
-
-    if($_POST['error']==1){
-        echo"login ou password ";   
-    }
-}
-?>
-
-
 </html>

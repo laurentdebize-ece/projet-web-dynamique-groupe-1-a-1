@@ -1,19 +1,10 @@
-<?php
-
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "projet";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Erreur de connexion à la base de données : " . $conn->connect_error);
-}
+<?php session_start();
+include("ouverturebdd.php");
 
 
 // Récupération des données binaires (BLOB) de l'image depuis la base de données
 $query = "SELECT Image FROM Matière WHERE IdMatiere = 2"; // Remplacez 1 par l'ID de l'enregistrement contenant l'image
-$result = $conn->query($query);
+$result = $bdd->query($query);
 
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();

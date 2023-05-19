@@ -49,13 +49,12 @@
         </thead>
         <tbody>
         <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "root";
-  $dbname = "projet";
-  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  session_start();
+  include("ouverturebdd.php");
+
   $sql = "SELECT NomCom, Datelimite,ClasseConcerné FROM competence";  
-  $result = $conn->query($sql);
+  $result = $bdd->query($sql);
   if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
           echo "<tr>";

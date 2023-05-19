@@ -1,16 +1,14 @@
-<?php
-$conn = new mysqli("localhost", "root", "root", "projet");
-if ($conn->connect_error) {
-    die("Erreur de connexion à la base de données : " . $conn->connect_error);
-}
+<?php session_start();
+include("ouverturebdd.php");
+
 $id = $_POST['supprimer'];
 $sql = "DELETE FROM competence WHERE NomCom = '$id'";
-$result = $conn->query($sql);
+$result = $bdd->query($sql);
 if ($result === TRUE) {
     echo "Ligne supprimée avec succès.";
 } else {
-    echo "Erreur lors de la suppression de la ligne : " . $conn->error;
+    echo "Erreur lors de la suppression de la ligne : " . $bdd->error;
 }
-$conn->close();
+$result->closeCursor();
 ?>
 

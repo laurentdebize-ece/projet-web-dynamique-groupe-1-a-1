@@ -1,26 +1,12 @@
-<?php
-session_start();
+<?php session_start();
+include("ouverturebdd.php");
 
-try {
-
-    $bdd = new PDO(
-        'mysql:host=localhost;dbname=projet;
-      charset=utf8',
-        'root',
-        'root',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
 $login = isset($_POST["login"])? $_POST["login"] : "";
 $password = isset($_POST["password"])? $_POST["password"] : "";
 $statut = isset($_POST["statut"])? $_POST["statut"] : "";
 
 $_SESSION['login'] = $login;
 $_SESSION['password'] = $password;
-
-
 
 switch ($statut) {
     case 'prof':

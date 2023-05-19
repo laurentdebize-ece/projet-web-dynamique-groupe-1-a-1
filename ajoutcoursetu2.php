@@ -1,17 +1,5 @@
-<?php
-
-try {
-
-    $bdd = new PDO(
-        'mysql:host=localhost;dbname=projet;
-  charset=utf8',
-        'root',
-        'root',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+<?php session_start();
+include("ouverturebdd.php");
 
     $matiere = isset($_POST["matiere"]) ? $_POST["matiere"] : "";
     $etu = isset($_POST["etu"]) ? $_POST["etu"] : "";
@@ -54,9 +42,5 @@ try {
 
     $requete = $bdd->prepare('INSERT INTO Cours (IDClasse,IDMatiere,IdProfesseur) VALUES (?,?,?)');
     $requete->execute(array($idclasse,$idmatiere,$idprof));
-
-    
-
-
 
 ?>
