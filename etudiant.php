@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="etudiant2.css">
+    <link rel="stylesheet" type="text/css" href="etudiant3.css">
     <title>OMNES My skills</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -29,9 +29,9 @@
         <h1>Accueil étudiant</h1>
         <nav>
             <ul>
-                <li><a href="#mesCompetence" class="nav-item">Mes compétences</a></li>
+                <li><a href="#mesCompetence" class="nav-item">Compétences</a></li>
                 <li><a href="#matiere" class="nav-item">Matiere</a></li>
-                <li><a href="#compte" class="nav-item">Mon compte</a></li>
+                <li><a href="#compte" class="nav-item">Compte</a></li>
                 <li><a href="#deco" class="nav-item">Deconnexion</a></li>
                 <li><a href="#CompetenceEcole"> Autre competences</a></li>
             </ul>
@@ -141,7 +141,45 @@
     </section>
     <section id="CompetenceEcole">
         <h2>Autres Competences</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Nom de l'école</th>
+                    <th> Competences Proposées</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="logoInseec.png" alt="Logo Inseec"></td>
+                    <td>INSEEC</td>
+                    <td>
+                        - Management<br>
+                        - Etude de Marché
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="logoHEIP.png" alt="Logo HEIP"></td>
+                    <td>HEIP</td>
+                    <td>
+                        - Marketing <br>
+                        - Evenementiel
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="logoSup.png" alt="Logo Sup"></td>
+                    <td>Sup de Pub</td>
+                    <td>
+                        - Communication Digitale <br>
+                        - Publicité
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
     </section>
+
+
     <!--pop-up déconnexion-->
     <script>
         document.getElementById("deco").addEventListener("click", decOut);
