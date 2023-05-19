@@ -1,10 +1,12 @@
-<?php session_start();
-include("ouverturebdd.php");
-
+<?php 
+$servername="localhost:3306";
+$username="root";
+$password="root";
+$conn=new mysqli($servername,$username,$password);
 
 // Récupération des données binaires (BLOB) de l'image depuis la base de données
 $query = "SELECT Image FROM Matière WHERE IdMatiere = 2"; // Remplacez 1 par l'ID de l'enregistrement contenant l'image
-$result = $bdd->query($query);
+$result = $conn->query($query);
 
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
