@@ -1,141 +1,37 @@
-* {
+body {
+	background-color: #413f3f;
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
-}
-
-body {
-	font-family: Arial, sans-serif;
-	line-height: 1.6;
-	background-color: #b10000;
-	color: #333;
-	
-	
 }
 
 .container {
-	max-width: 960px;
-	margin: 0 auto;
-	padding: 20px;
-}
-
-/*Bandeau haut page*/
-header {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
-	background-color: rgba(200, 8, 8, 0.7);
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-  }
-h1 {
-	font-size: 50px;
-	font-weight: normal;
-	margin-left: 120px;
-	text-align: center;
-	color: rgb(34, 16, 126);
-	/*background-color: #256d9e;*/
-	font-size: 50px;
-	border-radius: 10px;
+	justify-content: center;
+	height: 100vh;
 }
 
 .logo {
-	max-width: 130px;
-	max-height: 130px;
-	float: left;
-	margin-left: 20px;
-}
-
-nav ul {
-	list-style: none;
-	text-align: center;
-	margin-top: 20px;
-}
-/*Bouton haut alignement les un à cote des autres */
-nav ul li {
-	display: inline-block;
-	margin: 0 10px;
-}
-/*Bouton haut */
-nav ul li a {
-	text-decoration: none;
-	color: #333;
-	font-size: 16px;
-	padding: 5px 10px;
-	border-radius: 5px;
-	background-color: #f2f2f2;
-}
-.nav-item {
-	margin-right: 10px;
-	color: #333;
-	text-decoration: none;
-	position: relative;
-	cursor: pointer;
-  }
-  
-  .nav-item::after {
-	content: "";
 	position: absolute;
-	bottom: -2px;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background-color: #333;
-	transform: scaleX(0);
-	transition: transform 0.3s ease;
-  }
-  
-  .nav-item:hover::after {
-	transform: scaleX(1);
-  }
-
-section {
-	margin-bottom: 20px;
-	padding: 10px;
-	background-color: #858282;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-/*nom section*/
-section h2 {
-	font-size: 24px;
-	margin-bottom: 10px;
-	color: #333;
+    height: 200px;
+    width: auto;
+	top: 50%;
+	left: 40%;
+	transform: translate(-50%, -50%);
 }
 
-@media (max-width: 768px) {
-	.container {
-		padding: 10px;
-	}
-
-	h1 {
-		font-size: 24px;
-	}
-
-	nav ul li {
-		display: block;
-		margin: 10px 0;
-	}
-}
-
-button {
-	padding: 7px 17px;
-	font-weight: bold;
-	color: rgb(229, 228, 233);
-	background-color: #08090b;
+.btn {
+	background-color: #ffffff;
+	color: #000000;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
 	cursor: pointer;
-	/*doigt souris*/
+	scroll-behavior: smooth;
 }
 
-/*surlignement bouton lors passage souris*/
-button:hover {
-	background-color: #44464c;
+.btn:hover {
+	background-color: #000000;
+	color: #ffffff;
 }
-#footer{
-	background-color: rgb(57, 57, 120);
-	color: white;
-	position: fixed;
-	text-align: center;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	z-index: 999;
-	}

@@ -23,26 +23,26 @@
       <th>Date limite</th>
       <th>Classe concerné</th>
       <th>Auto-évaluations</th>
-      <th> Validation des résultats</th>
+      <th>Validation des résultats</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-  <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "root";
-  $dbname = "projet";
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";  
+  <?php 
+  $servername="localhost:3306";
+  $username="root";
+  $password="root";
+  $conn=new mysqli($servername,$username,$password);
+
+  $sql = "SELECT * FROM Competence";  
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
           echo "<td>" . $row["DateLimite"] . "</td>";
-          echo "<td>" . $row["ClasseConcerné"] . "</td>";
-          echo "<td><button class=\"demande\" data-id2=\"" . $row["NomCom"] . "\">Réaliser une auto-évaluation</button></td>";
+          echo "<td>" . $row["IdClasse"] . "</td>";
+          echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
           echo "<td><button class=\"demande\">Valider la compétence</button></td>";
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";
@@ -53,8 +53,7 @@
   ?>
 </tbody>
 </table>
-<div id="formulaireAutoEvaluation"></div>
-<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétences</button>
+<button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
 <script>
 $(document).ready(function() {
     $(".retirer").click(function() {
@@ -69,20 +68,6 @@ $(document).ready(function() {
               },
             error: function(xhr, status, error) {
               console.error(xhr.responseText);
-                          }
-              });
-            });
-    $(".demande").click(function() {
-      var competences = $(this).data("id2");
-      $.ajax({
-          url: "TabComp.php",
-          type: "POST",
-          data: { autoeval: competences },
-          success: function(response) {
-            console.log(response);
-            },
-          error: function(xhr, status, error) {
-            console.error(xhr.responseText);
                           }
               });
             });

@@ -9,18 +9,8 @@
     <title>Ajout Cours</title>
 </head>
 
-<?php try {
-
-    $bdd = new PDO(
-        'mysql:host=localhost;dbname=projet;
-  charset=utf8',
-        'root',
-        'root',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+<?php session_start();
+include("ouverturebdd.php");
 ?>
 
 <body>
@@ -32,10 +22,9 @@
         $requete = $bdd->query('SELECT * FROM Matière ');
 
         echo '<select name="matiere">';
-            while ($donnees = $requete->fetch()) {
-                echo '<option value="'.$donnees['NomMatiere'].'">'.$donnees['NomMatiere'].'</option>';
-            
-            }
+        while ($donnees = $requete->fetch()) {
+            echo '<option value="' . $donnees['NomMatiere'] . '">' . $donnees['NomMatiere'] . '</option>';
+        }
         $requete->closeCursor();
         echo '</select>';
         ?>
@@ -45,35 +34,23 @@
         <?php
         $requete = $bdd->query('SELECT Nom FROM Professeur');
 
-        echo '<select name="nomprofesseur">';
-            while ($donnees = $requete->fetch()) {
-                echo '<option value="'.$donnees['Nom'].'">'.$donnees['Nom'].'</option>';
-            
-            }
-        $requete->closeCursor();
-        echo '</select>';
-        ?>
-
-        <label>Professeur :</label>
-        <?php
-        $requete = $bdd->query('SELECT Prenom FROM Professeur');
-
-        echo '<select name="prenomprofesseur">';
-            while ($donnees = $requete->fetch()) {
-                echo '<option value="'.$donnees['Prenom'].'">'.$donnees['Prenom'].'</option>';
-            
-            }
+        echo '<select name="prof">';
+        while ($donnees = $requete->fetch()) {
+            echo '<option value="' . $donnees['Nom'] . '">' . $donnees['Nom'] . '</option>';
+        }
         $requete->closeCursor();
         echo '</select>';
         ?>
 
         <br>
-        
 
-        <input type="submit" value="Affecter ce prof a cette matiere">
+        <input type="submit" value="Affecter ce professeur a cette matiere">
 
     </form>
+
     <button onclick="window.location.href='scolarite.php'">Retour</button>
+
+    
 
 </body>
 

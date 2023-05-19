@@ -1,17 +1,5 @@
 <?php session_start();
-
-try {
-
-    $bdd = new PDO(
-        'mysql:host=localhost;dbname=projet;
-      charset=utf8',
-        'root',
-        'root',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+include("ouverturebdd.php");
 ?>
 
 <!DOCTYPE html>
@@ -180,8 +168,8 @@ try {
                     <td><button onclick="window.location.href='modifcompteetudiant.php'" , class="modifier">Modifier</button></td>
                 </tr>
             </tbody>
-        </table>        
-	</form>
+        </table>
+    </form>
     <br>
     <br>
     <form method="get" action='modifcompteprof.php'>
@@ -190,24 +178,24 @@ try {
         <table id="competences">
             <thead>
                 <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Classe associée</th>
-                <th>Matière associée</th>
-                <th>Modifier le profil</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Classe associée</th>
+                    <th>Matière associée</th>
+                    <th>Modifier le profil</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td contenteditable="true">Nom 1</td> 
-                <td contenteditable="true">Prénom 1</td>
-                <td contenteditable="true">Classe 1</td>
-                <td contenteditable="true">Matière 1</td>
-                <td><button onclick="window.location.href='modifcompteprof.php'", class="modifier">Modifier</button></td>
+                    <td contenteditable="true">Nom 1</td>
+                    <td contenteditable="true">Prénom 1</td>
+                    <td contenteditable="true">Classe 1</td>
+                    <td contenteditable="true">Matière 1</td>
+                    <td><button onclick="window.location.href='modifcompteprof.php'" , class="modifier">Modifier</button></td>
                 </tr>
             </tbody>
-        </table>        
-	</form>
+        </table>
+    </form>
 
     <br>
 
@@ -221,6 +209,7 @@ try {
                 <th>Prenom</th>
                 <th>Login</th>
                 <th>Password</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -243,7 +232,6 @@ try {
             }
             $requete->closeCursor();
 
-
             ?>
         </tbody>
     </table>
@@ -262,10 +250,12 @@ try {
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
+           
 
             $requete = $bdd->query(' SELECT * FROM Professeur ');
 
@@ -283,6 +273,11 @@ try {
                 echo "</tr>";
             }
             $requete->closeCursor();
+
+
+
+
+
 
 
             ?>
@@ -303,7 +298,8 @@ try {
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th></th>
-             
+                <th></th>
+
 
             </tr>
         </thead>
@@ -327,6 +323,7 @@ try {
             $requete->closeCursor();
 
 
+
             ?>
         </tbody>
     </table>
@@ -339,6 +336,7 @@ try {
             <tr>
                 <th>Nom Matiere</th>
                 <th>Volume Horaire</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -356,6 +354,7 @@ try {
                 echo "</tr>";
             }
             $requete->closeCursor();
+
 
 
             ?>
@@ -388,37 +387,55 @@ try {
 
     <p class="tabcours">
     <table class="tabetu">
-        <caption> Cours </caption>
         <thead>
             <tr>
-                <th>Matiere</th>
-                <th>Nom Professeur</th>
-                <th>Prenom Professeur</th>
-                <th>Classe</th>
+                <th>Cours </th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
+           
 
-            $requete = $bdd->query(' SELECT * FROM Cours ');
 
-            while ($donnees = $requete->fetch()) {
-                echo "<tr>";
+            $requete = $bdd->query(' SELECT Matière.NomMatiere FROM Matière INNER JOIN Cours ON Matière.IdMatiere=Cours.IDMatiere ');
+            $requete2 = $bdd->query(' SELECT Professeur.Nom FROM Professeur INNER JOIN Cours ON Professeur.IdProf=Cours.IdProfesseur ');
+            $requete3 = $bdd->query(' SELECT Classe.Classe FROM Classe INNER JOIN Cours ON Classe.IdClasse=Cours.IDClasse');
 
-                echo "<td>" . $donnees['Matiere'] . "</td>";
-                echo "<td>" . $donnees['NomProfesseur'] . "</td>";
-                echo "<td>" . $donnees['PrenomProf'] . "</td>";
-                echo "<td>" . $donnees['Classe'] . "</td>";
-                echo "</tr>";
+            echo "<tr>";
+            while($donnees = $requete->fetch()) {
+                echo "<td>" . $donnees['NomMatiere'] . "</td>";
             }
             $requete->closeCursor();
+            echo "</tr>";
+
+            echo "<tr>";
+
+            while($donnees = $requete2->fetch()) {
+                echo "<td>" . $donnees['Nom'] . "</td>";
+            }
+            $requete2->closeCursor();
+            echo "</tr>";
+
+            echo "<tr>";
+
+            while($donnees = $requete3->fetch()) {
+                echo "<td>" . $donnees['Classe'] . "</td>";
+            }
+            $requete3->closeCursor();
+            
+                
+            
+            echo "</tr>";
 
 
             ?>
         </tbody>
     </table>
     <button onclick="window.location.href='ajoutcours.php'">Affecter un Professeur à une Matiere</button>
-    
+    <button onclick="window.location.href='ajoutcoursetu.php'">Affecter un Etudiant à une Matiere</button>
+
     </p>
 
 
