@@ -28,11 +28,14 @@
     </tr>
   </thead>
   <tbody>
-  <?php session_start();
-  include("ouverturebdd.php");
+  <?php 
+  $servername="localhost:3306";
+  $username="root";
+  $password="root";
+  $conn=new mysqli($servername,$username,$password);
 
   $sql = "SELECT * FROM Competence";  
-  $result = $bdd->query($sql);
+  $result = $conn->query($sql);
   if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
           echo "<tr>";
