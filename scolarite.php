@@ -9,22 +9,40 @@ include("ouverturebdd.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="scolarite.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!--<script src="scolarite.js"></script>-->
-    <title>Accueil Administrateur</title>
+    <link rel="stylesheet" type="text/css" href="scolariteFront.css">
+    <title>OMNES My skills</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 800);
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
-    <h1>Accueil administrateur</h1>
     <header>
+        <img src="logoSite.png" alt="imageLogo">
+        <h1>Accueil Scolarité</h1>
         <nav>
-            <button onclick="window.location.href='comptesco.php'">Mon compte administrateur</button>
-            <button>Déconnexion</button>
+            <ul>
+                <li><a href="#modifetudiants" class="nav-item"> Modif Etudiants</a></li>
+                <li><a href="#modifprofesseurs" class="nav-item"> Modif Professeurs</a></li>
+                <li><a href="#etudiant" class="nav-item">Etudiant</a></li>
+                <li><a href="#professeur" class="nav-item">Professeur</a></li>
+                <li><a href="#scolarite" class="nav-item"> Scolarite</a></li>
+                <li><a href="#matiere" class="nav-item">Matière</a></li>
+                <li><a href="#cours" class="nav-item"> Cours</a></li>
+            </ul>
         </nav>
     </header>
-    <br>
-    <br>
 
     <form method="post">
         Vous pouvez ici créer un nouveau compte :
@@ -148,150 +166,148 @@ include("ouverturebdd.php");
     <br>
     <br>
 
-    <form method="get" action='modifcompteprof.php'>
-        Les étudiants :
-        <br>
-        <table id="competences">
+
+    <div class="col-container">
+        <div class="col1">
+            <section id="modifetudiants">
+                <form method="get" action='modifcompteprof.php'>
+                    <h2> Modification Etudiants :</h2>
+                    <table id="competences">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Classe</th>
+                                <th>Modifier le profil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td contenteditable="true">Nom 1</td>
+                                <td contenteditable="true">Prénom 1</td>
+                                <td contenteditable="true">Classe 1</td>
+                                <td><button onclick="window.location.href='modifcompteetudiant.php'" , class="modifier">Modifier</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </section>
+        </div>
+        <div class="col2">
+            <section id="modifprofesseurs">
+                <form method="get" action='modifcompteprof.php'>
+                    <h2>Modification professeurs :</h2>
+                    <table id="competences">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Classe associée</th>
+                                <th>Matière associée</th>
+                                <th>Modifier le profil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td contenteditable="true">Nom 1</td>
+                                <td contenteditable="true">Prénom 1</td>
+                                <td contenteditable="true">Classe 1</td>
+                                <td contenteditable="true">Matière 1</td>
+                                <td><button onclick="window.location.href='modifcompteprof.php'" , class="modifier">Modifier</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <section id="etudiant">
+        <p class="tabetu">
+        <table class="tabetu">
+            <h2>Les étudiants :</h2>
             <thead>
                 <tr>
+                    <th>Id Etudiant</th>
                     <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Classe</th>
-                    <th>Modifier le profil</th>
+                    <th>Prenom</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td contenteditable="true">Nom 1</td>
-                    <td contenteditable="true">Prénom 1</td>
-                    <td contenteditable="true">Classe 1</td>
-                    <td><button onclick="window.location.href='modifcompteetudiant.php'" , class="modifier">Modifier</button></td>
-                </tr>
+                <?php
+
+                $requete = $bdd->query(' SELECT * FROM Etudiant ');
+
+
+                while ($donnees = $requete->fetch()) {
+                    echo "<tr>";
+
+                    echo "<td>" . $donnees['Prenom'] . "</td>";
+                    echo "<td>" . $donnees['Nom'] . "</td>";
+                    echo "<td>" . $donnees['IdEtu'] . "</td>";
+                    echo "<td>" . $donnees['Login'] . "</td>";
+                    echo "<td>" . $donnees['Password'] . "</td>";
+                    echo "<td><button> Supprimer </button></td>";
+                    echo "<td><button> Modifier </button></td>";
+                    echo "</tr>";
+                }
+                $requete->closeCursor();
+
+                ?>
             </tbody>
         </table>
-    </form>
-    <br>
-    <br>
-    <form method="get" action='modifcompteprof.php'>
-        Les professeurs :
-        <br>
-        <table id="competences">
+        </p>
+    </section>
+    <section id="professeur">
+        <p class="tabprof">
+        <table class="tabetu">
+            <h2>Les Professeurs :</h2>
             <thead>
                 <tr>
+                    <th>Id Professeur</th>
+                    <th>Login</th>
+                    <th>Password</th>
                     <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Classe associée</th>
-                    <th>Matière associée</th>
-                    <th>Modifier le profil</th>
+                    <th>Prenom</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td contenteditable="true">Nom 1</td>
-                    <td contenteditable="true">Prénom 1</td>
-                    <td contenteditable="true">Classe 1</td>
-                    <td contenteditable="true">Matière 1</td>
-                    <td><button onclick="window.location.href='modifcompteprof.php'" , class="modifier">Modifier</button></td>
-                </tr>
+                <?php
+
+
+                $requete = $bdd->query(' SELECT * FROM Professeur ');
+
+
+                while ($donnees = $requete->fetch()) {
+                    echo "<tr>";
+
+                    echo "<td>" . $donnees['IdProf'] . "</td>";
+                    echo "<td>" . $donnees['Login'] . "</td>";
+                    echo "<td>" . $donnees['Password'] . "</td>";
+                    echo "<td>" . $donnees['Nom'] . "</td>";
+                    echo "<td>" . $donnees['Prenom'] . "</td>";
+                    echo "<td><button> Supprimer </button></td>";
+                    echo "<td><button> Modifier </button></td>";
+
+                    echo "</tr>";
+                }
+                $requete->closeCursor();
+                ?>
             </tbody>
         </table>
-    </form>
+        </p>
+    </section>
 
-    <br>
-
-    <p class="tabetu">
-    <table class="tabetu">
-        <caption> Etudiants </caption>
-        <thead>
-            <tr>
-                <th>Id Etudiant</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-
-            $requete = $bdd->query(' SELECT * FROM Etudiant ');
-
-
-            while ($donnees = $requete->fetch()) {
-                echo "<tr>";
-
-                echo "<td>" . $donnees['Prenom'] . "</td>";
-                echo "<td>" . $donnees['Nom'] . "</td>";
-                echo "<td>" . $donnees['IdEtu'] . "</td>";
-                echo "<td>" . $donnees['Login'] . "</td>";
-                echo "<td>" . $donnees['Password'] . "</td>";
-                echo "<td><button> Supprimer </button></td>";
-                echo "<td><button> Modifier </button></td>";
-                echo "</tr>";
-            }
-            $requete->closeCursor();
-
-            ?>
-        </tbody>
-    </table>
-    </p>
-
-    <br>
-
-    <p class="tabprof">
-    <table class="tabetu">
-        <caption> Professeurs </caption>
-        <thead>
-            <tr>
-                <th>Id Professeur</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-           
-
-            $requete = $bdd->query(' SELECT * FROM Professeur ');
-
-
-            while ($donnees = $requete->fetch()) {
-                echo "<tr>";
-
-                echo "<td>" . $donnees['IdProf'] . "</td>";
-                echo "<td>" . $donnees['Login'] . "</td>";
-                echo "<td>" . $donnees['Password'] . "</td>";
-                echo "<td>" . $donnees['Nom'] . "</td>";
-                echo "<td>" . $donnees['Prenom'] . "</td>";
-                echo "<td><button> Supprimer </button></td>";
-                echo "<td><button> Modifier </button></td>";
-
-                echo "</tr>";
-            }
-            $requete->closeCursor();
-
-
-
-
-
-
-
-            ?>
-        </tbody>
-    </table>
-    </p>
-
-    <br>
-
+    <section id="scolarite">
     <p class="tabsco">
     <table class="tabetu">
-        <caption> Scolarite </caption>
+        <h2> Scolarite </h2>
         <thead>
             <tr>
                 <th>Id Scolarite</th>
@@ -331,10 +347,12 @@ include("ouverturebdd.php");
         </tbody>
     </table>
     </p>
-    <br>
+    </section>
+
+    <section id="matiere">
     <p class="tabmatiere">
     <table class="tabetu">
-        <caption> Matiere </caption>
+        <h2> Matiere </h2>
         <thead>
             <tr>
                 <th>Nom Matiere</th>
@@ -372,7 +390,7 @@ include("ouverturebdd.php");
             $(".retirermatiere").click(function() {
                 var matiere = $(this).data("id");
                 var trElement = $(this).closest("tr");
-            
+
                 $.ajax({
                     url: "supprimermatiere.php",
                     type: "POST",
@@ -393,10 +411,13 @@ include("ouverturebdd.php");
         });
     </script>
     </p>
-    <br>
+    </section>
 
+
+    <section id="cours">
     <p class="tabcours">
     <table class="tabetu">
+    <h2> Cours </h2>
         <thead>
             <tr>
                 <th>Cours </th>
@@ -406,7 +427,7 @@ include("ouverturebdd.php");
         </thead>
         <tbody>
             <?php
-           
+
 
 
             $requete = $bdd->query(' SELECT Matière.NomMatiere FROM Matière INNER JOIN Cours ON Matière.IdMatiere=Cours.IDMatiere ');
@@ -414,7 +435,7 @@ include("ouverturebdd.php");
             $requete3 = $bdd->query(' SELECT Classe.Classe FROM Classe INNER JOIN Cours ON Classe.IdClasse=Cours.IDClasse');
 
             echo "<tr>";
-            while($donnees = $requete->fetch()) {
+            while ($donnees = $requete->fetch()) {
                 echo "<td>" . $donnees['NomMatiere'] . "</td>";
             }
             $requete->closeCursor();
@@ -422,7 +443,7 @@ include("ouverturebdd.php");
 
             echo "<tr>";
 
-            while($donnees = $requete2->fetch()) {
+            while ($donnees = $requete2->fetch()) {
                 echo "<td>" . $donnees['Nom'] . "</td>";
             }
             $requete2->closeCursor();
@@ -430,13 +451,13 @@ include("ouverturebdd.php");
 
             echo "<tr>";
 
-            while($donnees = $requete3->fetch()) {
+            while ($donnees = $requete3->fetch()) {
                 echo "<td>" . $donnees['Classe'] . "</td>";
             }
             $requete3->closeCursor();
-            
-                
-            
+
+
+
             echo "</tr>";
 
 
@@ -447,12 +468,9 @@ include("ouverturebdd.php");
     <button onclick="window.location.href='ajoutcoursetu.php'">Affecter un Etudiant à une Matiere</button>
 
     </p>
+    </section>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>
