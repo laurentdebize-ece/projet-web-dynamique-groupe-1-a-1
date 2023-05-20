@@ -1,0 +1,155 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	background-image: url('ECE_Campus1.jpg');
+	color: #333;
+    opacity: 0.9;
+}
+  
+ /* Bandeau haut de page */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	padding: 10px;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	margin-left: 20px;
+	text-align: center;
+	color: #2b0849;
+}
+img {
+	max-width: 100px;
+	max-height: 100px;
+	margin-left: 20px;
+}
+button {
+	padding: 10px 20px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #2b0849;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+/* Surlignement bouton lors du passage de la souris */
+button:hover {
+	background-color: #591c7e;
+}
+ 
+  .statut {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .statut select {
+    display: block;
+    font-size: 16px;
+    font-family: inherit;
+    color: inherit;
+    padding: 12px 30px 12px 15px;
+    margin: 0;
+    border-radius: 0;
+    background-color: #f7f7f7;
+    appearance: none;
+  }
+  .choixOrdre {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .choixOrdre select {
+    display: block;
+    font-size: 16px;
+    font-family: inherit;
+    color: inherit;
+    padding: 12px 30px 12px 15px;
+    margin: 0;
+    border-radius: 0;
+    background-color: #f7f7f7;
+    appearance: none;
+  }
+  .statutCompetence {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .statutCompetence select {
+    display: block;
+    font-size: 16px;
+    font-family: inherit;
+    color: inherit;
+    padding: 12px 30px 12px 15px;
+    margin: 0;
+    border-radius: 0;
+    background-color: #f7f7f7;
+    appearance: none;
+  }
+  /* tableau autres compétences */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+  
+  .retirer {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .retirer:hover {
+    background-color: #c82333;
+  }
+  .demande {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .demande:hover {
+    background-color: #0069d9;
+  }
+  #footer {
+	background-color: #2b0849;
+	color: white;
+	position: fixed;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+  
+  

@@ -25,32 +25,25 @@
 		<input type="password" id="password" name="password"required>
 		<br>
 		<br>
-        <!-- <label for="matiere">Matière suivi :</label>
-		<input type="text" id="matiere" name="matiere">
-        <br>
+
         <label>Dans quelle classe l'ajouter ?</label>
-        <select name="classe">
-			<option value="ing1">ING1</option>
-			<option value="ing2">ING2</option>
-			<option value="ing3">ING3</option>
-		</select> -->
+        <?php
+        include("ouverturebdd.php");
+
+        $requete = $bdd->query('SELECT * FROM Classe ');
+
+        echo '<select name="classe">';
+        while ($donnees = $requete->fetch()) {
+            echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
+        }
+        $requete->closeCursor();
+        echo '</select>';
+        ?>
         <br>
 		<input type="submit" value="Creer le compte">
 		
 	</form>
            
 </body>
-
-<?php 
-
-if(isset($_POST['error'])){
-
-    if($_POST['error']==1){
-        echo"login ou password ";
-        
-    }
-}
-?>
-
 
 </html>

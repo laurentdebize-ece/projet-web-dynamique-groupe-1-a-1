@@ -27,10 +27,6 @@
 		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password">
 
-        <br>
-
-        <label for="idsco">Identifiant Scolarite :</label>
-		<input type="number" id="idsco" name="idsco">
 
 
 
@@ -40,17 +36,5 @@
 	</form>
            
 </body>
-
-<?php 
-
-if(isset($_GET['error'])){
-
-    if($_GET['error']==1){
-        echo"login ou password ";
-
-    }
-}
-?>
-
 
 </html>

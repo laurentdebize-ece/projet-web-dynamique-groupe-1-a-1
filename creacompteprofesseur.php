@@ -27,32 +27,18 @@
 		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password">
 
-        <label for="idprof">Id Professeur :</label>
+        <!-- <label for="idprof">Id Professeur :</label>
 		<input type="number" id="idprof" name="idprof">
         
-		<br>
+		<br> -->
 
 		<br>
 		<br>
-
-        <!-- <label for="matiere">Matière enseignée :</label>
-		<input type="text" id="matiere" name="matiere">
-        <br> -->
         
 		<input type="submit" value="Creer le compte">
 		
 	</form>
            
 </body>
-
-<?php 
-if(isset($_POST['error'])){
-
-    if($_POST['error']==1){
-        echo"login ou password ";   
-    }
-}
-?>
-
 
 </html>
