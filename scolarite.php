@@ -46,7 +46,7 @@ include("ouverturebdd.php");
     </header>
     <div class="container">
     <button onclick="window.location.href='comptesco.php'">Compte</button>
-    <button onclick="window.location.href='accueil.php'">Déconnexion</button>
+    <button id="deco">Déconnexion</button>
   </div>
   
     <br>
@@ -181,7 +181,7 @@ include("ouverturebdd.php");
     <div class="col-container">
         <div class="col1">
             <section id="modifetudiants">
-                <form method="get" action='modifcompteprof.php'>
+                <form method="get" action='modifcompteetudiant.php'>
                     <h2> Modification Etudiants :</h2>
                     <table id="competences">
                         <thead>
@@ -480,7 +480,16 @@ include("ouverturebdd.php");
 
         </p>
     </section>
-
+    <!--pop-up déconnexion-->
+    <script>
+        document.getElementById("deco").addEventListener("click", decOut);
+        function decOut() {
+            if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+                /*retour page MDP*/
+                window.location.href = "accueil.php";
+            }
+        }
+    </script>
 
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
