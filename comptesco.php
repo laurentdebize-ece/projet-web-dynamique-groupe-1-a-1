@@ -18,7 +18,7 @@
         <img src="logoSite.png" alt="imageLogo">
         <h1>Mon compte</h1>
         <nav>
-            <button onclick="window.location.href='etudiant.php'">Retour</button>
+            <button onclick="window.location.href='scolarite.php'">Retour</button>
             <button id="deco">Déconnexion</button>
         </nav>
     </header>

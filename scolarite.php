@@ -9,7 +9,7 @@ include("ouverturebdd.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="scolariteFront.css">
+    <link rel="stylesheet" type="text/css" href="scolariteFront2.css">
     <title>OMNES My skills</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -40,24 +40,32 @@ include("ouverturebdd.php");
                 <li><a href="#scolarite" class="nav-item"> Scolarite</a></li>
                 <li><a href="#matiere" class="nav-item">Matière</a></li>
                 <li><a href="#cours" class="nav-item"> Cours</a></li>
+
             </ul>
         </nav>
     </header>
-
-    <form method="post">
-        Vous pouvez ici créer un nouveau compte :
-        Quel statut voulez vous créer ?
-        <br>
-        <label>Statut :</label>
-        <select name="creercomptes">
-            <option value="professeur">Professeur</option>
-            <option value="scolarite">Administrateur</option>
-            <option value="etudiant">Étudiant</option>
-        </select>
-        <br>
-        <br>
-        <input type="submit" id="submit" value="Créer le compte">
-        <!-- <script>
+    <div class="container">
+    <button onclick="window.location.href='comptesco.php'">Compte</button>
+    <button onclick="window.location.href='accueil.php'">Déconnexion</button>
+  </div>
+  
+    <br>
+    <div class="form-container">
+        <form method="post">
+            Vous pouvez ici créer un nouveau compte :
+            <label for="statut">Quel statut voulez-vous créer ?</label>
+            <br>
+            <select name="creercomptes" id="statut">
+                <option value="professeur">Professeur</option>
+                <option value="scolarite">Administrateur</option>
+                <option value="etudiant">Étudiant</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" id="submit" value="Créer le compte">
+        </form>
+    </div>
+    <!-- <script>
             document.querySelector(".professeur").addEventListener("click", creacompteprofesseur);
             document.querySelector(".scolarite").addEventListener("click", creacomptescolarite);
             document.querySelector(".etudiant").addEventListener("click", creacompteetudiant);
@@ -78,91 +86,94 @@ include("ouverturebdd.php");
                 }
             }
         </script> -->
-        <?php
-        $choice = isset($_POST["creercomptes"]) ? $_POST["creercomptes"] : "";
-        switch ($choice) {
-            case "professeur":
-                header("Location:creacompteprofesseur.php");
-                break;
-            case "scolarite":
-                header("Location:creacomptescolarite.php");
-                break;
-            case "etudiant":
-                header("Location:creacompteetudiant.php");
-                break;
-        }
-        ?>
+    <?php
+    $choice = isset($_POST["creercomptes"]) ? $_POST["creercomptes"] : "";
+    switch ($choice) {
+        case "professeur":
+            header("Location:creacompteprofesseur.php");
+            break;
+        case "scolarite":
+            header("Location:creacomptescolarite.php");
+            break;
+        case "etudiant":
+            header("Location:creacompteetudiant.php");
+            break;
+    }
+    ?>
     </form>
     <br>
     <br>
-    <form method="post" action="scosupp.php">
-        Ici vous pouvez supprimer un compte :
-        <br>
-        <br>
+    <div class="form-container">
+        <form method="post" action="scosupp.php">
+            Ici vous pouvez supprimer un compte :
+            <br>
+            <br>
 
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom">
-        <br>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom">
+            <br>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom">
-        <br>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom">
+            <br>
 
-        <label>Statut :</label>
-        <select name="supprimercompte">
-            <option value="professeur">Professeur</option>
-            <option value="scolarite">Administrateur</option>
-            <option value="etudiant">Étudiant</option>
-        </select>
-        <br>
-        <br>
+            <label>Statut :</label>
+            <select name="supprimercompte">
+                <option value="professeur">Professeur</option>
+                <option value="scolarite">Administrateur</option>
+                <option value="etudiant">Étudiant</option>
+            </select>
+            <br>
+            <br>
 
-        <input type="submit" value="Supprimer le compte">
-    </form>
-
+            <input type="submit" value="Supprimer le compte">
+        </form>
+    </div>
     <br>
     <br>
 
-    <form method="post" action="scolarite2.php">
-        Demander à un étudiant de s'auto-évaluer :
-        <br>
-        <br>
+    <div class="form-container">
+        <form method="post" action="scolarite2.php">
+            Demander à un étudiant de s'auto-évaluer :
+            <br>
+            <br>
 
-        <label for="nom">Nom :</label>
-        <input type="nom" id="nom" name="nom">
-        <br>
+            <label for="nom">Nom :</label>
+            <input type="nom" id="nom" name="nom">
+            <br>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom">
-        <br>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom">
+            <br>
 
-        <label>Matière :</label>
-        <select name="choixmatiere">
-            <option value="maths">Maths</option>
-            <option value="physique">Physique</option>
-            <option value="informatique">Informatique</option>
-            <option value="electronique">Electronique</option>
-        </select>
-        <br>
+            <label>Matière :</label>
+            <select name="choixmatiere">
+                <option value="maths">Maths</option>
+                <option value="physique">Physique</option>
+                <option value="informatique">Informatique</option>
+                <option value="electronique">Electronique</option>
+            </select>
+            <br>
 
-        <label>Compétences :</label>
-        <select name="choixcompetences">
-            <option value="calcul">Calcul</option>
-            <option value="physique">Physique</option>
-            <option value="informatique">Informatique</option>
-            <option value="electronique">Electronique</option>
-        </select>
-        <br>
+            <label>Compétences :</label>
+            <select name="choixcompetences">
+                <option value="calcul">Calcul</option>
+                <option value="physique">Physique</option>
+                <option value="informatique">Informatique</option>
+                <option value="electronique">Electronique</option>
+            </select>
+            <br>
 
-        <label for="start">Date limite :</label>
+            <label for="start">Date limite :</label>
 
-        <input type="date" id="start" name="trip-start" value="2023-05-24" min="2021-01-01" max="2026-12-31">
+            <input type="date" id="start" name="trip-start" value="2023-05-24" min="2021-01-01" max="2026-12-31">
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <input type="submit" value="Envoyer la demande">
-    </form>
+            <input type="submit" value="Envoyer la demande">
+        </form>
+    </div>
     <br>
     <br>
 
@@ -305,169 +316,169 @@ include("ouverturebdd.php");
     </section>
 
     <section id="scolarite">
-    <p class="tabsco">
-    <table class="tabetu">
-        <h2> Scolarite </h2>
-        <thead>
-            <tr>
-                <th>Id Scolarite</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th></th>
-                <th></th>
+        <p class="tabsco">
+        <table class="tabetu">
+            <h2> Scolarite </h2>
+            <thead>
+                <tr>
+                    <th>Id Scolarite</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th></th>
+                    <th></th>
 
 
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 
-            $requete = $bdd->query(' SELECT * FROM Scolarite ');
-
-
-            while ($donnees = $requete->fetch()) {
-                echo "<tr>";
-
-                echo "<td>" . $donnees['IdSco'] . "</td>";
-                echo "<td>" . $donnees['Login'] . "</td>";
-                echo "<td>" . $donnees['Password'] . "</td>";
-                echo "<td>" . $donnees['Nom'] . "</td>";
-                echo "<td>" . $donnees['Prenom'] . "</td>";
-                echo "<td><button> Supprimer </button></td>";
-                echo "<td><button> Modifier </button></td>";
-                echo "</tr>";
-            }
-            $requete->closeCursor();
+                $requete = $bdd->query(' SELECT * FROM Scolarite ');
 
 
+                while ($donnees = $requete->fetch()) {
+                    echo "<tr>";
 
-            ?>
-        </tbody>
-    </table>
-    </p>
+                    echo "<td>" . $donnees['IdSco'] . "</td>";
+                    echo "<td>" . $donnees['Login'] . "</td>";
+                    echo "<td>" . $donnees['Password'] . "</td>";
+                    echo "<td>" . $donnees['Nom'] . "</td>";
+                    echo "<td>" . $donnees['Prenom'] . "</td>";
+                    echo "<td><button> Supprimer </button></td>";
+                    echo "<td><button> Modifier </button></td>";
+                    echo "</tr>";
+                }
+                $requete->closeCursor();
+
+
+
+                ?>
+            </tbody>
+        </table>
+        </p>
     </section>
 
     <section id="matiere">
-    <p class="tabmatiere">
-    <table class="tabetu">
-        <h2> Matiere </h2>
-        <thead>
-            <tr>
-                <th>Nom Matiere</th>
-                <th>Volume Horaire</th>
-                <th>Supprimer</th>
-                <th>Modifier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+        <p class="tabmatiere">
+        <table class="tabetu">
+            <h2> Matiere </h2>
+            <thead>
+                <tr>
+                    <th>Nom Matiere</th>
+                    <th>Volume Horaire</th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 
-            $requete = $bdd->query(' SELECT * FROM Matière ');
+                $requete = $bdd->query(' SELECT * FROM Matière ');
 
-            while ($donnees = $requete->fetch()) {
-                echo "<tr>";
+                while ($donnees = $requete->fetch()) {
+                    echo "<tr>";
 
-                echo "<td>" . $donnees['NomMatiere'] . "</td>";
-                echo "<td>" . $donnees['NbHeures'] . " Heures" . "</td>";
-                echo "<td><button class=\"retirermatiere\" data-id=\"" . $donnees["NomMatiere"] . "\">Supprimer</button></td>";
-                echo "<td><button> Modifier </button></td>";
-                echo "</tr>";
-            }
-            $requete->closeCursor();
+                    echo "<td>" . $donnees['NomMatiere'] . "</td>";
+                    echo "<td>" . $donnees['NbHeures'] . " Heures" . "</td>";
+                    echo "<td><button class=\"retirermatiere\" data-id=\"" . $donnees["NomMatiere"] . "\">Supprimer</button></td>";
+                    echo "<td><button> Modifier </button></td>";
+                    echo "</tr>";
+                }
+                $requete->closeCursor();
 
 
 
-            ?>
-        </tbody>
-    </table>
-    <button onclick="window.location.href='ajoutmatiere.php'">Ajouter une Matière</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                ?>
+            </tbody>
+        </table>
+        <button onclick="window.location.href='ajoutmatiere.php'">Ajouter une Matière</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $(".retirermatiere").click(function() {
-                var matiere = $(this).data("id");
-                var trElement = $(this).closest("tr");
+        <script>
+            $(document).ready(function() {
+                $(".retirermatiere").click(function() {
+                    var matiere = $(this).data("id");
+                    var trElement = $(this).closest("tr");
 
-                $.ajax({
-                    url: "supprimermatiere.php",
-                    type: "POST",
-                    data: {
-                        supprimer: matiere
-                    },
-                    success: function(response) {
-                        console.log(response);
+                    $.ajax({
+                        url: "supprimermatiere.php",
+                        type: "POST",
+                        data: {
+                            supprimer: matiere
+                        },
+                        success: function(response) {
+                            console.log(response);
 
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        trElement.remove();
-                    }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            trElement.remove();
+                        }
+                    });
+                    $(this).closest("tr").remove();
                 });
-                $(this).closest("tr").remove();
             });
-        });
-    </script>
-    </p>
+        </script>
+        </p>
     </section>
 
 
     <section id="cours">
-    <p class="tabcours">
-    <table class="tabetu">
-    <h2> Cours </h2>
-        <thead>
-            <tr>
-                <th>Cours </th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+        <p class="tabcours">
+        <table class="tabetu">
+            <h2> Cours </h2>
+            <thead>
+                <tr>
+                    <th>Cours </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 
 
 
-            $requete = $bdd->query(' SELECT Matière.NomMatiere FROM Matière INNER JOIN Cours ON Matière.IdMatiere=Cours.IDMatiere ');
-            $requete2 = $bdd->query(' SELECT Professeur.Nom FROM Professeur INNER JOIN Cours ON Professeur.IdProf=Cours.IdProfesseur ');
-            $requete3 = $bdd->query(' SELECT Classe.Classe FROM Classe INNER JOIN Cours ON Classe.IdClasse=Cours.IDClasse');
+                $requete = $bdd->query(' SELECT Matière.NomMatiere FROM Matière INNER JOIN Cours ON Matière.IdMatiere=Cours.IDMatiere ');
+                $requete2 = $bdd->query(' SELECT Professeur.Nom FROM Professeur INNER JOIN Cours ON Professeur.IdProf=Cours.IdProfesseur ');
+                $requete3 = $bdd->query(' SELECT Classe.Classe FROM Classe INNER JOIN Cours ON Classe.IdClasse=Cours.IDClasse');
 
-            echo "<tr>";
-            while ($donnees = $requete->fetch()) {
-                echo "<td>" . $donnees['NomMatiere'] . "</td>";
-            }
-            $requete->closeCursor();
-            echo "</tr>";
+                echo "<tr>";
+                while ($donnees = $requete->fetch()) {
+                    echo "<td>" . $donnees['NomMatiere'] . "</td>";
+                }
+                $requete->closeCursor();
+                echo "</tr>";
 
-            echo "<tr>";
+                echo "<tr>";
 
-            while ($donnees = $requete2->fetch()) {
-                echo "<td>" . $donnees['Nom'] . "</td>";
-            }
-            $requete2->closeCursor();
-            echo "</tr>";
+                while ($donnees = $requete2->fetch()) {
+                    echo "<td>" . $donnees['Nom'] . "</td>";
+                }
+                $requete2->closeCursor();
+                echo "</tr>";
 
-            echo "<tr>";
+                echo "<tr>";
 
-            while ($donnees = $requete3->fetch()) {
-                echo "<td>" . $donnees['Classe'] . "</td>";
-            }
-            $requete3->closeCursor();
-
-
-
-            echo "</tr>";
+                while ($donnees = $requete3->fetch()) {
+                    echo "<td>" . $donnees['Classe'] . "</td>";
+                }
+                $requete3->closeCursor();
 
 
-            ?>
-        </tbody>
-    </table>
-    <button onclick="window.location.href='ajoutcours.php'">Affecter un Professeur à une Matiere</button>
-    <button onclick="window.location.href='ajoutcoursetu.php'">Affecter un Etudiant à une Matiere</button>
 
-    </p>
+                echo "</tr>";
+
+
+                ?>
+            </tbody>
+        </table>
+        <button onclick="window.location.href='ajoutcours.php'">Affecter un Professeur à une Matiere</button>
+        <button onclick="window.location.href='ajoutcoursetu.php'">Affecter un Etudiant à une Matiere</button>
+
+        </p>
     </section>
 
 

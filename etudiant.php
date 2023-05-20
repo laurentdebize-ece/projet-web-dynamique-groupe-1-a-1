@@ -45,7 +45,7 @@
         <div class="col2">
             <section id="compte" class="section-middle">
                 <h2>Mon compte</h2>
-                <button onclick="window.location.href='comptesco.php'">Compte</button>
+                <button onclick="window.location.href='compte.php'">Compte</button>
             </section>
         </div>
         <div class="col3">

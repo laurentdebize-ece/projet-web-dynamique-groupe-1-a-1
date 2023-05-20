@@ -9,7 +9,7 @@ body {
 	line-height: 1.6;
 	background-image: url('ECE_Campus1.jpg');
 	color: #333;
-    opacity: 0.9;
+    opacity: 1s;
 }
 /* Bandeau haut de page */
 header {
@@ -27,6 +27,34 @@ h1 {
 	text-align: center;
 	color: #2b0849;
 }
+/*formulaire*/
+.form-container {
+    width: 400px;
+    /*background-color: #fff;*/
+    border: 1px solid #2b0849;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+ 
+
+  select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #2b0849;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #591c7e;
+  }
 
 img {
 	max-width: 100px;
@@ -109,8 +137,8 @@ button {
 	padding: 10px 20px;
 	font-weight: bold;
 	color: #fff;
+    margin-right: 10px;
 	background-color: #2b0849;
-	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
@@ -120,6 +148,9 @@ button {
 button:hover {
 	background-color: #591c7e;
 }
+.container {
+    text-align: right;
+  }
 /* tableau */
 table {
 	width: 100%;
