@@ -12,11 +12,10 @@ die('Erreur : ' . $e->getMessage());
 }
 
 $matiere = $_POST['Supprimer'];
+$requete = $bdd->query("DELETE FROM matière WHERE NomMatière =  '$matiere'");
+$resultat->execute(array($matiere));
 
-$requete = $bdd->query('DELETE FROM Matière WHERE NomMatiere = ? ');
-$requete->execute(array($matiere));
-
-if ($requete === TRUE) {
+if ($resultat === TRUE) {
     echo "Ligne supprimée avec succès.";
 } else {
     echo "Erreur lors de la suppression de la ligne : " . $conn->error;
