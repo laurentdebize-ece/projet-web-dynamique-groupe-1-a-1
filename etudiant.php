@@ -64,8 +64,8 @@
                     <th>Compétences</th>
                     <th>Date limite</th>
                     <th>Classe concerné</th>
+                    <th>Matière</th>
                     <th>Auto-évaluations</th>
-                    <th> Validation des résultats</th>
                     <th></th>
                 </tr>
             </thead>
@@ -76,16 +76,16 @@
                 $password = "root";
                 $dbname = "projet";
                 $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";
+                $sql = "SELECT * FROM Competence";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["NomCom"] . "</td>";
-                        echo "<td>" . $row["DateLimite"] . "</td>";
-                        echo "<td>" . $row["ClasseConcerné"] . "</td>";
-                        echo "<td><button class=\"demande\" data-id2=\"" . $row["NomCom"] . "\">Réaliser une auto-évaluation</button></td>";
-                        echo "<td><button class=\"demande\">Valider la compétence</button></td>";
+                        echo "<td>" . $row["Datelimite"] . "</td>";
+                        echo "<td>" . $row["IdClasse"] . "</td>";
+                        echo "<td>" . $row["IdMatiere"] . "</td>";
+                        echo '<td><button class="realiser" data-id="' . $row["NomCom"] . '">Réaliser mon auto-évaluation</button></td>';
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
                         echo "</tr>";
                     }

@@ -11,6 +11,7 @@ include("ouverturebdd.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="scolarite.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--<script src="scolarite.js"></script>-->
     <title>Accueil Administrateur</title>
 </head>
@@ -350,7 +351,6 @@ include("ouverturebdd.php");
 
             while ($donnees = $requete->fetch()) {
                 echo "<tr>";
-
                 echo "<td>" . $donnees['NomMatiere'] . "</td>";
                 echo "<td>" . $donnees['NbHeures'] . " Heures" . "</td>";
                 echo "<td><button class=\"retirermatiere\" data-id=\"" . $donnees["NomMatiere"] . "\">Supprimer</button></td>";
@@ -362,36 +362,34 @@ include("ouverturebdd.php");
 
 
             ?>
+            <script>
+             $(document).ready(function() {
+                $(".retirermatiere").click(function() {
+                    var matiere = $(this).data("id");
+                    $.ajax({
+                        type: "POST",
+                        url: "supprimermatiere.php",
+                        data: 
+                    {
+                        supprimer : matiere
+                    },
+                    success: function(response) 
+                    {
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error) 
+                    { 
+                        console.error(xhr.responseText);
+                    }  
+        
+                    });
+                    $(this).closest("tr").remove();
+                });
+             });
+            </script>
         </tbody>
     </table>
     <button onclick="window.location.href='ajoutmatiere.php'">Ajouter une Matière</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $(".retirermatiere").click(function() {
-                var matiere = $(this).data("id");
-                var trElement = $(this).closest("tr");
-            
-                $.ajax({
-                    url: "supprimermatiere.php",
-                    type: "POST",
-                    data: {
-                        supprimer: matiere
-                    },
-                    success: function(response) {
-                        console.log(response);
-
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        trElement.remove();
-                    }
-                });
-                $(this).closest("tr").remove();
-            });
-        });
-    </script>
     </p>
     <br>
 

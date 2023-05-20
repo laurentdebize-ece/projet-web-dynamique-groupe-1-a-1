@@ -12,10 +12,6 @@
 
         <label for="nom">Nom de la compétences</label>
         <input type="text" id="nom" name="nom" required><br><br>
-
-        <label for="date">Date limite si nécessaire :</label>
-        <input type="date" id="date" name="date" required><br><br>
-
         <label>Classe concernée:</label><br>
         <?php
         $requete = $bdd->query('SELECT Classe FROM Classe ');
