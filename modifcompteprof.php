@@ -18,6 +18,7 @@
 			<button id="deco">Déconnexion</button>
 		</div>
 	</header>
+	<button onclick="window.location.href='scolarite.php'">Retour</button>
 	<br>
 	<br>
 	<div class="form-container">
