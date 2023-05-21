@@ -23,8 +23,8 @@
       <tr>
         <th>Compétences</th>
         <th>Date limite</th>
-        <th>Classe concerné</th>
-        <th>Matiere</th>
+        <!-- <th>Classe concerné</th>
+        <th>Matiere</th> -->
         <th>Auto-évaluations</th>
         <th>Validation des résultats</th>
         <th></th>
@@ -51,9 +51,9 @@
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
-          //echo "<td>" . $row["DateLimite"] . "</td>";
-          echo "<td>" . $row["IdClasse"] . "</td>";
-          echo "<td>" . $row["IdMatiere"] . "</td>";
+          echo "<td>" . $row["DateLimite"] . "</td>";
+          //echo "<td>" . $row["IdClasse"] . "</td>";
+          //echo "<td>" . $row["IdMatiere"] . "</td>";
           echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
           echo "<td><button class=\"demande\">Valider la compétence</button></td>";
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
