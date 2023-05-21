@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="compteScoFront.css">
+    <link rel="stylesheet" type="text/css" href="compteProf.css">
 
     <title>OMNES MySkills</title>
 </head>
@@ -16,10 +16,9 @@
 <body>
     <header>
         <img src="logoSite.png" alt="imageLogo">
-        <h1>Mon compte Scolarité
-        </h1>
+        <h1>Mon compte Professeur</h1>
         <nav>
-            <button onclick="window.location.href='scolarite.php'">Retour</button>
+            <button onclick="window.location.href='pageAccueilProf.php'">Retour</button>
             <button id="deco">Déconnexion</button>
         </nav>
     </header>

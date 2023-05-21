@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="compteScoFront.css">
+    <link rel="stylesheet" type="text/css" href="compteEtu.css">
 
     <title>OMNES MySkills</title>
 </head>
@@ -16,7 +16,7 @@
 <body>
     <header>
         <img src="logoSite.png" alt="imageLogo">
-        <h1>Mon compte</h1>
+        <h1>Mon compte Etudiant</h1>
         <nav>
             <button onclick="window.location.href='etudiant.php'">Retour</button>
             <button id="deco">Déconnexion</button>
