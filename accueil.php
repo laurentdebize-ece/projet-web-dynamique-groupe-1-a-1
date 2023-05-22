@@ -32,7 +32,9 @@
 			<input type="submit" value="Connexion">
 
 		</form>
+		<button onclick="window.location.href='changermdp.php'">Première connexion</button>
 	</div>
+
 	<div id="footer">
 		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
 	</div>
