@@ -16,6 +16,7 @@ $requetee->execute(array($classe));
 if($donnees = $requetee->fetch()) {
     $idclasse = $donnees['IdClasse'];
 }
+
 $requetee->closeCursor();
 $requet = $bdd->prepare( 'INSERT INTO Competence (NomCom,IdClasse,IdMatiere) VALUES (?, ?, ?)');
 $requet->execute(array($competence,$idclasse,$idmatiere));

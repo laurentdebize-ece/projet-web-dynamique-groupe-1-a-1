@@ -58,6 +58,7 @@
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";
         }
+        
       } else {
         echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
       }
