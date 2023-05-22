@@ -54,7 +54,7 @@
           echo "<td class=\"dateLimite\">" . $row["Datelimite"] . "</td>";
           echo "<td>" . $row["IdClasse"] . "</td>";
           echo "<td>" . $row["IdMatiere"] . "</td>";
-          $competenceId = $row["IdCompetence"]; 
+          $competenceId = $row["NomCom"]; 
           echo '<td><button class="demande" data-id="' . $competenceId . '">Demande auto-évaluation</button></td>';
           echo '<td><button class="validation" data-id="' . $competenceId . '">Valider la compétence</button></td>';
           echo "<td><button class=\"retirer\" data-id=\"" . $competenceId . "\">Supprimer</button></td>";
@@ -98,7 +98,9 @@
         $(this).closest("tr").remove();
       });
     });
+
   </script>
+  
    <script>
     $(document).ready(function() {
   $(".demande").click(function() {

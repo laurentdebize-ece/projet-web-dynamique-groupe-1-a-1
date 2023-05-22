@@ -45,8 +45,7 @@
         <th>Compétences</th>
         <th>Date limite</th>
         <th>Matiere</th>
-        <th>Auto-évaluations</th>
-        <th></th>
+        <th>Auto-évaluation</th>
       </tr>
     </thead>
     <tbody>
@@ -70,15 +69,19 @@
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
-          echo "<td>" . $row["DateLimite"] . "</td>";
-          echo "<td>" . $row["IdClasse"] . "</td>";
+          echo "<td>" . $row["Datelimite"] . "</td>";
           echo "<td>" . $row["IdMatiere"] . "</td>";
           if (!empty($row["Datelimite"])) {
-            echo '<td><button class="autoEval" data-id="' . $row["IdCompetence"] . '">Auto-évaluation</button></td>';
+            echo '<td>';
+            echo '<select class="acquisition" data-id="' . $row["IdCompetence"] . '">';
+            echo '<option value="acquis">acquis</option>';
+            echo '<option value="non acquis">non acquis</option>';
+            echo '<option value="en cours">en cours</option>';
+            echo '</select>';
+            echo '</td>';
           } else {
-            echo "<td>Non auto-évaluable</td>";
+            echo "<td>Aucune auto-évaluation programmé par votre professeur</td>";
           }
-        
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";
         }
@@ -145,12 +148,27 @@
         }
     </script>
     <script>
-      $(document).ready(function() {
-  $(".autoEval").click(function() {
-    var idCompetence = $(this).data("id");
-    
-  });
-});
+     $(".acquisition").change(function() {
+        var idCompetence = $(this).data("id");
+        var acquisition = $(this).val();
+        $.ajax({
+          type: "POST",
+          url: "Validation.php",
+          data: {
+            id_competence: idCompetence,
+            acquisition: acquisition
+          },
+          success: function(response) {
+            console.log(response);
+            
+            $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
+          },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+          }
+        });
+      });
+  </script>
 
 
     <div id="footer">
