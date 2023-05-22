@@ -57,6 +57,21 @@ img {
 	margin-left: 80px;
     margin-top: 10px;
 }
+button {
+	padding: 10px 20px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #2b0849;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+/* Surlignement bouton lors du passage de la souris */
+button:hover {
+	background-color: #591c7e;
+}
 
 #footer {
 	background-color: #2b0849;
