@@ -244,19 +244,15 @@ include("ouverturebdd.php");
                     <th>Prenom</th>
                     <th>Login</th>
                     <th>Password</th>
-                    <th></th>
-                    <th></th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-
                 $requete = $bdd->query(' SELECT * FROM Etudiant ');
-
-
                 while ($donnees = $requete->fetch()) {
                     echo "<tr>";
-
                     echo "<td>" . $donnees['Prenom'] . "</td>";
                     echo "<td>" . $donnees['Nom'] . "</td>";
                     echo "<td>" . $donnees['IdEtu'] . "</td>";
@@ -268,12 +264,13 @@ include("ouverturebdd.php");
                     echo "</tr>";
                 }
                 $requete->closeCursor();
-
                 ?>
             </tbody>
-        </table>
+            </table>
         </p>
     </section>
+
+
     <section id="professeur">
         <p class="tabprof">
         <table class="tabetu">
@@ -327,8 +324,8 @@ include("ouverturebdd.php");
                     <th>Password</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th></th>
-                    <th></th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
 
 
                 </tr>
@@ -491,6 +488,7 @@ include("ouverturebdd.php");
         }
     </script>
 
+    <br>
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>
