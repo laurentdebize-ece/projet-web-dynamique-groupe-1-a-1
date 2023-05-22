@@ -49,6 +49,8 @@
         }
     </script>
 
+    <br>
+    <br>
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>
