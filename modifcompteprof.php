@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<img src="logoSite.png" alt="imageLogo">
-		<h1>Modification Etudiant</h1>
+		<h1>Modification Professeur</h1>
 		<div class="container">
 			<button onclick="window.location.href='comptesco.php'">Compte</button>
 			<button id="deco">Déconnexion</button>
