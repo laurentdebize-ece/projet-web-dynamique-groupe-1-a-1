@@ -32,10 +32,6 @@
             <label for="login">Login :</label>
             <input type="email" id="login" name="login">
             <br>
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <br>
 
             <label>Dans quelle classe l'ajouter ?</label>
             <?php
@@ -52,6 +48,31 @@
             ?>
             <br>
             <input type="submit" value="Creer le compte">
+            <?php
+
+            function generateRandomPassword()
+            {
+                $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                $password = '';
+                $charactersLength = strlen($characters);
+                for ($i = 0; $i < 3; $i++) {
+                    $password .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $password;
+            }
+
+            $randomPassword = generateRandomPassword();
+            //echo $randomPassword;
+            $sql = "UPDATE Etudiant SET Password ='$randomPassword' WHERE IdEtu = 8";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "Le mot de passe aléatoire a été inséré avec succès dans la base de données.";
+            } else {
+                echo "Erreur lors de l'insertion du mot de passe aléatoire : " . $conn->error;
+            }
+            ?>
+
+
 
         </form>
     </div>

@@ -22,6 +22,10 @@
 			<input type="password" name="password" id="password">
 			<br>
 			<br>
+            <label for="newpassword">Nouveau mot de passe :</label>
+			<input type="password" name="newpassword" id="password">
+			<br>
+			<br>
 			<select name="statut">
 				<option value="prof">Professeur</option>
 				<option value="sco">Administrateur</option>
