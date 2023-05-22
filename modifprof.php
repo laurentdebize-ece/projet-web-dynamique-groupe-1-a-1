@@ -13,7 +13,7 @@
 <body>
 	<header>
 		<img src="logoSite.png" alt="imageLogo">
-		<h1>Modification Etudiant</h1>
+		<h1>Modification Professeur</h1>
 		<div class="container">
 			<button onclick="window.location.href='comptesco.php'">Compte</button>
 			<button id="deco">Déconnexion</button>
@@ -37,21 +37,7 @@
 			<br>
 
 			<br>
-			<label>Cet étudiant appartient à la classe :</label>
-			<?php
-			include("ouverturebdd.php");
-
-			$requete = $bdd->query('SELECT * FROM Classe ');
-
-			echo '<select name="classe">';
-			while ($donnees = $requete->fetch()) {
-				echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
-			}
-			$requete->closeCursor();
-			echo '</select>';
-			?>
-			<br>
-			<input type="submit" name="modifetu" value="Valider les modifications">
+			<input type="submit" name="modifprof" value="Valider les modifications">
 
 		</form>
 	</div>
@@ -62,23 +48,15 @@
 		$id = $_GET['id'];
 	}
 
-	if (isset($_POST['modifetu'])) {
+	if (isset($_POST['modifprof'])) {
 		include("ouverturebdd.php");
 
 		$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
 		$password = isset($_POST["password"]) ? $_POST["password"] : "";
 		$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
-		$classe = isset($_POST["classe"]) ? $_POST["classe"] : "";
-		$request = $bdd->prepare('SELECT IdClasse FROM Classe WHERE Classe = ?');
-		$request->execute(array($classe));
-		if ($donnees = $request->fetch()) {
-			$idclasse = $donnees['IdClasse'];
-		}
-		$request->closeCursor();
-
-
-		$requete = $bdd->prepare("UPDATE Etudiant SET Nom = ? , Prenom = ? , Password = ? , IdClasse = ?  WHERE IdEtu = ? ");
-		$requete->execute(array($nom, $prenom, $password, $idclasse,$id));
+		
+		$requete = $bdd->prepare("UPDATE Professeur SET Nom = ? , Prenom = ? , Password = ?  WHERE IdProf = ? ");
+		$requete->execute(array($nom, $prenom, $password, $id));
 
 	}
 

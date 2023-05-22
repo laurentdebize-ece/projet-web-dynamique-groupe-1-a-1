@@ -35,7 +35,23 @@
 		<button onclick="window.location.href='accueilfirst.php'">Créer un compte</button>
 	</div>
 
-	
+	<?php
+
+
+	if (isset($_GET['error'])) {
+		$error = $_GET['error'];
+		
+		if ($error == 1) {
+			$messageErreur = "Une erreur s'est produite.";
+			echo $messageErreur;
+		}
+	}
+
+
+
+	?>
+
+
 
 	<div id="footer">
 		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>

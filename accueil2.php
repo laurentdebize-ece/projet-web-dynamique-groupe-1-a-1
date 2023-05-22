@@ -34,7 +34,7 @@ switch ($statut) {
             $_SESSION['Nom'] = $donnees['Nom'];
             $requete->closeCursor();
         } else {
-            header("Location: accueil2.php?error=1");
+            header("Location: accueil.php?error=1");
             exit;
         }
         $_SESSION['login'] = $login;

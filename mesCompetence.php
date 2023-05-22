@@ -3,43 +3,43 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="mesCompetences3.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>OMNES MySkills</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="mesCompetences3.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>OMNES MySkills</title>
 
 </head>
 
 <body>
-    <header>
-        <img src="logoSite.png" alt="imageLogo">
-        <h1>Mes compétences</h1>
-        <form method="post" action="mesCompetence2.php">
-            <div class="statut">
-                <label>Catégorie</label>
-                <select name="select">
-                    <option value="matiere">Matière</option>
-                    <option value="prof">Professeur</option>
-                    <option value="croissant">Ordre Croissant Alphabétique</option>
-                    <option value="decroissant">Ordre Decroissant Alphabétique</option>
-                    <option value="Datecroissante">Date Croissante</option>
-                    <option value="Datedecroissant">Date Decroissant</option>
-                    <option value="acquis">Acquis</option>
-                    <option value="enCours">En cours d'acquistion</option>
-                    <option value="NonAcquis">Non Acquis</option>
-                </select>
-                <!--<input type="submit" value="Trier">-->
+  <header>
+    <img src="logoSite.png" alt="imageLogo">
+    <h1>Mes compétences</h1>
+    <form method="post" action="mesCompetence2.php">
+      <div class="statut">
+        <label>Catégorie</label>
+        <select name="select">
+          <option value="matiere">Matière</option>
+          <option value="prof">Professeur</option>
+          <option value="croissant">Ordre Croissant Alphabétique</option>
+          <option value="decroissant">Ordre Decroissant Alphabétique</option>
+          <option value="Datecroissante">Date Croissante</option>
+          <option value="Datedecroissant">Date Decroissant</option>
+          <option value="acquis">Acquis</option>
+          <option value="enCours">En cours d'acquistion</option>
+          <option value="NonAcquis">Non Acquis</option>
+        </select>
+        <!--<input type="submit" value="Trier">-->
 
-            </div>
-        </form>
-        <nav>
-            <button onclick="window.location.href='etudiant.php'">Retour</button>
-            <button id="deco">Déconnexion</button>
-        </nav>
-    </header>
-    <table>
+      </div>
+    </form>
+    <nav>
+      <button onclick="window.location.href='etudiant.php'">Retour</button>
+      <button id="deco">Déconnexion</button>
+    </nav>
+  </header>
+  <table>
     <thead>
       <tr>
         <th>Compétences</th>
@@ -88,7 +88,7 @@
       } else {
         echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
       }
-      
+
       ?>
     </tbody>
   </table>
@@ -101,44 +101,41 @@
         $.ajax({
           type: "POST",
           url: "TabComp.php",
-          data: 
-          {
-            supprimer : competences
+          data: {
+            supprimer: competences
           },
-          success: function(response) 
-          {
+          success: function(response) {
             console.log(response);
           },
-          error: function(xhr, status, error) 
-          {
+          error: function(xhr, status, error) {
             console.error(xhr.responseText);
-          }  
-        
+          }
+
         });
         $(this).closest("tr").remove();
       });
     });
   </script>
-    <script>
-        //Ordre 
-        $('select[name="select"]').change(function() {
-            var selectedOption = $(this).val();
+  <script>
+    //Ordre 
+    $('select[name="select"]').change(function() {
+      var selectedOption = $(this).val();
 
-            $.ajax({
-                type: "POST",
-                url: "mesCompetence2.php",
-                data: {
-                    select: selectedOption
-                },
-                success: function(data) {
-                    $('tbody').html(data);
-                }
-            });
-        });
-    </script>
-    <!--pop-up déconnexion-->
-    <script>
-        document.getElementById("deco").addEventListener("click", decOut);
+      $.ajax({
+        type: "POST",
+        url: "mesCompetence2.php",
+        data: {
+          select: selectedOption
+        },
+        success: function(data) {
+          $('tbody').html(data);
+        }
+      });
+    });
+  </script>
+  <!--pop-up déconnexion-->
+  <script>
+    document.getElementById("deco").addEventListener("click", decOut);
 
         function decOut() {
             if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
@@ -171,9 +168,9 @@
   </script>
 
 
-    <div id="footer">
-        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
-    </div>
+  <div id="footer">
+    <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+  </div>
 </body>
 
 </html>
