@@ -53,7 +53,7 @@
           echo "<td class=\"dateLimite\">" . $row["Datelimite"] . "</td>";
           echo "<td>" . $row["IdClasse"] . "</td>";
           echo "<td>" . $row["IdMatiere"] . "</td>";
-          echo '<td><button class="demande" data-id="' . $row["NomCom"] . '" data-id-classe="' . $row["IdClasse"] . '">Demander auto-évaluation</button></td>';
+          echo '<td><button class="demande" data-id="' . $row["NomCom"] . '" data-id-classe="' . $row["IdClasse"] . '">Demande auto-évaluation</button></td>';
           echo '<td><button class="validation" data-id="' . $row["NomCom"] . '">Valider la compétence</button></td>';
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";
@@ -128,5 +128,6 @@
 });
   </script>
 </body>
+
 
 </html>

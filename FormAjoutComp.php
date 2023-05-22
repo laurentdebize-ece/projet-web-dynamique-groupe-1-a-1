@@ -32,6 +32,7 @@
         $requete = $bdd->query('SELECT Classe FROM Classe ');
 
         echo '<select name="classe">';
+        
         while ($donnees = $requete->fetch()) {
             echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
         }
