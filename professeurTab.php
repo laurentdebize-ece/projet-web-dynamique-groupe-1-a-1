@@ -5,17 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="professeur.css" rel="stylesheet" type="text/css" />
+  <link href="professeur2.css" rel="stylesheet" type="text/css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>Omnes MySkills</title>
 </head>
 
 <body>
-  <img src="logoSite.png" alt="imageLogo">
   <header>
+    <img src="logoSite.png" alt="imageLogo">
     <h1>Les compétences</h1>
     <nav>
-      <button onclick="window.location.href='pageAccueilProf.php'">Retour</button>
+      <button onclick="window.location.href='etudiant.php'">Retour</button>
+      <button id="deco">Déconnexion</button>
     </nav>
   </header>
   <table>
@@ -63,6 +64,7 @@
       ?>
     </tbody>
   </table>
+  <br>
   <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
   <form id="autoEvalForm" style="display: none;">
     <label for="dateLimite">Date limite :</label>
@@ -77,19 +79,16 @@
         $.ajax({
           type: "POST",
           url: "TabComp.php",
-          data: 
-          {
-            supprimer : competences
+          data: {
+            supprimer: competences
           },
-          success: function(response) 
-          {
+          success: function(response) {
             console.log(response);
           },
-          error: function(xhr, status, error) 
-          {
+          error: function(xhr, status, error) {
             console.error(xhr.responseText);
-          }  
-        
+          }
+
         });
         $(this).closest("tr").remove();
       });

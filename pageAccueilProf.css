@@ -115,10 +115,6 @@ section h2 {
     display: table-cell;
     padding: 16px;;
   }
-  .col3{
-    display: table-cell;
-    padding: 16px;
-  }
 button {
 	padding: 10px 20px;
 	font-weight: bold;
@@ -134,18 +130,6 @@ button {
 button:hover {
 	background-color: #591c7e;
 }
-/* tableau autres compétences */
-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-  }
-
 #footer {
 	background-color: #2b0849;
 	color: white;

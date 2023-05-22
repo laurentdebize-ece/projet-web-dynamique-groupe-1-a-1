@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="etudiant3.css">
+    <link rel="stylesheet" type="text/css" href="etudiant4.css">
     <title>OMNES My skills</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -31,14 +31,14 @@
                 <li><a href="#matiere" class="nav-item">Matiere</a></li>
                 <li><a href="#compte" class="nav-item">Compte</a></li>
                 <li><a href="#deco" class="nav-item">Deconnexion</a></li>
-                <li><a href="#CompetenceEcole"> Autre competences</a></li>
+                <li><a href="#CompetenceEcole" class="nav-item"> Autre competences</a></li>
             </ul>
         </nav>
     </header>
     <div class="col-container">
         <div class="col1">
             <section id="matiere" class="section-left">
-                <h2>Mes matière</h2>
+                <h2>Mes matières</h2>
                 <button onclick="window.location.href='matiere.php'">Mes matières</button>
             </section>
         </div>
