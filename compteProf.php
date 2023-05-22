@@ -26,10 +26,11 @@
         <div class="pageGauche"><!--gauche page-->
             <h2>Bienvenue!</h2>
             <form>
-                <p> Nom : <?php echo $_SESSION['Nom'] ?> </p>
-                <p>Prénom : <?php echo $_SESSION['Prenom'] ?> </p>
-                <p>Adresse mail : <?php echo $_SESSION['login'] ?></p>
-                <p>Mot de passe : <?php echo $_SESSION['password'] ?></p>
+            <p> Nom : <?php echo isset($_SESSION['Nom']) ? $_SESSION['Nom'] : ""; ?> </p>
+            <p> Prénom : <?php echo isset($_SESSION['Prenom']) ? $_SESSION['Prenom'] : ""; ?> </p>
+            <p> Adresse mail : <?php echo isset($_SESSION['Login']) ? $_SESSION['Login'] : ""; ?> </p>
+            <p> Mot de passe : <?php echo isset($_SESSION['Password']) ? $_SESSION['Password'] : ""; ?> </p>
+
             </form>
         </div>
         <div class="pageDroite"><!--droite page-->

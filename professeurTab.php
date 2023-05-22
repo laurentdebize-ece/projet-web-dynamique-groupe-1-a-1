@@ -1,6 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
+<?php session_start(); ?>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,7 @@
     <img src="logoSite.png" alt="imageLogo">
     <h1>Les compétences</h1>
     <nav>
-      <button onclick="window.location.href='etudiant.php'">Retour</button>
+      <button onclick="window.location.href='pageAccueilProf.php'">Retour</button>
       <button id="deco">Déconnexion</button>
     </nav>
   </header>
@@ -24,8 +25,8 @@
       <tr>
         <th>Compétences</th>
         <th>Date limite</th>
-        <!-- <th>Classe concerné</th>
-        <th>Matiere</th> -->
+       <th>Classe concerné</th>
+        <th>Matiere</th> 
         <th>Auto-évaluations</th>
         <th>Validation des résultats</th>
         <th></th>
@@ -53,12 +54,14 @@
           echo "<td class=\"dateLimite\">" . $row["Datelimite"] . "</td>";
           echo "<td>" . $row["IdClasse"] . "</td>";
           echo "<td>" . $row["IdMatiere"] . "</td>";
-          echo '<td><button class="demande" data-id="' . $row["NomCom"] . '" data-id-classe="' . $row["IdClasse"] . '">Demande auto-évaluation</button></td>';
-          echo '<td><button class="validation" data-id="' . $row["NomCom"] . '">Valider la compétence</button></td>';
-          echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
+          $competenceId = $row["IdCompetence"]; 
+          echo '<td><button class="demande" data-id="' . $competenceId . '">Demande auto-évaluation</button></td>';
+          echo '<td><button class="validation" data-id="' . $competenceId . '">Valider la compétence</button></td>';
+          echo "<td><button class=\"retirer\" data-id=\"" . $competenceId . "\">Supprimer</button></td>";
           echo "</tr>";
+          
+
         }
-        
       } else {
         echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
       }
@@ -73,6 +76,7 @@
     <input type="hidden" id="idClasse" name="id_classe">
     <input type="submit" value="Envoyer">
   </form>
+  <p> Id dur professeur : <?php echo $_SESSION['IdProf'] ?> </p>
   <script>
     $(document).ready(function() {
       $(".retirer").click(function() {
@@ -98,27 +102,22 @@
    <script>
     $(document).ready(function() {
   $(".demande").click(function() {
-    var autoeval = $(this).data("id");
-    var idClasse = $(this).data("id-classe");
+    var competenceID = $(this).data("id");
     $("#autoEvalForm").show();
-    $("#idClasse").val(idClasse);
     $("#autoEvalForm").submit(function(e) {
       e.preventDefault();
       var dateLimite = $("#dateLimite").val();
-      var idClasse= $("#idClasse").val();
-
       $.ajax({
         type: "POST",
         url: "AutoEval.php",
         data: {
-          demande: autoeval,
+          demande: competenceID,
           date_limite: dateLimite,
-          id_classe : idClasse,
         },
         success: function(response) {
           console.log(response);
           $("#autoEvalForm").hide();
-          $(".demande[data-id='" + autoeval + "']").closest("tr").find(".dateLimite").text(dateLimite);
+          $(".demande[data-id='" + competenceID + "']").closest("tr").find(".dateLimite").text(dateLimite);
         },
         error: function(xhr, status, error) {
           console.error(xhr.responseText);

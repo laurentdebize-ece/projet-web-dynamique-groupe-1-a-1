@@ -10,6 +10,8 @@ $requete->execute(array($matiere));
 if($donnees = $requete->fetch()) {
     $idmatiere = $donnees['IdMatiere'];
 }
+
+
 $requete->closeCursor();
 $requetee = $bdd->prepare(' SELECT IdClasse FROM Classe WHERE Classe = ? ');
 $requetee->execute(array($classe));
