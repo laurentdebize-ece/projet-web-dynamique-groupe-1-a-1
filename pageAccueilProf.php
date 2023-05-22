@@ -51,29 +51,27 @@
 		<div class="col2">
 			<section id="deco" class="section-right">
 				<h2>Déconnexion</h2>
-				<button id="deco">Déconnexion</button>
+				<button id="deco">Se deconnecter</button>
 			</section>
 		</div>
-		<!--pop-up déconnexion-->
-		<script>
-			document.getElementById("deco").addEventListener("click", decOut);
 
-			function decOut() {
-				if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
-					<?php
-					$_SESSION = array();
-					session_destroy();
+		
+	<script>
+		document.getElementById("deco").addEventListener("click", decOut);
 
-					?>
-					/*retour page MDP*/
-					window.location.href = "accueil.html";
-				}
-
+		function decOut() {
+			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+				window.location.href = "accueil.php";
 			}
-		</script>
-		<div id="footer">
-			<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
-		</div>
+		}
+	</script>
+		
+
+
+	<br>
+    <div id="footer">
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
 </body>
 
 </html>

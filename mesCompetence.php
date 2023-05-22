@@ -56,7 +56,7 @@
 
       $servername = "localhost";
       $username = "root";
-      $password = "root";
+      $password = "";
       $dbname = "projet";
 
       // Connexion à la base de données
