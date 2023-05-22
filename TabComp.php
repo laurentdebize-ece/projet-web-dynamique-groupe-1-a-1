@@ -15,6 +15,7 @@ if ($result === TRUE) {
     echo "Erreur lors de la suppression de la ligne : " . $bdd->error;
 }
 
+
 $conn->close();
 ?>
 

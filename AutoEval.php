@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
     }
-    
+
     $sqlAutoEval = "INSERT INTO autoevaluation (IdCompetence) SELECT IdCompetence FROM competence WHERE NomCom = '$autoevalId'";
     $resultatAutoEval = $conn->query($sqlAutoEval);
 

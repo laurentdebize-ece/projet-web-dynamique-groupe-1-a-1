@@ -100,7 +100,7 @@
     });
 
   </script>
-  
+
    <script>
     $(document).ready(function() {
   $(".demande").click(function() {
@@ -121,6 +121,7 @@
           $("#autoEvalForm").hide();
           $(".demande[data-id='" + competenceID + "']").closest("tr").find(".dateLimite").text(dateLimite);
         },
+        
         error: function(xhr, status, error) {
           console.error(xhr.responseText);
         }

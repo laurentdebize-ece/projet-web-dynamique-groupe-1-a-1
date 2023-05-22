@@ -157,7 +157,6 @@
           },
           success: function(response) {
             console.log(response);
-            
             $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
           },
           error: function(xhr, status, error) {
