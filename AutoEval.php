@@ -3,8 +3,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoeval = $_POST['demande'];
     $dateLimite = $_POST['date_limite'];
     $idClasse = $_POST['id_classe'];
-
-    // Assurez-vous que les informations de connexion à la base de données sont correctes
     $servername = "localhost";
     $username = "root";
     $password = "root";
