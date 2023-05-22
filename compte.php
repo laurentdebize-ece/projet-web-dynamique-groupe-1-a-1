@@ -22,6 +22,8 @@
             <button id="deco">Déconnexion</button>
         </nav>
     </header>
+    <br>
+    <br>
     <div class="page"> <!--contenant toute la page-->
         <div class="pageGauche"><!--gauche page-->
             <h2>Bienvenue!</h2>
