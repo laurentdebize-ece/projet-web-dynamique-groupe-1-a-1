@@ -263,7 +263,8 @@ include("ouverturebdd.php");
                     echo "<td>" . $donnees['Login'] . "</td>";
                     echo "<td>" . $donnees['Password'] . "</td>";
                     echo "<td><button> Supprimer </button></td>";
-                    echo "<td><button> Modifier </button></td>";
+                    echo '<td><a href="modifcompteetudiant.php?id=' . $donnees['IdEtu'] . '">Modifier</a></td>';
+
                     echo "</tr>";
                 }
                 $requete->closeCursor();
@@ -304,7 +305,7 @@ include("ouverturebdd.php");
                     echo "<td>" . $donnees['Nom'] . "</td>";
                     echo "<td>" . $donnees['Prenom'] . "</td>";
                     echo "<td><button> Supprimer </button></td>";
-                    echo "<td><button> Modifier </button></td>";
+                    echo '<td><a href="modifcompteprof.php?id=' . $donnees['IdEtu'] . '">Modifier</a></td>';
 
                     echo "</tr>";
                 }
@@ -347,7 +348,6 @@ include("ouverturebdd.php");
                     echo "<td>" . $donnees['Nom'] . "</td>";
                     echo "<td>" . $donnees['Prenom'] . "</td>";
                     echo "<td><button> Supprimer </button></td>";
-                    echo "<td><button> Modifier </button></td>";
                     echo "</tr>";
                 }
                 $requete->closeCursor();
