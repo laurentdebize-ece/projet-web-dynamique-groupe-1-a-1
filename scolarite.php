@@ -9,9 +9,9 @@ include("ouverturebdd.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="scolariteFront3.css">
+    <link rel="stylesheet" type="text/css" href="scolariteFront4.css">
     <title>OMNES My skills</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('a[href^="#"]').on('click', function(event) {
@@ -244,15 +244,19 @@ include("ouverturebdd.php");
                     <th>Prenom</th>
                     <th>Login</th>
                     <th>Password</th>
-                    <th>Supprimer</th>
-                    <th>Modifier</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
+
                 $requete = $bdd->query(' SELECT * FROM Etudiant ');
+
+
                 while ($donnees = $requete->fetch()) {
                     echo "<tr>";
+
                     echo "<td>" . $donnees['Prenom'] . "</td>";
                     echo "<td>" . $donnees['Nom'] . "</td>";
                     echo "<td>" . $donnees['IdEtu'] . "</td>";
@@ -264,13 +268,24 @@ include("ouverturebdd.php");
                     echo "</tr>";
                 }
                 $requete->closeCursor();
+
                 ?>
             </tbody>
-            </table>
+        </table>
         </p>
     </section>
-
-
+    <script>
+    function chargerPageModification(idEtu) {
+        $.ajax({
+            url: 'modifcompteetudiant.php',
+            type: 'GET',
+            data: { id: idEtu },
+            success: function(response) {
+                $('#contenu-modification').html(response);
+            }
+        });
+    }
+</script>
     <section id="professeur">
         <p class="tabprof">
         <table class="tabetu">
@@ -324,8 +339,8 @@ include("ouverturebdd.php");
                     <th>Password</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Supprimer</th>
-                    <th>Modifier</th>
+                    <th></th>
+                    <th></th>
 
 
                 </tr>
@@ -429,8 +444,6 @@ include("ouverturebdd.php");
             <thead>
                 <tr>
                     <th>Cours </th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -488,7 +501,6 @@ include("ouverturebdd.php");
         }
     </script>
 
-    <br>
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>

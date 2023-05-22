@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="modifEtudiantCompte.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<title>Omnes MySkills</title>
 </head>
 
@@ -23,7 +24,8 @@
 	<br>
 
 	<div class="form-container">
-		<form method="post">
+		<form method="post" action="etudiantModifCompte.php ">
+		<input type="hidden" name="id" value="<?php echo $idEtu; ?>">
 			<label for="nom">Nom :</label>
 			<input type="text" id="nom" name="nom">
 			<br>
