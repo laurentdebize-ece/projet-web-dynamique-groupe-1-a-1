@@ -1,9 +1,10 @@
 <?php 
-$servername="localhost:3306";
+$servername="localhost";
 $username="root";
 $password="root";
 $dbname="projet";
 $conn=new mysqli($servername,$username,$password,$dbname);
+
 $id = $_POST['supprimer'];
 echo $id;
 $sql = "DELETE FROM competence WHERE NomCom = '$id'";

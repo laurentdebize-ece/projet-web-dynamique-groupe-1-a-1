@@ -1,9 +1,20 @@
-<?php session_start();
-include("ouverturebdd.php");
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "projet";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Erreur de connexion à la base de données : " . $conn->connect_error);
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -45,10 +56,10 @@ include("ouverturebdd.php");
         </nav>
     </header>
     <div class="container">
-    <button onclick="window.location.href='comptesco.php'">Compte</button>
-    <button id="deco">Déconnexion</button>
-  </div>
-  
+        <button onclick="window.location.href='comptesco.php'">Compte</button>
+        <button id="deco">Déconnexion</button>
+    </div>
+
     <br>
     <div class="form-container">
         <form method="post">
@@ -65,27 +76,7 @@ include("ouverturebdd.php");
             <input type="submit" id="submit" value="Créer le compte">
         </form>
     </div>
-    <!-- <script>
-            document.querySelector(".professeur").addEventListener("click", creacompteprofesseur);
-            document.querySelector(".scolarite").addEventListener("click", creacomptescolarite);
-            document.querySelector(".etudiant").addEventListener("click", creacompteetudiant);
 
-            function creacompteprofesseur() {
-                if (confirm("Voulez-vous créer un nouveau compte professeur ?")) {
-                    window.location.href = "creacompteprofesseur.php";
-                }
-            }
-            function creacomptescolarite() {
-                if (confirm("Voulez-vous créer un nouveau compte administrateur?")) {
-                    window.location.href = "creacomptescolarite.php";
-                }
-            }
-            function creacompteetudiant() {
-                if (confirm("Voulez-vous créer un nouveau compte étudiant ?")) {
-                    window.location.href = "creacompteetudiant.php";
-                }
-            }
-        </script> -->
     <?php
     $choice = isset($_POST["creercomptes"]) ? $_POST["creercomptes"] : "";
     switch ($choice) {
@@ -250,23 +241,51 @@ include("ouverturebdd.php");
             </thead>
             <tbody>
                 <?php
-                $requete = $bdd->query(' SELECT * FROM Etudiant ');
-                while ($donnees = $requete->fetch()) {
-                    echo "<tr>";
-                    echo "<td>" . $donnees['Prenom'] . "</td>";
-                    echo "<td>" . $donnees['Nom'] . "</td>";
-                    echo "<td>" . $donnees['IdEtu'] . "</td>";
-                    echo "<td>" . $donnees['Login'] . "</td>";
-                    echo "<td>" . $donnees['Password'] . "</td>";
-                    echo "<td><button> Supprimer </button></td>";
-                    echo '<td><a href="modifcompteetudiant.php?id=' . $donnees['IdEtu'] . '">Modifier</a></td>';
 
-                    echo "</tr>";
+                $query = "SELECT * FROM Etudiant";
+                $result = $conn->query($query);
+
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['Prenom'] . "</td>";
+                        echo "<td>" . $row['Nom'] . "</td>";
+                        echo "<td>" . $row['IdEtu'] . "</td>";
+                        echo "<td>" . $row['Login'] . "</td>";
+                        echo "<td>" . $row['Password'] . "</td>";
+                        echo "<td><button class=\"retirer\" data-id=\"" . $row["IdEtu"] . "\">Supprimer</button></td>";
+                        echo "<td><button>Modifier</button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan=\"6\">Aucun Etudiant.</td></tr>";
                 }
-                $requete->closeCursor();
+
                 ?>
             </tbody>
-            </table>
+        </table>
+        <script>
+            $(document).ready(function() {
+                $(".retirer").click(function() {
+                    var etu = $(this).data("id");
+                    $.ajax({
+                        type: "POST",
+                        url: "etusupp.php",
+                        data: {
+                            supprimer: etu
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+
+                    });
+                    $(this).closest("tr").remove();
+                });
+            });
+        </script>
         </p>
     </section>
 
@@ -289,27 +308,50 @@ include("ouverturebdd.php");
             <tbody>
                 <?php
 
+                $query = "SELECT * FROM Professeur";
+                $result = $conn->query($query);
 
-                $requete = $bdd->query(' SELECT * FROM Professeur ');
-
-
-                while ($donnees = $requete->fetch()) {
-                    echo "<tr>";
-
-                    echo "<td>" . $donnees['IdProf'] . "</td>";
-                    echo "<td>" . $donnees['Login'] . "</td>";
-                    echo "<td>" . $donnees['Password'] . "</td>";
-                    echo "<td>" . $donnees['Nom'] . "</td>";
-                    echo "<td>" . $donnees['Prenom'] . "</td>";
-                    echo "<td><button> Supprimer </button></td>";
-                    echo '<td><a href="modifcompteprof.php?id=' . $donnees['IdEtu'] . '">Modifier</a></td>';
-
-                    echo "</tr>";
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['IdProf'] . "</td>";
+                        echo "<td>" . $row['Login'] . "</td>";
+                        echo "<td>" . $row['Password'] . "</td>";
+                        echo "<td>" . $row['Nom'] . "</td>";
+                        echo "<td>" . $row['Prenom'] . "</td>";
+                        echo "<td><button class=\"retirer\" data-id=\"" . $row["IdProf"] . "\">Supprimer</button></td>";
+                        echo "<td><button>Modifier</button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan=\"6\">Aucun Professeur.</td></tr>";
                 }
-                $requete->closeCursor();
                 ?>
             </tbody>
         </table>
+
+        <script>
+            $(document).ready(function() {
+                $(".retirer").click(function() {
+                    var prof = $(this).data("id");
+                    $.ajax({
+                        type: "POST",
+                        url: "profsupp.php",
+                        data: {
+                            supprimer: prof
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+
+                    });
+                    $(this).closest("tr").remove();
+                });
+            });
+        </script>
         </p>
     </section>
 
@@ -333,27 +375,52 @@ include("ouverturebdd.php");
             <tbody>
                 <?php
 
-                $requete = $bdd->query(' SELECT * FROM Scolarite ');
+                $query = "SELECT * FROM Scolarite";
+                $result = $conn->query($query);
 
-
-                while ($donnees = $requete->fetch()) {
-                    echo "<tr>";
-
-                    echo "<td>" . $donnees['IdSco'] . "</td>";
-                    echo "<td>" . $donnees['Login'] . "</td>";
-                    echo "<td>" . $donnees['Password'] . "</td>";
-                    echo "<td>" . $donnees['Nom'] . "</td>";
-                    echo "<td>" . $donnees['Prenom'] . "</td>";
-                    echo "<td><button> Supprimer </button></td>";
-                    echo "</tr>";
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['IdSco'] . "</td>";
+                        echo "<td>" . $row['Login'] . "</td>";
+                        echo "<td>" . $row['Password'] . "</td>";
+                        echo "<td>" . $row['Nom'] . "</td>";
+                        echo "<td>" . $row['Prenom'] . "</td>";
+                        echo "<td><button class=\"retirer\" data-id=\"" . $row["IdSco"] . "\">Supprimer</button></td>";
+                        echo "<td><button> Modifier </button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan=\"6\">Aucun Administrateur.</td></tr>";
                 }
-                $requete->closeCursor();
-
-
 
                 ?>
             </tbody>
         </table>
+
+        <script>
+            $(document).ready(function() {
+                $(".retirer").click(function() {
+                    var sco = $(this).data("id");
+                    $.ajax({
+                        type: "POST",
+                        url: "scosupp.php",
+                        data: {
+                            supprimer: sco
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+
+                    });
+                    $(this).closest("tr").remove();
+                });
+            });
+        </script>
+
         </p>
     </section>
 
@@ -372,52 +439,51 @@ include("ouverturebdd.php");
             <tbody>
                 <?php
 
-                $requete = $bdd->query(' SELECT * FROM Matière ');
+                $query = "SELECT * FROM Matière";
+                $result = $conn->query($query);
 
-                while ($donnees = $requete->fetch()) {
-                    echo "<tr>";
-
-                    echo "<td>" . $donnees['NomMatiere'] . "</td>";
-                    echo "<td>" . $donnees['NbHeures'] . " Heures" . "</td>";
-                    echo "<td><button class=\"retirermatiere\" data-id=\"" . $donnees["NomMatiere"] . "\">Supprimer</button></td>";
-                    echo "<td><button> Modifier </button></td>";
-                    echo "</tr>";
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["NomMatiere"] . "</td>";
+                        echo "<td>" . $row['NbHeures'] . " Heures" . "</td>";
+                        echo "<td><button class=\"retirer\" data-id=\"" . $row["IdMatiere"] . "\">Supprimer</button></td>";
+                        echo "<td><button>Modifier</button></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan=\"6\">Aucune matière disponible pour l'instant.</td></tr>";
                 }
-                $requete->closeCursor();
-
-
 
                 ?>
             </tbody>
         </table>
         <button onclick="window.location.href='ajoutmatiere.php'">Ajouter une Matière</button>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <script>
             $(document).ready(function() {
-                $(".retirermatiere").click(function() {
+                $(".retirer").click(function() {
                     var matiere = $(this).data("id");
-                    var trElement = $(this).closest("tr");
-
                     $.ajax({
-                        url: "supprimermatiere.php",
                         type: "POST",
+                        url: "supprimermatiere.php",
                         data: {
                             supprimer: matiere
                         },
                         success: function(response) {
                             console.log(response);
-
                         },
                         error: function(xhr, status, error) {
                             console.error(xhr.responseText);
-                            trElement.remove();
                         }
+
                     });
                     $(this).closest("tr").remove();
                 });
             });
         </script>
+
+
         </p>
     </section>
 
@@ -429,14 +495,12 @@ include("ouverturebdd.php");
             <thead>
                 <tr>
                     <th>Cours </th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-
+                include("ouverturebdd.php");
 
                 $requete = $bdd->query(' SELECT Matière.NomMatiere FROM Matière INNER JOIN Cours ON Matière.IdMatiere=Cours.IDMatiere ');
                 $requete2 = $bdd->query(' SELECT Professeur.Nom FROM Professeur INNER JOIN Cours ON Professeur.IdProf=Cours.IdProfesseur ');
@@ -480,6 +544,7 @@ include("ouverturebdd.php");
     <!--pop-up déconnexion-->
     <script>
         document.getElementById("deco").addEventListener("click", decOut);
+
         function decOut() {
             if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
                 /*retour page MDP*/

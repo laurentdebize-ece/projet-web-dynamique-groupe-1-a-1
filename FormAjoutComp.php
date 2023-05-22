@@ -25,9 +25,9 @@
     <div class="form-container">
     <form action="ActionAjoutComp.php" method="post">
 
-        <label for="nom">Nom de la compétences</label>
+        <label for="nom">Nom de la compétence</label>
         <input type="text" id="nom" name="nom" required><br><br>
-        <label>Classe concernée:</label><br>
+        <label>Classe concernée :</label><br>
         <?php
         $requete = $bdd->query('SELECT Classe FROM Classe ');
 
@@ -42,7 +42,7 @@
 
         <br>
 
-        <label>Matiere :</label>
+        <label>Matière :</label>
         <?php
         $requete = $bdd->query('SELECT * FROM Matière ');
 

@@ -9,9 +9,7 @@
     <title>MNES MySkills</title>
 </head>
 
-<?php session_start();
-include("ouverturebdd.php");
-?>
+
 
 <body>
     <header>
@@ -30,6 +28,8 @@ include("ouverturebdd.php");
 
         <label>Matiere :</label>
         <?php
+        include("ouverturebdd.php");
+        
         $requete = $bdd->query('SELECT * FROM Matière ');
 
         echo '<select name="matiere">';
