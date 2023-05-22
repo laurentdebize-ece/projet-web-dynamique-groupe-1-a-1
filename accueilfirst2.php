@@ -1,19 +1,20 @@
 <?php session_start();
 include("ouverturebdd.php");
 
-$login = isset($_POST["login"])? $_POST["login"] : "";
-$password = isset($_POST["password"])? $_POST["password"] : "";
-$statut = isset($_POST["statut"])? $_POST["statut"] : "";
+$login = isset($_POST["login"]) ? $_POST["login"] : "";
+$password = isset($_POST["password"]) ? $_POST["password"] : "";
+$newpassword = isset($_POST["newpassword"]) ? $_POST["newpassword"] : "";
 
-$_SESSION['login'] = $login;
-$_SESSION['password'] = $password;
+$statut = isset($_POST["statut"]) ? $_POST["statut"] : "";
+
+
 
 switch ($statut) {
     case 'prof':
         $requete = $bdd->prepare('SELECT * FROM Professeur WHERE Login =  ? AND Password = ? ');
         $requete->execute(array($login, $password));
         if ($donnees = $requete->fetch()) {
-        ?>
+?>
             <p>
                 Prenom : <?php echo $donnees['Prenom']; ?>
                 Nom : <?php echo $donnees['Nom']; ?>
@@ -21,12 +22,13 @@ switch ($statut) {
             </p>
 
         <?php
-        $_SESSION['Prenom'] = $donnees['Prenom'];
-        $_SESSION['Nom'] = $donnees['Nom'];
+            $_SESSION['Prenom'] = $donnees['Prenom'];
+            $_SESSION['Nom'] = $donnees['Nom'];
+            $_SESSION['login'] = $login;
+            $_SESSION['password'] = $newpassword;
 
-        $requete->closeCursor();
-        } 
-        else {
+            $requete->closeCursor();
+        } else {
             header("Location: accueil2.php?error=1");
             exit;
         }
@@ -44,12 +46,12 @@ switch ($statut) {
             </p>
 
         <?php
-        $_SESSION['Prenom'] = $donnees['Prenom'];
-        $_SESSION['Nom'] = $donnees['Nom'];
-        $requete->closeCursor();
-        } 
-
-        else {
+            $_SESSION['Prenom'] = $donnees['Prenom'];
+            $_SESSION['Nom'] = $donnees['Nom'];
+            $_SESSION['login'] = $login;
+            $_SESSION['password'] = $newpassword;
+            $requete->closeCursor();
+        } else {
             header("Location: accueil2.php?error=1");
             exit;
         }
@@ -66,13 +68,14 @@ switch ($statut) {
 
             </p>
 
-        <?php
-        $_SESSION['Prenom'] = $donnees['Prenom'];
-        $_SESSION['Nom'] = $donnees['Nom'];
+<?php
+            $_SESSION['Prenom'] = $donnees['Prenom'];
+            $_SESSION['Nom'] = $donnees['Nom'];
+            $_SESSION['login'] = $login;
+            $_SESSION['password'] = $newpassword;
 
-        $requete->closeCursor();
-        } 
-        else {
+            $requete->closeCursor();
+        } else {
             header("Location: accueil2.php?error=1");
             exit;
         }

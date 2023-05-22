@@ -24,8 +24,8 @@
       <tr>
         <th>Compétences</th>
         <th>Date limite</th>
-        <th>Classe concerné</th>
-        <th>Matiere</th>
+        <!-- <th>Classe concerné</th>
+        <th>Matiere</th> -->
         <th>Auto-évaluations</th>
         <th>Validation des résultats</th>
         <th></th>
