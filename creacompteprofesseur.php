@@ -22,7 +22,7 @@
 	<br>
 	<br>
 	<div class="form-container">
-		<form method="post" action="profcreercompte.php">
+		<form method="post" action=" ">
 
 			<label for="nom">Nom :</label>
 			<input type="text" id="nom" name="nom" required>
@@ -34,22 +34,50 @@
 			<label for="login">Login :</label>
 			<input type="email" id="login" name="login">
 			<br>
-
-			<label for="password">Mot de passe :</label>
-			<input type="password" id="password" name="password">
-
-			<!-- <label for="idprof">Id Professeur :</label>
-		<input type="number" id="idprof" name="idprof">
-        
-		<br> -->
-
-			<br>
 			<br>
 
-			<input type="submit" value="Creer le compte">
+			<input type="submit" name="creerprof" value="Creer le compte">
+
+			<?php
+
+			function generateRandomPassword()
+			{
+				$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+				$password = '';
+				$charactersLength = strlen($characters);
+				for ($i = 0; $i < 3; $i++) {
+					$password .= $characters[rand(0, $charactersLength - 1)];
+				}
+				return $password;
+			}
+
+			$randomPassword = generateRandomPassword();
+			echo "Mot de passe aléatoire : " . $randomPassword;
+
+
+			?>
 
 		</form>
 	</div>
+
+	<?php
+
+
+
+	include("ouverturebdd.php");
+	if (isset($_POST["creerprof"])) {
+
+		$login = isset($_POST["login"]) ? $_POST["login"] : "";
+		$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+		$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
+
+		$requete = $bdd->prepare('INSERT INTO Professeur (Login,Password,Nom,Prenom) VALUES (?,?,?,?)');
+		$requete->execute(array($login, $randomPassword, $nom, $prenom));
+
+	}
+
+
+	?>
 	<!--pop-up déconnexion-->
 	<script>
 		document.getElementById("deco").addEventListener("click", decOut);
