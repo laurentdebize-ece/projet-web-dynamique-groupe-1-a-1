@@ -22,7 +22,7 @@ switch ($statut) {
             $idprof = $donnes['IdProf'];
             $requete->closeCursor();
         } else {
-            header("Location: accueil2.php?error=1"); //MARCHE PAS
+            header("Location: accueilfirst.php?error=2"); //MARCHE PAS
             exit;
         }
         $_SESSION['login'] = $login;
@@ -41,7 +41,7 @@ switch ($statut) {
             $idsco = $donnes['IdSco'];
             $requete->closeCursor();
         } else {
-            header("Location: accueil2.php?error=1");
+            header("Location: accueilfirst.php?error=2");
             exit;
         }
         $_SESSION['login'] = $login;
@@ -60,7 +60,7 @@ switch ($statut) {
             $idetu = $donnes['IdEtu'];
             $requete->closeCursor();
         } else {
-            header("Location: accueil2.php?error=1");
+            header("Location: accueilfirst.php?error=2");
             exit;
         }
         $_SESSION['login'] = $login;

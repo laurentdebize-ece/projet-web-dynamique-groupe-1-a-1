@@ -5,14 +5,14 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="accueil2.css">
+	<link rel="stylesheet" type="text/css" href="accueil3.css">
 	<title>Omnes MySkills</title>
 </head>
 
 <body>
 	<img src="logoSite.png" alt="imageLogo">
 	<div class="form-container">
-		<form method="post" action="accueil2.php ">
+		<form method="post" action="accueilfirst2.php ">
 			<h1>OMNES MySkills</h1>
 			<br>
 			<label for="login">Identifiant :</label>
@@ -45,5 +45,16 @@
 	</div>
 
 </body>
+
+<?php
+if (isset($_GET['error'])) {
+		$error = $_GET['error'];
+		
+		if ($error == 2) {
+			$messageErreur = "Mot de passe ou identifiant erroné.";
+			echo $messageErreur;
+		}
+}
+?>
 
 </html>

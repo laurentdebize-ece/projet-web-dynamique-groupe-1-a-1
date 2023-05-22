@@ -32,7 +32,7 @@
 			<input type="submit" name="connexion" value="Connexion">
 
 		</form>
-		<button onclick="window.location.href='accueilfirst.php'">Créer un compte</button>
+		<button onclick="window.location.href='accueilfirst.php'">Première connexion</button>
 	</div>
 
 	<?php
@@ -42,7 +42,7 @@
 		$error = $_GET['error'];
 		
 		if ($error == 1) {
-			$messageErreur = "Une erreur s'est produite.";
+			$messageErreur = "Mot de passe ou identifiant erroné";
 			echo $messageErreur;
 		}
 	}
