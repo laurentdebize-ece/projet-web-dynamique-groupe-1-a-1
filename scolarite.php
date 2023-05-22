@@ -254,7 +254,7 @@ if ($conn->connect_error) {
                         echo "<td>" . $row['Login'] . "</td>";
                         echo "<td>" . $row['Password'] . "</td>";
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["IdEtu"] . "\">Supprimer</button></td>";
-                        echo "<td><button>Modifier</button></td>";
+                        echo '<td><a href="modifcompteetudiant.php?id=' . $row["IdEtu"] . ' ">Modifier</a></td>';
                         echo "</tr>";
                     }
                 } else {
@@ -288,18 +288,7 @@ if ($conn->connect_error) {
         </script>
         </p>
     </section>
-    <script>
-    function chargerPageModification(idEtu) {
-        $.ajax({
-            url: 'modifcompteetudiant.php',
-            type: 'GET',
-            data: { id: idEtu },
-            success: function(response) {
-                $('#contenu-modification').html(response);
-            }
-        });
-    }
-</script>
+    
     <section id="professeur">
         <p class="tabprof">
         <table class="tabetu">

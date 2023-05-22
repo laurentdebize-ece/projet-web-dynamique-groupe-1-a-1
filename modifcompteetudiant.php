@@ -24,8 +24,8 @@
 	<br>
 
 	<div class="form-container">
-		<form method="post" action="etudiantModifCompte.php ">
-		<input type="hidden" name="id" value="<?php echo $idEtu; ?>">
+		<form method="post" action=" ">
+
 			<label for="nom">Nom :</label>
 			<input type="text" id="nom" name="nom">
 			<br>
@@ -35,28 +35,60 @@
 			<label for="password">Mot de passe :</label>
 			<input type="password" id="password" name="password">
 			<br>
-			<br>
-			<label for="matiere">Matière 1 :</label>
-			<input type="text" id="matiere" name="matiere">
-			<br>
-			<label for="matiere">Matière 2 :</label>
-			<input type="text" id="matiere" name="matiere">
-			<br>
-			<label for="matiere">Matière 3 :</label>
-			<input type="text" id="matiere" name="matiere">
-			<br>
+
 			<br>
 			<label>Cet étudiant appartient à la classe :</label>
-			<select name="classes">
-				<option value="ing1">ING1</option>
-				<option value="ing2">ING2</option>
-				<option value="ing3">ING3</option>
-			</select>
+			<?php
+			include("ouverturebdd.php");
+
+			$requete = $bdd->query('SELECT * FROM Classe ');
+
+			echo '<select name="classe">';
+			while ($donnees = $requete->fetch()) {
+				echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
+			}
+			$requete->closeCursor();
+			echo '</select>';
+			?>
 			<br>
-			<input type="submit" value="Valider les modifications">
+			<input type="submit" name="modifetu" value="Valider les modifications">
 
 		</form>
 	</div>
+
+	<?php
+
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
+	}
+
+	if (isset($_POST['modifetu'])) {
+		include("ouverturebdd.php");
+
+		$nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+		$password = isset($_POST["password"]) ? $_POST["password"] : "";
+		$prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
+		$classe = isset($_POST["classe"]) ? $_POST["classe"] : "";
+
+		echo $nom;
+		echo $password;
+		echo $prenom;
+		echo $classe;
+
+		$request = $bdd->prepare('SELECT IdClasse FROM Classe WHERE Classe = ?');
+		$request->execute(array($classe));
+		if ($donnees = $request->fetch()) {
+			$idclasse = $donnees['IdClasse'];
+		}
+		$request->closeCursor();
+
+
+		$requete = $bdd->prepare("UPDATE Etudiant SET Nom = ? , Prenom = ? , Password = ? , IdClasse = ?  WHERE IdEtu = ? ");
+		$requete->execute(array($nom, $prenom, $password, $idclasse,$id));
+
+	}
+
+	?>
 	<!--pop-up déconnexion-->
 	<script>
 		document.getElementById("deco").addEventListener("click", decOut);
