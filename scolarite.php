@@ -95,35 +95,6 @@ if ($conn->connect_error) {
     <br>
     <br>
     <div class="form-container">
-        <form method="post" action="scosupp.php">
-            Ici vous pouvez supprimer un compte :
-            <br>
-            <br>
-
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom">
-            <br>
-
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom">
-            <br>
-
-            <label>Statut :</label>
-            <select name="supprimercompte">
-                <option value="professeur">Professeur</option>
-                <option value="scolarite">Administrateur</option>
-                <option value="etudiant">Étudiant</option>
-            </select>
-            <br>
-            <br>
-
-            <input type="submit" value="Supprimer le compte">
-        </form>
-    </div>
-    <br>
-    <br>
-
-    <div class="form-container">
         <form method="post" action="scolarite2.php">
             Demander à un étudiant de s'auto-évaluer :
             <br>
@@ -167,62 +138,6 @@ if ($conn->connect_error) {
     </div>
     <br>
     <br>
-
-
-    <div class="col-container">
-        <div class="col1">
-            <section id="modifetudiants">
-                <form method="get" action='modifcompteetudiant.php'>
-                    <h2> Modification Etudiants :</h2>
-                    <table id="competences">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Classe</th>
-                                <th>Modifier le profil</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td contenteditable="true">Nom 1</td>
-                                <td contenteditable="true">Prénom 1</td>
-                                <td contenteditable="true">Classe 1</td>
-                                <td><button onclick="window.location.href='modifcompteetudiant.php'" , class="modifier">Modifier</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </section>
-        </div>
-        <div class="col2">
-            <section id="modifprofesseurs">
-                <form method="get" action='modifcompteprof.php'>
-                    <h2>Modification professeurs :</h2>
-                    <table id="competences">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Classe associée</th>
-                                <th>Matière associée</th>
-                                <th>Modifier le profil</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td contenteditable="true">Nom 1</td>
-                                <td contenteditable="true">Prénom 1</td>
-                                <td contenteditable="true">Classe 1</td>
-                                <td contenteditable="true">Matière 1</td>
-                                <td><button onclick="window.location.href='modifcompteprof.php'" , class="modifier">Modifier</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </section>
-        </div>
-    </div>
 
     <section id="etudiant">
         <p class="tabetu">
@@ -288,7 +203,7 @@ if ($conn->connect_error) {
         </script>
         </p>
     </section>
-    
+
     <section id="professeur">
         <p class="tabprof">
         <table class="tabetu">
@@ -300,8 +215,8 @@ if ($conn->connect_error) {
                     <th>Password</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th></th>
-                    <th></th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
                 </tr>
             </thead>
             <tbody>
@@ -319,7 +234,7 @@ if ($conn->connect_error) {
                         echo "<td>" . $row['Nom'] . "</td>";
                         echo "<td>" . $row['Prenom'] . "</td>";
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["IdProf"] . "\">Supprimer</button></td>";
-                        echo "<td><button>Modifier</button></td>";
+                        echo '<td><a href="modifprof.php?id=' . $row["IdProf"] . ' ">Modifier</a></td>';
                         echo "</tr>";
                     }
                 } else {
@@ -365,8 +280,8 @@ if ($conn->connect_error) {
                     <th>Password</th>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th></th>
-                    <th></th>
+                    <th>Supprimer</th>
+
 
 
                 </tr>
@@ -386,7 +301,6 @@ if ($conn->connect_error) {
                         echo "<td>" . $row['Nom'] . "</td>";
                         echo "<td>" . $row['Prenom'] . "</td>";
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["IdSco"] . "\">Supprimer</button></td>";
-                        echo "<td><button> Modifier </button></td>";
                         echo "</tr>";
                     }
                 } else {
@@ -447,7 +361,7 @@ if ($conn->connect_error) {
                         echo "<td>" . $row["NomMatiere"] . "</td>";
                         echo "<td>" . $row['NbHeures'] . " Heures" . "</td>";
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["IdMatiere"] . "\">Supprimer</button></td>";
-                        echo "<td><button>Modifier</button></td>";
+                        echo '<td><a href="modifmatiere.php?id=' . $row["IdMatiere"] . ' ">Modifier</a></td>';
                         echo "</tr>";
                     }
                 } else {
