@@ -22,7 +22,7 @@
     <br>
     <br>
     <div class="form-container">
-        <form method="post" action="etucreercompte.php">
+        <form method="post" action=" ">
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" required>
             <br>
@@ -46,8 +46,10 @@
             $requete->closeCursor();
             echo '</select>';
             ?>
+
             <br>
-            <input type="submit" value="Creer le compte">
+            <input type="submit" name="creeretu" value="Creer le compte">
+
             <?php
 
             function generateRandomPassword()
@@ -62,20 +64,47 @@
             }
 
             $randomPassword = generateRandomPassword();
-            //echo $randomPassword;
-            $sql = "UPDATE Etudiant SET Password ='$randomPassword' WHERE IdEtu = 8";
+            echo "Mot de passe aléatoire : " . $randomPassword;
 
-            if ($conn->query($sql) === TRUE) {
-                echo "Le mot de passe aléatoire a été inséré avec succès dans la base de données.";
-            } else {
-                echo "Erreur lors de l'insertion du mot de passe aléatoire : " . $conn->error;
-            }
+
             ?>
 
 
 
         </form>
     </div>
+
+    <?php
+
+
+
+    include("ouverturebdd.php");
+    if(isset($_POST["creeretu"])){
+        $login = isset($_POST["login"]) ? $_POST["login"] : "";
+        $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+        $classe = isset($_POST["classe"]) ? $_POST["classe"] : "";
+        $prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : "";
+    
+    
+    
+    
+        $request = $bdd->prepare('SELECT IdClasse FROM Classe WHERE Classe = ?');
+        $request->execute(array($classe));
+        if ($donnees = $request->fetch()) {
+            $idclasse = $donnees['IdClasse'];
+        }
+        $request->closeCursor();
+    
+    
+        $requete = $bdd->prepare('INSERT INTO Etudiant (Login,Nom,Prenom,Password,IdClasse) VALUES (?,?,?,?,?)');
+        $requete->execute(array($login, $nom, $prenom, $randomPassword, $idclasse));
+
+    }
+
+  
+    ?>
+
+
     <!--pop-up déconnexion-->
     <script>
         document.getElementById("deco").addEventListener("click", decOut);

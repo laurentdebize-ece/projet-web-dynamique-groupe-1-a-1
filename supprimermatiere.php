@@ -1,18 +1,20 @@
-<?php
-$servername="localhost:3306";
+<?php 
+$servername="localhost";
 $username="root";
 $password="root";
 $dbname="projet";
+
 $conn=new mysqli($servername,$username,$password,$dbname);
-$matiere = $_POST['supprimer'];
-$requete = "DELETE FROM matière WHERE NomMatiere = '$matiere'";
-$resultat=$conn->query($sql);
-if ($resultat==TRUE) {
+
+$id = isset($_POST["supprimer"]) ? $_POST["supprimer"] : "";
+
+$sql = "DELETE FROM Matière WHERE IdMatiere = '$id'";
+$result = $conn->query($sql);
+
+if ($result === TRUE) {
     echo "Ligne supprimée avec succès.";
 } else {
-    echo "Erreur lors de la suppression de la ligne : " . $requete->error;
+    echo "Erreur lors de la suppression de la ligne : " . $bdd->error;
 }
-
 $conn->close();
 ?>
-
