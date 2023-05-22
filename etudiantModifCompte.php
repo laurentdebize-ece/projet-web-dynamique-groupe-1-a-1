@@ -3,19 +3,31 @@ session_start();
 
 include("ouverturebdd.php");
 
-if (isset($_POST['id'])) {
-    //Recup ID fichier 
-    $idEtu = $_POST['id']; 
-    
+if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['password']) && isset($_POST['classe'])) {
+    $idEtu = $_POST['id'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
-    $login = $_POST['login'];
+    $password = $_POST['password'];
     $classe = $_POST['classe'];
 
-    $sql = "UPDATE etudiant SET Nom='$nom', Prenom='$prenom', Login='$login', idClasse='$classe' WHERE idEtu='$idEtu'";
-    $bdd->query($sql); 
+    echo "Données reçues : id=$idEtu, nom=$nom, prenom=$prenom, password=$password, classe=$classe";
 
-    header("Location: scolarite.php");
-    exit();
+    $requete = $bdd->prepare("UPDATE etudiant SET Nom = :nom, Prenom = :prenom, Password = :password, IdClasse = :classe WHERE IdEtu = :idEtu");
+    
+    $requete->bindParam(':nom', $nom);
+    $requete->bindParam(':prenom', $prenom);
+    $requete->bindParam(':password', $password);
+    $requete->bindParam(':classe', $classe);
+    $requete->bindParam(':idEtu', $idEtu);
+
+    
+    $success = $requete->execute();
+
+    
+    if ($success) {
+        header("Location: scolarite.php");
+        exit();
+    } 
 }
 ?>
+

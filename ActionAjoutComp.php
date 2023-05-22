@@ -7,6 +7,7 @@ $classe = isset($_POST["classe"])? $_POST["classe"] : "";
 $matiere = isset($_POST["matiere"])? $_POST["matiere"] : "";
 $requete = $bdd->prepare(' SELECT IdMatiere FROM Matière WHERE NomMatiere = ? ');
 $requete->execute(array($matiere));
+
 if($donnees = $requete->fetch()) {
     $idmatiere = $donnees['IdMatiere'];
 }

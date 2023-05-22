@@ -22,7 +22,7 @@
     <br>
     <br>
     <div class="form-container">
-        <form method="post" action="ajoutmatiere2.php">
+        <form method="post" action=" ">
 
             <label for="nom">Nom Matiere:</label>
             <input type="text" id="nom" name="nom" required>
@@ -31,24 +31,43 @@
             <input type="text" id="volume" name="volume" required>
             <br>
             <br>
-            <input type="submit" value="Ajouter matiere">
+            <input type="submit" name="ajoutmatiere" value="Ajouter matiere">
 
         </form>
     </div>
-    <!--pop-up déconnexion-->
-	<script>
-		document.getElementById("deco").addEventListener("click", decOut);
 
-		function decOut() {
-			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
-				/*retour page MDP*/
-				window.location.href = "accueil.php";
-			}
-		}
-	</script>
-	<div id="footer">
-		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
-	</div>
+    <?php
+    include("ouverturebdd.php");
+
+    if (isset($_POST['ajoutmatiere'])) {
+
+        $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
+        $volume = isset($_POST["volume"]) ? $_POST["volume"] : "";
+        $requete = $bdd->prepare('INSERT INTO Matière (NomMatiere,NbHeures) VALUES (?,?)');
+        $requete->execute(array($nom, $volume));
+        
+    }
+
+
+
+    ?>
+
+
+
+    <script>
+        document.getElementById("deco").addEventListener("click", decOut);
+
+        function decOut() {
+            if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+                /*retour page MDP*/
+                window.location.href = "accueil.php";
+            }
+        }
+    </script>
+    <div id="footer">
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
+
 </body>
 
 

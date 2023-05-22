@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="modifEtudiantCompte.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="modifProfCompte.css">
 	<title>Omnes MySkills</title>
 </head>
 
@@ -22,10 +21,8 @@
 	<button onclick="window.location.href='scolarite.php'">Retour</button>
 	<br>
 	<br>
-
 	<div class="form-container">
-		<form method="post" action="etudiantModifCompte.php ">
-		<input type="hidden" name="id" value="<?php echo $idEtu; ?>">
+		<form method="post">
 			<label for="nom">Nom :</label>
 			<input type="text" id="nom" name="nom">
 			<br>
@@ -36,17 +33,10 @@
 			<input type="password" id="password" name="password">
 			<br>
 			<br>
-			<label for="matiere">Matière 1 :</label>
+			<label for="matiere">Matière :</label>
 			<input type="text" id="matiere" name="matiere">
 			<br>
-			<label for="matiere">Matière 2 :</label>
-			<input type="text" id="matiere" name="matiere">
-			<br>
-			<label for="matiere">Matière 3 :</label>
-			<input type="text" id="matiere" name="matiere">
-			<br>
-			<br>
-			<label>Cet étudiant appartient à la classe :</label>
+			<label>Ce professeur est associé à la classe :</label>
 			<select name="classes">
 				<option value="ing1">ING1</option>
 				<option value="ing2">ING2</option>
@@ -56,8 +46,7 @@
 			<input type="submit" value="Valider les modifications">
 
 		</form>
-	</div>
-	<!--pop-up déconnexion-->
+		<!--pop-up déconnexion-->
 	<script>
 		document.getElementById("deco").addEventListener("click", decOut);
 
@@ -72,5 +61,6 @@
 		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
 	</div>
 </body>
+</div>
 
 </html>

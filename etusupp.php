@@ -8,7 +8,7 @@ $conn=new mysqli($servername,$username,$password,$dbname);
 
 $id = isset($_POST["supprimer"]) ? $_POST["supprimer"] : "";
 
-$sql = "DELETE FROM Scolarite WHERE IdSco = '$id'";
+$sql = "DELETE FROM Etudiant WHERE IdEtu = '$id'";
 $result = $conn->query($sql);
 if ($result === TRUE) {
     echo "Ligne supprimée avec succès.";
