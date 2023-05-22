@@ -1,0 +1,185 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	background-image: url('ECE_Campus1.jpg');
+	color: #333;
+    opacity: 1;
+}
+/* Bandeau haut de page */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	padding: 10px;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	margin-left: 20px;
+	text-align: center;
+	color: #2b0849;
+}
+/*formulaire*/
+.form-container {
+    width: 400px;
+    /*background-color: #fff;*/
+    border: 1px solid #2b0849;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+ 
+
+  select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #2b0849;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #591c7e;
+  }
+
+img {
+	max-width: 100px;
+	max-height: 100px;
+	margin-left: 20px;
+}
+
+nav ul {
+	list-style: none;
+	text-align: center;
+	margin-top: 20px;
+}
+
+/* Bouton haut alignement les uns à côté des autres */
+nav ul li {
+	display: inline-block;
+}
+
+/* Bouton haut */
+nav ul li a {
+	text-decoration: none;
+	color: #333;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+.nav-item {
+	margin-right: 10px;
+	color: #333;
+	text-decoration: none;
+	position: relative;
+	cursor: pointer;
+}
+
+.nav-item::after {
+	content: "";
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #333;
+	transform: scaleX(0);
+	transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after {
+	transform: scaleX(1);
+}
+
+section {
+	margin-bottom: 40px;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(22, 142, 15, 0.1);
+}
+
+/* Nom section */
+section h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #492808;
+	border-bottom: 2px solid #2b0849;
+	padding-bottom: 10px;
+    text-align: center;
+}
+.col-container {
+    display: table;
+    width: 100%;
+  }
+  .col1 {
+    padding: 16px;
+  }
+  .col2{
+    display: table-cell;
+    padding: 16px;;
+  }
+button {
+	padding: 10px 20px;
+	font-weight: bold;
+	color: #fff;
+    margin-right: 10px;
+	background-color: #2b0849;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+/* Surlignement bouton lors du passage de la souris */
+button:hover {
+	background-color: #591c7e;
+}
+.container {
+    text-align: right;
+  }
+/* tableau */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+  }
+
+  th, td {
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	border: 1px solid black;
+  }
+
+  th {
+	background-color: #f2f2f2;
+  }
+
+  tr:hover {
+	background-color: #f5f5f5;
+  }
+
+#footer {
+	background-color: #2b0849;
+	color: white;
+	position: fixed;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+}

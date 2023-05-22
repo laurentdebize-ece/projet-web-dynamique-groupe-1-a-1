@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="mesCompetences2.css">
+    <link rel="stylesheet" type="text/css" href="mesCompetences3.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>OMNES MySkills</title>
 
@@ -34,31 +34,48 @@
 
             </div>
         </form>
-        <button onclick="window.location.href='etudiant.php'">Retour</button>
+        <nav>
+            <button onclick="window.location.href='etudiant.php'">Retour</button>
+            <button id="deco">Déconnexion</button>
+        </nav>
     </header>
     <table>
-        <thead>
-            <tr>
-                <th>Compétences</th>
-                <th>Date limite</th>
-                <th>Classe concerné</th>
-                <th>Auto-évaluations</th>
-                <th> Validation des résultats</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+    <thead>
+      <tr>
+        <th>Compétences</th>
+        <th>Date limite</th>
+        <th>Classe concerné</th>
+        <th>Matiere</th>
+        <th>Auto-évaluations</th>
+        <th>Validation des résultats</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
 
+<<<<<<< HEAD
             $servername = "localhost";
             $username = "root";
             $password = "root";
             $conn = new mysqli($servername, $username, $password);
+=======
+      $servername = "localhost";
+      $username = "root";
+      $password = "root";
+      $dbname = "projet";
+>>>>>>> main
 
-            $sql = "SELECT * FROM Competence";
+      // Connexion à la base de données
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+        die("Erreur de connexion à la base de données : " . $conn->connect_error);
+      }
 
-            $result = $conn->query($sql);
+      $query = "SELECT * FROM Competence";
+      $result = $conn->query($query);
 
+<<<<<<< HEAD
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     if (isset($row['IdClasse'])) {
@@ -102,8 +119,53 @@
                     }
                 });
             });
+=======
+      if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo "<tr>";
+          echo "<td>" . $row["NomCom"] . "</td>";
+          //echo "<td>" . $row["DateLimite"] . "</td>";
+          echo "<td>" . $row["IdClasse"] . "</td>";
+          echo "<td>" . $row["IdMatiere"] . "</td>";
+          echo "<td><button class=\"demande\">Demander auto-évaluation</button></td>";
+          echo "<td><button class=\"demande\">Valider la compétence</button></td>";
+          echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
+          echo "</tr>";
+        }
+      } else {
+        echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
+      }
+      ?>
+    </tbody>
+  </table>
+  <br>
+  <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
+  <script>
+    $(document).ready(function() {
+      $(".retirer").click(function() {
+        var competences = $(this).data("id");
+        $.ajax({
+          type: "POST",
+          url: "TabComp.php",
+          data: 
+          {
+            supprimer : competences
+          },
+          success: function(response) 
+          {
+            console.log(response);
+          },
+          error: function(xhr, status, error) 
+          {
+            console.error(xhr.responseText);
+          }  
+        
+>>>>>>> main
         });
-    </script>
+        $(this).closest("tr").remove();
+      });
+    });
+  </script>
     <script>
         //Ordre 
         $('select[name="select"]').change(function() {
@@ -121,6 +183,21 @@
             });
         });
     </script>
+    <!--pop-up déconnexion-->
+    <script>
+        document.getElementById("deco").addEventListener("click", decOut);
+
+        function decOut() {
+            if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+                /*retour page MDP*/
+                window.location.href = "accueil.php";
+            }
+        }
+    </script>
+
+    <div id="footer">
+        <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+    </div>
 </body>
 
 </html>
