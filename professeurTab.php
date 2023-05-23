@@ -39,6 +39,7 @@
       $username = "root";
       $password = "root";
       $dbname = "projet";
+
       $conn = new mysqli($servername, $username, $password, $dbname);
       if ($conn->connect_error) {
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
@@ -49,6 +50,7 @@
 
       if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
           echo "<td class=\"dateLimite\">" . $row["Datelimite"] . "</td>";
@@ -59,8 +61,6 @@
           echo '<td><button class="validation" data-id="' . $competenceId . '">Valider la compétence</button></td>';
           echo "<td><button class=\"retirer\" data-id=\"" . $competenceId . "\">Supprimer</button></td>";
           echo "</tr>";
-          
-
         }
       } else {
         echo "<tr><td colspan=\"6\">Aucune compétence disponible pour l'instant.</td></tr>";
@@ -70,13 +70,20 @@
   </table>
   <br>
   <button onclick="window.location.href='FormAjoutComp.php'">Ajouter une compétence</button>
+
   <form id="autoEvalForm" style="display: none;">
     <label for="dateLimite">Date limite :</label>
     <input type="date" id="dateLimite" name="date_limite">
     <input type="hidden" id="idClasse" name="id_classe">
     <input type="submit" value="Envoyer">
   </form>
-  <p> Id dur professeur : <?php echo $_SESSION['IdProf'] ?> </p>
+  <p>
+  <?php 
+  if(isset($_SESSION['IdProf'])) {
+    echo "Id du professeur : " . $_SESSION['IdProf'];
+  } 
+  ?>
+  </p>
   <script>
     $(document).ready(function() {
       $(".retirer").click(function() {

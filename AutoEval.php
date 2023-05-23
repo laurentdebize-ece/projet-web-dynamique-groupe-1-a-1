@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoevalId = $_POST['demande'];
     $dateLimite = $_POST['date_limite'];
 
-    $servername = "localhost:3306";
+    $servername = "localhost";
     $username = "root";
     $password = "root";
     $dbname = "projet";
