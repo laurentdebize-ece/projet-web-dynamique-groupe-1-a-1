@@ -1,3 +1,11 @@
+<?php session_start();
+
+$IdEtu = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+
+$IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : ""; 
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +70,10 @@
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
       }
 
-      $query = "SELECT * FROM Competence";
+    
+      $query = "SELECT * FROM Competence WHERE IDClasse = '$IdClasse'";
+
+
       $result = $conn->query($query);
 
       if ($result && $result->num_rows > 0) {
@@ -137,33 +148,33 @@
   <script>
     document.getElementById("deco").addEventListener("click", decOut);
 
-        function decOut() {
-            if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
-                /*retour page MDP*/
-                window.location.href = "accueil.php";
-            }
+    function decOut() {
+      if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+        /*retour page MDP*/
+        window.location.href = "accueil.php";
+      }
+    }
+  </script>
+  <script>
+    $(".acquisition").change(function() {
+      var idCompetence = $(this).data("id");
+      var acquisition = $(this).val();
+      $.ajax({
+        type: "POST",
+        url: "Validation.php",
+        data: {
+          id_competence: idCompetence,
+          acquisition: acquisition
+        },
+        success: function(response) {
+          console.log(response);
+          $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
+        },
+        error: function(xhr, status, error) {
+          console.error(xhr.responseText);
         }
-    </script>
-    <script>
-     $(".acquisition").change(function() {
-        var idCompetence = $(this).data("id");
-        var acquisition = $(this).val();
-        $.ajax({
-          type: "POST",
-          url: "Validation.php",
-          data: {
-            id_competence: idCompetence,
-            acquisition: acquisition
-          },
-          success: function(response) {
-            console.log(response);
-            $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
-          },
-          error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-          }
-        });
       });
+    });
   </script>
 
 

@@ -144,13 +144,12 @@ if ($conn->connect_error) {
             <h2>Les étudiants :</h2>
             <thead>
                 <tr>
-                    <th>Id Etudiant</th>
+                    <th>Prénom</th>
                     <th>Nom</th>
-                    <th>Prenom</th>
                     <th>Login</th>
                     <th>Password</th>
-                    <th></th>
-                    <th></th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
                 </tr>
             </thead>
             <tbody>
@@ -164,7 +163,6 @@ if ($conn->connect_error) {
                         echo "<tr>";
                         echo "<td>" . $row['Prenom'] . "</td>";
                         echo "<td>" . $row['Nom'] . "</td>";
-                        echo "<td>" . $row['IdEtu'] . "</td>";
                         echo "<td>" . $row['Login'] . "</td>";
                         echo "<td>" . $row['Password'] . "</td>";
                         echo "<td><button class=\"retirer\" data-id=\"" . $row["IdEtu"] . "\">Supprimer</button></td>";
@@ -209,7 +207,6 @@ if ($conn->connect_error) {
             <h2>Les Professeurs :</h2>
             <thead>
                 <tr>
-                    <th>Id Professeur</th>
                     <th>Login</th>
                     <th>Password</th>
                     <th>Nom</th>
@@ -227,7 +224,6 @@ if ($conn->connect_error) {
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['IdProf'] . "</td>";
                         echo "<td>" . $row['Login'] . "</td>";
                         echo "<td>" . $row['Password'] . "</td>";
                         echo "<td>" . $row['Nom'] . "</td>";
@@ -274,7 +270,6 @@ if ($conn->connect_error) {
             <h2> Scolarite </h2>
             <thead>
                 <tr>
-                    <th>Id Scolarite</th>
                     <th>Login</th>
                     <th>Password</th>
                     <th>Nom</th>
@@ -294,7 +289,6 @@ if ($conn->connect_error) {
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['IdSco'] . "</td>";
                         echo "<td>" . $row['Login'] . "</td>";
                         echo "<td>" . $row['Password'] . "</td>";
                         echo "<td>" . $row['Nom'] . "</td>";

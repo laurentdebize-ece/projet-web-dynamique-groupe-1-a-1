@@ -1,3 +1,7 @@
+<?php session_start();
+
+$IdEtu = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,13 +109,17 @@
 	<!--pop-up déconnexion-->
 	<script>
 		document.getElementById("deco").addEventListener("click", decOut);
-
+        
 		function decOut() {
 			if (confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
 				/*retour page MDP*/
+                
 				window.location.href = "accueil.php";
+                
 			}
 		}
+        
+    
 	</script>
 	<div id="footer">
 		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>

@@ -1,7 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start(); ?>
+<?php session_start(); 
+$IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+?>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +47,7 @@
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
       }
 
-      $query = "SELECT * FROM Competence";
+      $query = "SELECT * FROM Competence INNER JOIN Cours ON Cours.IdProfesseur = '$IdProf' AND Cours.IDMatiere=Competence.IdMatiere";
       $result = $conn->query($query);
 
       if ($result && $result->num_rows > 0) {
