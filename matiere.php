@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="matiere.css">
+    <link rel="stylesheet" type="text/css" href="matiere3.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="matiere.js"></script>
@@ -88,7 +88,8 @@ if ($conn->connect_error) {
         </button>
     </div>
 
-
+    <section>
+        <h2>Matiere etudiant</h2>
     <div id="matiere">
             <p class="tabmatiere">
             <table class="tabetu">
@@ -145,6 +146,7 @@ if ($conn->connect_error) {
             </table>
             </p>
     </div>
+    </section>
 
 
     <div id="footer">
