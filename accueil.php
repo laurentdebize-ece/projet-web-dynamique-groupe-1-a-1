@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
 	<img src="logoSite.png" alt="imageLogo">
 	<div class="form-container">
 		<form method="post" action="accueil2.php ">
+		
 			<h1>OMNES MySkills</h1>
 			<br>
 			<label for="login">Identifiant :</label>
@@ -28,9 +30,16 @@
 				<option value="etud">Étudiant</option>
 			</select>
 			<br>
+            <span id="error-message">
+			<?php
+			if (isset($_GET['error']) && $_GET['error'] == 1) {
+				$messageErreur = "Mot de passe ou identifiant incorrect. Réessayez.";
+				echo $messageErreur;
+			}
+			?>
+			</span>
 			<br>
-			<input type="submit" name="connexion" value="Connexion">
-
+            <input type="submit" name="connexion" value="Connexion">
 		</form>
 		<button onclick="window.location.href='accueilfirst.php'">Première connexion</button>
 		<div class="error-message">
@@ -52,6 +61,7 @@
 			?>
 		</div>
 	</div>
+    
 
 
 	<br>
