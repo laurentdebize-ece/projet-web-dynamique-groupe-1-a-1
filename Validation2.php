@@ -27,10 +27,10 @@ $query = "SELECT IdNiveau FROM autoevaluation WHERE IdCompetence = '$idCompetenc
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 if($idNiveau = $row["IdNiveau"] ) {
-    $queryUpdate = "UPDATE autoevaluation SET validation = TRUE" ;
+    $queryUpdate = "UPDATE autoevaluation SET validation = TRUE WHERE IdEtudiant = '$idEtu' ";;
     $resultUpdate = $conn->query($queryUpdate);
 }else{
-    $queryUpdate2 = "UPDATE autoevaluation SET validation = FALSE";
+    $queryUpdate2 = "UPDATE autoevaluation SET validation = FALSE WHERE IdEtudiant = '$idEtu' ";
     $resultUpdate2 = $conn->query($queryUpdate2);
 }
 
