@@ -54,6 +54,7 @@ $result2 = $conn->query($query2);
         echo '</td>';
         echo "</tr>";
       }
+      
     } else {
       echo "<tr><td colspan=\"2\">Aucun résultat d'auto-évaluation disponible pour cette compétence.</td></tr>";
     }

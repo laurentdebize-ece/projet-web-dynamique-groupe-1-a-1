@@ -143,6 +143,7 @@ $IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
         }
       });
     });
+    
   });
 });
   </script>

@@ -9,6 +9,7 @@ if ($conn->connect_error) {
   die("Erreur de connexion à la base de données : " . $conn->connect_error);
 }
 
+
 $idCompetence = $_POST['id_competence'];
 $acquisition = $_POST['acquisition'];
 $idEtu = $_POST['id_etu'];

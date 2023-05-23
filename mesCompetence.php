@@ -77,6 +77,7 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
 
       } 
       else {
+        
 
         $query = "SELECT * FROM Competence WHERE IdClasse = '$IdClasse'";
 
