@@ -33,7 +33,7 @@
             <span id="error-message">
 			<?php
 			if (isset($_GET['error']) && $_GET['error'] == 1) {
-				$messageErreur = "Mot de passe ou identifiant incorrect. Réessayez ou créez-vous un compte.";
+				$messageErreur = "Mot de passe ou identifiant incorrect. Réessayez.";
 				echo $messageErreur;
 			}
 			?>
