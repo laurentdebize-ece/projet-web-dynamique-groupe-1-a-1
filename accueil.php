@@ -30,14 +30,7 @@
 				<option value="etud">Étudiant</option>
 			</select>
 			<br>
-            <span id="error-message">
-			<?php
-			if (isset($_GET['error']) && $_GET['error'] == 1) {
-				$messageErreur = "Mot de passe ou identifiant incorrect. Réessayez.";
-				echo $messageErreur;
-			}
-			?>
-			</span>
+            
 			<br>
             <input type="submit" name="connexion" value="Connexion">
 		</form>
