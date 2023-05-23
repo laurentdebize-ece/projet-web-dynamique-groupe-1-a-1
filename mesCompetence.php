@@ -1,6 +1,9 @@
 <?php session_start();
 
-$IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+$IdEtu = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+
+$IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : ""; 
+
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +70,9 @@ $IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
       }
 
+    
+      $query = "SELECT * FROM Competence WHERE IDClasse = '$IdClasse'";
 
-
-
-
-
-      $query = "SELECT * FROM Competence INNER JOIN Cours ON Cours.IdProfesseur = '$IdProf' AND Cours.IDMatiere=Competence.IdMatiere";
 
       $result = $conn->query($query);
 

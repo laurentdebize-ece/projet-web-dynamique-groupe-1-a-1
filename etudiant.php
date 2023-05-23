@@ -83,7 +83,7 @@ $IdEtu = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
                 $dbname = "projet";
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
-                $sql = "SELECT * FROM Competence WHERE IDClasse = '$IdEtu'";
+                $sql = "SELECT * FROM Competence ";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
