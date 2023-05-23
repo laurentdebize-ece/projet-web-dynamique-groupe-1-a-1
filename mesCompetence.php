@@ -61,7 +61,7 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
 
       $servername = "localhost";
       $username = "root";
-      $password = "";
+      $password = "root";
       $dbname = "projet";
 
       // Connexion à la base de données

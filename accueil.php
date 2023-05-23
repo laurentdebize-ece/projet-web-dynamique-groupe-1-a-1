@@ -18,10 +18,10 @@
 			<h1>OMNES MySkills</h1>
 			<br>
 			<label for="login">Identifiant :</label>
-			<input type="email" name="login" id="login">
+			<input type="email" name="login" id="login" , required>
 			<br>
 			<label for="password">Mot de passe :</label>
-			<input type="password" name="password" id="password">
+			<input type="password" name="password" id="password" , required>
 			<br>
 			<br>
 			<select name="statut">
