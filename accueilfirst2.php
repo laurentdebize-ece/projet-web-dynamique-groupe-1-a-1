@@ -19,15 +19,16 @@ switch ($statut) {
         if ($donnees = $requete->fetch()) {
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
+            $_SESSION['Id'] = $donnees['IdProf'];
             $idprof = $donnees['IdProf'];
             $requete->closeCursor();
         } else {
-            header("Location: accueilfirst.php?error=2"); //MARCHE PAS
+            header("Location: accueilfirst.php?error=2"); 
             exit;
         }
         $_SESSION['login'] = $login;
         $_SESSION['password'] = $newpassword;
-        $requete = $bdd->prepare('UPDATE Professeur SET Password = ? WHERE IdProf= ?  ');
+        $requete = $bdd->prepare('UPDATE Professeur SET Password = ? WHERE IdProf = ?  ');
         $requete->execute(array($newpassword, $idprof));
         header("Location: pageAccueilProf.php");
         break;
@@ -38,7 +39,8 @@ switch ($statut) {
 
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $idsco = $donnes['Id'];
+            $_SESSION['Id'] = $donnees['IdSco'];
+            $idsco = $donnees['IdSco'];
             $requete->closeCursor();
         } else {
             header("Location: accueilfirst.php?error=2");
@@ -57,8 +59,10 @@ switch ($statut) {
         if ($donnees = $requete->fetch()) {
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $idetu = $donnes['Id'];
             $_SESSION['Classe'] = $donnees['IdClasse'];
+            $_SESSION['Id'] = $donnees['IdEtu'];
+            $idetu = $donnees['Id'];
+            
             $requete->closeCursor();
         } else {
             header("Location: accueilfirst.php?error=2");
