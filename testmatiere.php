@@ -51,10 +51,6 @@ if ($conn->connect_error) {
 
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-
-                <img id="Elec" src="matiere_electronique.jpg" alt="Elec" class="d-block">
-            </div>
             <div class="carousel-item">
                 <img id="Info" src="Matiere_Info.jpg" alt="Info" class="d-block">
             </div>
@@ -62,10 +58,17 @@ if ($conn->connect_error) {
                 <img id="Math" src="Matiere_Math2.jpg" alt="Math" class="d-block">
             </div>
             <div class="carousel-item">
-                <img id="Physique"src="Matiere_Physique.jpg" alt="Physique" class="d-block">
+                <img id="Physique" src="Matiere_Physique.jpg" alt="Physique" class="d-block">
             </div>
 
         </div>
+
+
+
+
+
+
+
         <script>
             document.getElementById("Elec").addEventListener("click", popMatiere);
             document.getElementById("Info").addEventListener("click", popMatiere);
@@ -79,17 +82,7 @@ if ($conn->connect_error) {
             }
         </script>
 
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carou" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carou" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
-
-
-    <div id="matiere">
+        <section id="matiere">
             <p class="tabmatiere">
             <table class="tabetu">
                 <h2> Matiere </h2>
@@ -144,9 +137,16 @@ if ($conn->connect_error) {
                 </tbody>
             </table>
             </p>
+        </section>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carou" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carou" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
-
-
     <div id="footer">
         <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
     </div>
