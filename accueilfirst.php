@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="accueil3.css">
+	<link rel="stylesheet" type="text/css" href="accueil4.css">
 	<title>Omnes MySkills</title>
 </head>
 
@@ -14,7 +14,6 @@
 	<div class="form-container">
 		<form method="post" action="accueilfirst2.php ">
 			<h1>OMNES MySkills</h1>
-			<br>
 			<label for="login">Identifiant :</label>
 			<input type="email" name="login" id="login">
 			<br>
@@ -36,6 +35,8 @@
 
 			<input type="submit" name="connexion" value="Connexion">
 
+		</form>
+		<div class="error-message">
 			<?php
 			if (isset($_GET['error'])) {
 				$error = $_GET['error'];
@@ -46,8 +47,7 @@
 				}
 			}
 			?>
-
-		</form>
+		</div>
 	</div>
 
 
@@ -58,5 +58,6 @@
 </body>
 
 
-
+<br>
+<br>
 </html>
