@@ -57,7 +57,7 @@
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $dbname = "projet";
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 $sql = "SELECT NomCom, DateLimite,ClasseConcerné FROM competence";
