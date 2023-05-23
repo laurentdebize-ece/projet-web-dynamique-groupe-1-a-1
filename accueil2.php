@@ -6,8 +6,6 @@ $login = isset($_POST["login"]) ? $_POST["login"] : "";
 $password = isset($_POST["password"]) ? $_POST["password"] : "";
 $statut = isset($_POST["statut"]) ? $_POST["statut"] : "";
 
-
-
 switch ($statut) {
     case 'prof':
         $requete = $bdd->prepare('SELECT * FROM professeur WHERE Login =  ? AND Password = ? ');

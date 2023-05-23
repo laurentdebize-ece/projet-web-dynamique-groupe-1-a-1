@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+include("ouverturebdd.php");
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +26,17 @@
             <button id="deco">Déconnexion</button>
         </nav>
     </header>
+    <?php 
+
+    $requete = $bdd->prepare('SELECT Classe FROM Classe WHERE IdClasse = ?');
+    $requete->execute(array($_SESSION['Classe']));
+
+        if ($donnees = $requete->fetch()) {
+            $classe = $donnees['Classe'];
+            $requete->closeCursor();
+        }    
+    
+    ?>
     <br>
     <br>
     <div class="page"> <!--contenant toute la page-->
@@ -32,6 +47,7 @@
                 <p>Prénom : <?php echo $_SESSION['Prenom'] ?> </p>
                 <p>Adresse mail : <?php echo $_SESSION['login'] ?></p>
                 <p>Mot de passe : <?php echo $_SESSION['password'] ?></p>
+                <p>Classe : <?php echo $classe ?></p>
             </form>
         </div>
         <div class="pageDroite"><!--droite page-->
