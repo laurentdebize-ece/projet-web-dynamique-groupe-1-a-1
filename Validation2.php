@@ -43,5 +43,6 @@ if ($resultUpdate) {
 }
 
 $conn->close();
+
 ?>
 

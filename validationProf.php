@@ -83,6 +83,7 @@ $result2 = $conn->query($query2);
   </script>
   </tbody>
 </table>
+
 <br>
 <br>
 <div id="footer">
