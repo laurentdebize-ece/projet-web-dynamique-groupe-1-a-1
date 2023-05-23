@@ -16,7 +16,7 @@ switch ($statut) {
 
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $_SESSION['IdProf'] = $donnees['IdProf'];
+            $_SESSION['Id'] = $donnees['IdProf'];
 
             $requete->closeCursor();
         } else {
@@ -33,7 +33,7 @@ switch ($statut) {
         if ($donnees = $requete->fetch()) {
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $_SESSION['IdSco'] = $donnees['IdSco'];
+            $_SESSION['Id'] = $donnees['IdSco'];
             $requete->closeCursor();
         } else {
             header("Location: accueil.php?error=1");
@@ -50,8 +50,8 @@ switch ($statut) {
        
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $_SESSION['IdEtu'] = $donnees['IdEtu'];
-
+            $_SESSION['Id'] = $donnees['IdEtu'];
+            $_SESSION['Classe'] = $donnees['IdClasse'];
             $requete->closeCursor();
         } else {
             header("Location: accueil.php?error=1");
