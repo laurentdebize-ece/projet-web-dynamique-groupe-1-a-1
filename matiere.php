@@ -33,20 +33,6 @@
 
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <?php session_start();
-                include("ouverturebdd.php"); 
-                
-                $requete = $bdd->query(' SELECT Image FROM Matière');
-                if($donnees = $requete->fetch()) {
-                    $image = $donnees['Image'] ;    
-                }
-                $requete->closeCursor();
-                echo $image;
-        
-                ?>
-                <img id="Elec" src="$image" alt="Elec" class="d-block">
-            </div>
             <div class="carousel-item">
                 <img id="Info" src="Matiere_Info.jpg" alt="Info" class="d-block">
             </div>
