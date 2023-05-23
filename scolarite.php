@@ -101,11 +101,10 @@ if ($conn->connect_error) {
             <br>
 
             <label for="nom">Nom :</label>
-            <input type="nom" id="nom" name="nom">
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
             <br>
-
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom">
+            <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($_POST['prenom'] ?? '', ENT_QUOTES); ?>" required>
             <br>
 
             <label>Matière :</label>

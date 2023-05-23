@@ -26,11 +26,11 @@
 	<div class="form-container">
 		<form method="post" action=" ">
 
-			<label for="nom">Nom Matiere :</label>
-			<input type="text" id="nom" name="nom">
-			<br>
+		<label for="nom">Nom :</label>
+			<input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
+            <br>
 			<label for="heure">Nombre Heures :</label>
-			<input type="number" id="heure" name="heure">
+			<input type="number" id="heure" name="heure" value="<?php echo htmlspecialchars($_POST['heure'] ?? '', ENT_QUOTES); ?>" required>
 			<br>
 			<input type="submit" name="modifmatiere" value="Valider les modifications">
 

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<header>
+    <header>
         <img src="logoSite.png" alt="imageLogo">
         <h1>Informations sur la compétence :</h1>
         <div class="container">
@@ -23,44 +23,47 @@
     <br>
     <br>
     <div class="form-container">
-    <form action="ActionAjoutComp.php" method="post">
+        <form action="ActionAjoutComp.php" method="post">
 
-        <label for="nom">Nom de la compétence</label>
-        <input type="text" id="nom" name="nom" required><br><br>
-        <label>Classe concernée :</label><br>
-        <?php
-        $requete = $bdd->query('SELECT Classe FROM Classe ');
+            <label for="nom">Nom de la compétence</label>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required><br><br>
 
-        echo '<select name="classe">';
-        
-        while ($donnees = $requete->fetch()) {
-            echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
-        }
-        $requete->closeCursor();
-        echo '</select>';
-        ?>
+            <label>Classe concernée :</label><br>
+            <?php
+            $requete = $bdd->query('SELECT Classe FROM Classe ');
 
-        <br>
+            echo '<select name="classe">';
 
-        <label>Matière :</label>
-        <?php
-        $requete = $bdd->query('SELECT * FROM Matière ');
+            while ($donnees = $requete->fetch()) {
+                $classe = htmlspecialchars($donnees['Classe'], ENT_QUOTES);
+                echo '<option value="' . $classe . '">' . $classe . '</option>';
+            }
+            $requete->closeCursor();
+            echo '</select>';
+            ?>
 
-        echo '<select name="matiere">';
-        while ($donnees = $requete->fetch()) {
-            echo '<option value="' . $donnees['NomMatiere'] . '">' . $donnees['NomMatiere'] . '</option>';
-        }
-        $requete->closeCursor();
-        echo '</select>';
-        ?>
+            <br>
 
-        <br>
+            <label>Matière :</label>
+            <?php
+            $requete = $bdd->query('SELECT * FROM Matière ');
 
-        <input type="submit" value="Soumettre">
-    </form>
+            echo '<select name="matiere">';
+            while ($donnees = $requete->fetch()) {
+                $matiere = htmlspecialchars($donnees['NomMatiere'], ENT_QUOTES);
+                echo '<option value="' . $matiere . '">' . $matiere . '</option>';
+            }
+            $requete->closeCursor();
+            echo '</select>';
+            ?>
+
+            <br>
+
+            <input type="submit" value="Soumettre">
+        </form>
     </div>
-     <!--pop-up déconnexion-->
-     <script>
+    <!--pop-up déconnexion-->
+    <script>
         document.getElementById("deco").addEventListener("click", decOut);
 
         function decOut() {

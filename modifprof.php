@@ -26,14 +26,14 @@
 	<div class="form-container">
 		<form method="post" action=" ">
 
-			<label for="nom">Nom :</label>
-			<input type="text" id="nom" name="nom">
-			<br>
-			<label for="prenom">Prénom :</label>
-			<input type="text" id="prenom" name="prenom">
-			<br>
+		<label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
+            <br>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($_POST['prenom'] ?? '', ENT_QUOTES); ?>" required>
+            <br>
 			<label for="password">Mot de passe :</label>
-			<input type="password" id="password" name="password">
+			<input type="password" id="password" name="password" value="<?php echo htmlspecialchars($_POST['password'] ?? '', ENT_QUOTES); ?>" required>
 			<br>
 
 			<br>

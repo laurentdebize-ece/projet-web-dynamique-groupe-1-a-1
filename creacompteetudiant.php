@@ -24,13 +24,13 @@
     <div class="form-container">
         <form method="post" action=" ">
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
             <br>
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required>
+            <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($_POST['prenom'] ?? '', ENT_QUOTES); ?>" required>
             <br>
             <label for="login">Login :</label>
-            <input type="email" id="login" name="login">
+            <input type="email" id="login" name="login" value="<?php echo htmlspecialchars($_POST['login'] ?? '', ENT_QUOTES); ?>" required>
             <br>
 
             <label>Dans quelle classe l'ajouter ?</label>
@@ -39,7 +39,7 @@
 
             $requete = $bdd->query('SELECT * FROM Classe ');
 
-            echo '<select name="classe">';
+            echo '<select name="classe" required>';
             while ($donnees = $requete->fetch()) {
                 echo '<option value="' . $donnees['Classe'] . '">' . $donnees['Classe'] . '</option>';
             }

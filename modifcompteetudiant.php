@@ -27,13 +27,13 @@
 		<form method="post" action=" ">
 
 			<label for="nom">Nom :</label>
-			<input type="text" id="nom" name="nom">
+			<input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
 			<br>
 			<label for="prenom">Prénom :</label>
-			<input type="text" id="prenom" name="prenom">
+			<input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($_POST['prenom'] ?? '', ENT_QUOTES); ?>" required>
 			<br>
 			<label for="password">Mot de passe :</label>
-			<input type="password" id="password" name="password">
+			<input type="password" id="password" name="password" value="<?php echo htmlspecialchars($_POST['password'] ?? '', ENT_QUOTES); ?>" required>
 			<br>
 
 			<br>
@@ -78,8 +78,7 @@
 
 
 		$requete = $bdd->prepare("UPDATE Etudiant SET Nom = ? , Prenom = ? , Password = ? , IdClasse = ?  WHERE IdEtu = ? ");
-		$requete->execute(array($nom, $prenom, $password, $idclasse,$id));
-
+		$requete->execute(array($nom, $prenom, $password, $idclasse, $id));
 	}
 
 	?>

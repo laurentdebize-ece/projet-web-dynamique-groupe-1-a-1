@@ -25,10 +25,10 @@
         <form method="post" action=" ">
 
             <label for="nom">Nom Matiere:</label>
-            <input type="text" id="nom" name="nom" required>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES); ?>" required>
             <br>
             <label for="volume">Volume horaire :</label>
-            <input type="text" id="volume" name="volume" required>
+            <input type="text" id="volume" name="volume" value="<?php echo htmlspecialchars($_POST['volume'] ?? '', ENT_QUOTES); ?>" required>
             <br>
             <br>
             <input type="submit" name="ajoutmatiere" value="Ajouter matiere">
@@ -41,18 +41,13 @@
 
     if (isset($_POST['ajoutmatiere'])) {
 
-        $nom = isset($_POST["nom"]) ? $_POST["nom"] : "";
-        $volume = isset($_POST["volume"]) ? $_POST["volume"] : "";
-        $requete = $bdd->prepare('INSERT INTO Matière (NomMatiere,NbHeures) VALUES (?,?)');
+        $nom = isset($_POST["nom"]) ? htmlspecialchars($_POST["nom"], ENT_QUOTES) : "";
+        $volume = isset($_POST["volume"]) ? htmlspecialchars($_POST["volume"], ENT_QUOTES) : "";
+        $requete = $bdd->prepare('INSERT INTO Matière (NomMatiere, NbHeures) VALUES (?, ?)');
         $requete->execute(array($nom, $volume));
         
     }
-
-
-
     ?>
-
-
 
     <script>
         document.getElementById("deco").addEventListener("click", decOut);
@@ -69,7 +64,5 @@
     </div>
 
 </body>
-
-
 
 </html>

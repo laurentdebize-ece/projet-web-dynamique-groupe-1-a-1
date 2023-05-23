@@ -73,14 +73,16 @@ button:hover {
 	background-color: #591c7e;
 }
 .error-message {
-    background-color: #f8d7da;
     color: #721c24;
     padding: 10px;
     text-align: center;
     font-weight: bold;
     border-radius: 5px;
-    border: 1px solid #f5c6cb;
     margin-top: 10px;
+}
+.error-message.show-error {
+	background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
 }
 
 
