@@ -54,6 +54,7 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
         <th>Date limite</th>
         <th>Matiere</th>
         <th>Auto-évaluation</th>
+        <th>Validation</th>
       </tr>
     </thead>
     <tbody>
@@ -73,7 +74,6 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
     
       $query = "SELECT * FROM Competence WHERE IDClasse = '$IdClasse'";
       $result = $conn->query($query);
-
       if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
           echo "<tr>";
@@ -90,6 +90,16 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
             echo '</td>';
           } else {
             echo "<td>Aucune auto-évaluation programmé par votre professeur</td>";
+          }
+          $Competenceid = $row['IdCompetence'];
+          $query2 = "SELECT validation FROM autoevaluation WHERE Idcompetence='$Competenceid' AND IdEtudiant = '$IdEtu'";
+          $result2 = $conn->query($query2);
+          $row2 = $result2->fetch_assoc();
+          if($row2["validation"] == 1){
+              echo"<td> La compétence à été validé par votre professeur</td>";
+          }
+          else{
+            echo"<td> Compétence invalidz=é par votre professeur </td>";
           }
           echo "<td><button class=\"retirer\" data-id=\"" . $row["NomCom"] . "\">Supprimer</button></td>";
           echo "</tr>";

@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 
 $idCompetence = $_POST['id_competence'];
 $acquisition = $_POST['acquisition'];
-$idProf = $_POST['id_prof'];
+$idEtu = $_POST['id_etu'];
 $queryNiveau = "SELECT IDniveau FROM niveau WHERE NomNiveau = '$acquisition'";
 $resultNiveau = $conn->query($queryNiveau);
 if ($resultNiveau && $resultNiveau->num_rows > 0) {
@@ -22,23 +22,24 @@ if ($resultNiveau && $resultNiveau->num_rows > 0) {
   $conn->close();
   exit;
 }
-$queryEtudiant = "SELECT IdEtudiant FROM autoevaluation WHERE IdCompetence = '$idCompetence' LIMIT 1";
-$resultEtudiant = $conn->query($queryEtudiant);
-
-if ($resultEtudiant && $resultEtudiant->num_rows > 0) {
-  $rowEtudiant = $resultEtudiant->fetch_assoc();
-  $idEtudiant = $rowEtudiant["IdEtudiant"];
-} else {
-  echo "Erreur : Étudiant non trouvé";
-  $conn->close();
-  exit;
+$query = "SELECT IdNiveau FROM autoevaluation WHERE IdCompetence = '$idCompetence' AND IdEtudiant = '$idEtu' ";
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+if($idNiveau = $row["IdNiveau"] ) {
+    $queryUpdate = "UPDATE autoevaluation SET validation = TRUE" ;
+    $resultUpdate = $conn->query($queryUpdate);
+}else{
+    $queryUpdate2 = "UPDATE autoevaluation SET validation = FALSE";
+    $resultUpdate2 = $conn->query($queryUpdate2);
 }
-$queryUpdate = "UPDATE autoevaluation SET validation = (IdNiveau = '$idNiveau') WHERE IdCompetence = '$idCompetence' AND IdEtudiant = '$idEtudiant'";
-$resultUpdate = $conn->query($queryUpdate);
 
 if ($resultUpdate) {
   echo "Mise à jour réussie";
-} else {
+}
+if ($resultUpdate2) {
+    echo "Mise à jour réussie";
+  }
+ else {
   echo "Erreur lors de la mise à jour : " . $conn->error;
 }
 

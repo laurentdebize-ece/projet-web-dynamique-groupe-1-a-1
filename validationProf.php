@@ -46,7 +46,7 @@ $result2 = $conn->query($query2);
         echo "<td>" . $row["Nom"] . "</td>";
         echo "<td>" . $row["NomNiveau"] . "</td>";
         echo '<td>';
-        echo '<select class="acquisitionProf" data-id="' . $row2["IdCompetence"] . '" data-id-prof="' . $IdProf . '">';
+        echo '<select class="acquisitionProf" data-id="' . $row2["IdCompetence"] . '" data-id-etu="' . $row["IdEtudiant"] . '">';
         echo '<option value="acquis">acquis</option>';
         echo '<option value="non acquis">non acquis</option>';
         echo '<option value="en cours">en cours</option>';
@@ -62,18 +62,18 @@ $result2 = $conn->query($query2);
     $(".acquisitionProf").change(function() {
       var idCompetence = $(this).data("id");
       var acquisition = $(this).val();
-      var idProf = $(this).data("id-prof");
+      var idEtu = $(this).data("id-etu");
       $.ajax({
         type: "POST",
         url: "Validation2.php",
         data: {
           id_competence: idCompetence,
           acquisition: acquisition,
-          id_prof: idProf,
+          id_etu: idEtu,
         },
         success: function(response) {
           console.log(response);
-          $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
+          $(".acquisitionProf[data-id='" + idCompetence + "']").closest("td").text(acquisition);
         },
         error: function(xhr, status, error) {
           console.error(xhr.responseText);
