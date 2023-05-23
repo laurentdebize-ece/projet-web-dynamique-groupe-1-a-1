@@ -2,7 +2,7 @@
 
 $servername="localhost:3306";
 $username="root";
-$password="";
+$password="root";
 $conn=new mysqli($servername,$username,$password);
 
 // Récupération des données binaires (BLOB) de l'image depuis la base de données
