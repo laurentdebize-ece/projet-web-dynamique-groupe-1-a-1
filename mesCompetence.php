@@ -70,7 +70,17 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
       if ($conn->connect_error) {
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
       }
+      if (isset($_GET['idmat'])) {
 
+        $id = $_GET['idmat'];
+        $query = "SELECT * FROM Competence WHERE IdMatiere = '$id'";
+
+      } 
+      else {
+
+        $query = "SELECT * FROM Competence WHERE IdClasse = '$IdClasse'";
+
+      }
     
       $query = "SELECT * FROM Competence WHERE IDClasse = '$IdClasse'";
       $result = $conn->query($query);
