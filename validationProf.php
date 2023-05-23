@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start(); 
-$IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+<?php session_start();
+$IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
 ?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +28,7 @@ $query2 = "SELECT * FROM competence";
 $result = $conn->query($query);
 $result2 = $conn->query($query2);
 ?>
+<img src="logoSite.png" alt="imageLogo">
 <table>
   <thead>
     <tr>
@@ -44,12 +46,12 @@ $result2 = $conn->query($query2);
         echo "<td>" . $row["Nom"] . "</td>";
         echo "<td>" . $row["NomNiveau"] . "</td>";
         echo '<td>';
-            echo '<select class="acquisitionProf" data-id="' . $row2["IdCompetence"] . '" data-id-prof="' . $IdProf . '">';
-            echo '<option value="acquis">acquis</option>';
-            echo '<option value="non acquis">non acquis</option>';
-            echo '<option value="en cours">en cours</option>';
-            echo '</select>';
-            echo '</td>';
+        echo '<select class="acquisitionProf" data-id="' . $row2["IdCompetence"] . '" data-id-prof="' . $IdProf . '">';
+        echo '<option value="acquis">acquis</option>';
+        echo '<option value="non acquis">non acquis</option>';
+        echo '<option value="en cours">en cours</option>';
+        echo '</select>';
+        echo '</td>';
         echo "</tr>";
       }
     } else {
@@ -57,27 +59,36 @@ $result2 = $conn->query($query2);
     }
     ?>
     <script>
-    $(".acquisition").change(function() {
-      var idCompetence = $(this).data("id");
-      var acquisition = $(this).val();
-      var idEtudiant = $(this).data("id-etudiant");
-      $.ajax({
-        type: "POST",
-        url: "Validation.php",
-        data: {
-          id_competence: idCompetence,
-          acquisition: acquisition,
-          id_etudiant: idEtudiant,
-        },
-        success: function(response) {
-          console.log(response);
-          $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
-        },
-        error: function(xhr, status, error) {
-          console.error(xhr.responseText);
-        }
+      $(".acquisition").change(function() {
+        var idCompetence = $(this).data("id");
+        var acquisition = $(this).val();
+        var idEtudiant = $(this).data("id-etudiant");
+        $.ajax({
+          type: "POST",
+          url: "Validation.php",
+          data: {
+            id_competence: idCompetence,
+            acquisition: acquisition,
+            id_etudiant: idEtudiant,
+          },
+          success: function(response) {
+            console.log(response);
+            $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
+          },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+          }
+        });
       });
-    });
-  </script>
+    </script>
   </tbody>
 </table>
+<br>
+<br>
+<div id="footer">
+  <p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>
+</div>
+
+</body>
+
+</html>
