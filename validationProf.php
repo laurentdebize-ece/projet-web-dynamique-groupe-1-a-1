@@ -59,30 +59,31 @@ $result2 = $conn->query($query2);
     }
     ?>
     <script>
-      $(".acquisition").change(function() {
-        var idCompetence = $(this).data("id");
-        var acquisition = $(this).val();
-        var idEtudiant = $(this).data("id-etudiant");
-        $.ajax({
-          type: "POST",
-          url: "Validation.php",
-          data: {
-            id_competence: idCompetence,
-            acquisition: acquisition,
-            id_etudiant: idEtudiant,
-          },
-          success: function(response) {
-            console.log(response);
-            $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
-          },
-          error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-          }
-        });
+    $(".acquisitionProf").change(function() {
+      var idCompetence = $(this).data("id");
+      var acquisition = $(this).val();
+      var idProf = $(this).data("id-prof");
+      $.ajax({
+        type: "POST",
+        url: "Validation2.php",
+        data: {
+          id_competence: idCompetence,
+          acquisition: acquisition,
+          id_prof: idProf,
+        },
+        success: function(response) {
+          console.log(response);
+          $(".acquisition[data-id='" + idCompetence + "']").closest("td").text(acquisition);
+        },
+        error: function(xhr, status, error) {
+          console.error(xhr.responseText);
+        }
       });
-    </script>
+    });
+  </script>
   </tbody>
 </table>
+
 <br>
 <br>
 <div id="footer">
