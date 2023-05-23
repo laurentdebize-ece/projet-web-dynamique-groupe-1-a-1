@@ -57,17 +57,17 @@ $result2 = $conn->query($query2);
     }
     ?>
     <script>
-    $(".acquisition").change(function() {
+    $(".acquisitionProf").change(function() {
       var idCompetence = $(this).data("id");
       var acquisition = $(this).val();
-      var idEtudiant = $(this).data("id-etudiant");
+      var idProf = $(this).data("id-prof");
       $.ajax({
         type: "POST",
-        url: "Validation.php",
+        url: "Validation2.php",
         data: {
           id_competence: idCompetence,
           acquisition: acquisition,
-          id_etudiant: idEtudiant,
+          id_prof: idProf,
         },
         success: function(response) {
           console.log(response);
