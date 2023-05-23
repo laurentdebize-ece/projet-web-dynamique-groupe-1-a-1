@@ -47,20 +47,27 @@ $IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
       }
 
-      $query = "SELECT * FROM Competence INNER JOIN Cours ON Cours.IdProfesseur = '$IdProf' AND Cours.IDMatiere=Competence.IdMatiere";
+      $query = "SELECT * FROM competence INNER JOIN cours ON cours.IdProfesseur = '$IdProf' AND cours.IDMatiere=competence.IdMatiere";
       $result = $conn->query($query);
+      $query2 = "SELECT * FROM autoevaluation";
+      $result2 = $conn->query($query2);
 
       if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-
           echo "<tr>";
           echo "<td>" . $row["NomCom"] . "</td>";
           echo "<td class=\"dateLimite\">" . $row["Datelimite"] . "</td>";
           echo "<td>" . $row["IdClasse"] . "</td>";
           echo "<td>" . $row["IdMatiere"] . "</td>";
           $competenceId = $row["NomCom"]; 
+          $competenceId2 = $row["IdCompetence"];
           echo '<td><button class="demande" data-id="' . $competenceId . '">Demande auto-évaluation</button></td>';
-          echo '<td><button class="validation" data-id="' . $competenceId . '">Valider la compétence</button></td>';
+          $row2 = $result2->fetch_assoc();
+          if (!empty($row2["IdNiveau"])) {
+            echo '<td><a class="validation" href="validationProf.php?competenceID=' . $competenceId2 . '">Valider la compétence</a></td>';
+        } else {
+          echo "<td>Auto Evaluation en cours</td>";
+        }
           echo "<td><button class=\"retirer\" data-id=\"" . $competenceId . "\">Supprimer</button></td>";
           echo "</tr>";
         }
@@ -130,7 +137,7 @@ $IdProf = isset($_SESSION['Id']) ? $_SESSION['Id'] : "";
           $("#autoEvalForm").hide();
           $(".demande[data-id='" + competenceID + "']").closest("tr").find(".dateLimite").text(dateLimite);
         },
-        
+
         error: function(xhr, status, error) {
           console.error(xhr.responseText);
         }

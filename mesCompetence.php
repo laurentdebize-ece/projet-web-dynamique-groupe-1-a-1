@@ -72,8 +72,6 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
 
     
       $query = "SELECT * FROM Competence WHERE IDClasse = '$IdClasse'";
-
-
       $result = $conn->query($query);
 
       if ($result && $result->num_rows > 0) {
@@ -84,7 +82,7 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
           echo "<td>" . $row["IdMatiere"] . "</td>";
           if (!empty($row["Datelimite"])) {
             echo '<td>';
-            echo '<select class="acquisition" data-id="' . $row["IdCompetence"] . '">';
+            echo '<select class="acquisition" data-id="' . $row["IdCompetence"] . '" data-id-etudiant="' . $IdEtu . '">';
             echo '<option value="acquis">acquis</option>';
             echo '<option value="non acquis">non acquis</option>';
             echo '<option value="en cours">en cours</option>';
@@ -159,12 +157,14 @@ $IdClasse = isset($_SESSION['Classe']) ? $_SESSION['Classe'] : "";
     $(".acquisition").change(function() {
       var idCompetence = $(this).data("id");
       var acquisition = $(this).val();
+      var idEtudiant = $(this).data("id-etudiant");
       $.ajax({
         type: "POST",
         url: "Validation.php",
         data: {
           id_competence: idCompetence,
-          acquisition: acquisition
+          acquisition: acquisition,
+          id_etudiant: idEtudiant,
         },
         success: function(response) {
           console.log(response);
