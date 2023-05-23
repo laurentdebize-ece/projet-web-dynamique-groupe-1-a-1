@@ -42,11 +42,14 @@
 			<?php
 			if (isset($_GET['error'])) {
 				$error = $_GET['error'];
+
+				if ($error == 1) {
+					$messageErreur = "Mot de passe ou identifiant erroné.";
+					echo $messageErreur;
+				}
 			}
-
 			?>
-
-		</div>	
+		</div>
 	<br>
 	<br>
 	<div id="footer">
