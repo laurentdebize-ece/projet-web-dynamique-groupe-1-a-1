@@ -22,7 +22,7 @@
 			<input type="password" name="password" id="password">
 			<br>
 			<br>
-            <label for="newpassword">Nouveau mot de passe :</label>
+			<label for="newpassword">Nouveau mot de passe :</label>
 			<input type="password" name="newpassword" id="password">
 			<br>
 			<br>
@@ -33,8 +33,19 @@
 			</select>
 			<br>
 			<br>
-			
+
 			<input type="submit" name="connexion" value="Connexion">
+
+			<?php
+			if (isset($_GET['error'])) {
+				$error = $_GET['error'];
+
+				if ($error == 2) {
+					$messageErreur = "Mot de passe ou identifiant erroné.";
+					echo $messageErreur;
+				}
+			}
+			?>
 
 		</form>
 	</div>
@@ -46,15 +57,6 @@
 
 </body>
 
-<?php
-if (isset($_GET['error'])) {
-		$error = $_GET['error'];
-		
-		if ($error == 2) {
-			$messageErreur = "Mot de passe ou identifiant erroné.";
-			echo $messageErreur;
-		}
-}
-?>
+
 
 </html>

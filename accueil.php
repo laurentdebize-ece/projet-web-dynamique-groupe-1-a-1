@@ -31,28 +31,34 @@
 			<br>
 			<input type="submit" name="connexion" value="Connexion">
 
+
+			<?php
+
+			if (isset($_GET['error'])) {
+				$error = $_GET['error'];
+
+				if ($error == 1) {
+					$messageErreur = "Mot de passe ou identifiant erroné";
+					echo $messageErreur;
+					unset($_GET['error']);
+				}
+			} ?>
+
 		</form>
 		<button onclick="window.location.href='accueilfirst.php'">Première connexion</button>
 	</div>
 
-	<?php
-
-
-	if (isset($_GET['error'])) {
-		$error = $_GET['error'];
-		
-		if ($error == 1) {
-			$messageErreur = "Mot de passe ou identifiant erroné";
-			echo $messageErreur;
-		}
-	}
 
 
 
-	?>
 
 
-    <br>
+
+
+
+
+
+	<br>
 	<br>
 	<div id="footer">
 		<p>© 2023 Projet WEB Dynamique: Eva, Anaé, Valentin, Trystan</p>

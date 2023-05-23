@@ -1,3 +1,7 @@
+<?php session_start();
+
+$IdEtu = isset($_SESSION['Id']) ? $_SESSION['Id'] : ""; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +82,8 @@
                 $password = "root";
                 $dbname = "projet";
                 $conn = new mysqli($servername, $username, $password, $dbname);
-                $sql = "SELECT * FROM Competence";
+
+                $sql = "SELECT * FROM Competence WHERE IDClasse = '$IdEtu'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {

@@ -19,7 +19,7 @@ switch ($statut) {
         if ($donnees = $requete->fetch()) {
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $idprof = $donnes['IdProf'];
+            $idprof = $donnes['Id'];
             $requete->closeCursor();
         } else {
             header("Location: accueilfirst.php?error=2"); //MARCHE PAS
@@ -38,7 +38,7 @@ switch ($statut) {
 
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $idsco = $donnes['IdSco'];
+            $idsco = $donnes['Id'];
             $requete->closeCursor();
         } else {
             header("Location: accueilfirst.php?error=2");
@@ -57,7 +57,7 @@ switch ($statut) {
         if ($donnees = $requete->fetch()) {
             $_SESSION['Prenom'] = $donnees['Prenom'];
             $_SESSION['Nom'] = $donnees['Nom'];
-            $idetu = $donnes['IdEtu'];
+            $idetu = $donnes['Id'];
             $requete->closeCursor();
         } else {
             header("Location: accueilfirst.php?error=2");
